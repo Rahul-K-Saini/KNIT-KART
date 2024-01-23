@@ -101,7 +101,7 @@ Follow these steps to set up and run KNIT-KART locally on your development envir
 
 5. **Run the Frontend:**
    ```bash
-   npm start
+   npm run dev
 
 6. **Navigate to the Backend Directory:**
    ```bash
