@@ -1,4 +1,5 @@
-# Project Name
+# KNIT-KART
+### KNIT's Arcade for Recycled Treasures
 
 ## Description
 Welcome to KNIT-KART, the innovative solution designed to enhance the living experience of hostlers by facilitating the seamless exchange of various items. Our major project addresses the common challenges faced by individuals residing in hostels who often find themselves with surplus belongings they no longer need, while simultaneously seeking items they do require. KNIT-KART serves as a platform to connect users with similar needs, fostering a sustainable and collaborative environment within hostel communities.
