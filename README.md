@@ -4,19 +4,19 @@ Welcome to ***KNIT KART : KNIT's Arcade for Recycled Treasures***, the innovativ
 
 ## Key Features
 
-**Comprehensive Item Categories**
+- **Comprehensive Item Categories**
 
-KNIT-KART covers a wide array of categories, including books, notes, electronics, household items, sports equipment, wearables, kitchenware, study equipment, furniture, and more. This ensures that users can exchange a diverse range of items, making the platform versatile and accommodating for various needs.
+   KNIT-KART covers a wide array of categories, including books, notes, electronics, household items, sports equipment, wearables, kitchenware, study equipment, furniture, and more. This ensures that users can exchange a diverse range of items, making the platform versatile and accommodating for various needs.
 
-**User-Friendly Ad Posting**
+- **User-Friendly Ad Posting**
 
-Our platform offers a simple and user-friendly interface for posting advertisements. Users can easily create ads specifying the items they want to exchange and mention the items they are looking for in return. This feature ensures clarity and transparency in every exchange.
+   Our platform offers a simple and user-friendly interface for posting advertisements. Users can easily create ads specifying the items they want to exchange and mention the items they are looking for in return. This feature ensures clarity and transparency in every exchange.
 
-**Secure Communication**
+- **Secure Communication**
 
-Privacy and security are paramount on KNIT-KART. The platform facilitates secure communication between users, allowing them to discuss the details of the exchange without compromising their personal information.
+   Privacy and security are paramount on KNIT-KART. The platform facilitates secure communication between users, allowing them to discuss the details of the exchange without compromising their personal information.
 
-## Purpose:
+## Purpose
 
 The primary goal of KNIT-KART is to create a sustainable and collaborative environment within hostel communities by addressing the common problem of surplus belongings. By providing a platform for the exchange of items ranging from course materials to everyday essentials, KNIT-KART aims to reduce waste, promote resourcefulness, and foster a sense of community among hostlers.
 
@@ -186,33 +186,33 @@ Feel free to explore the various features and functionalities of KNIT-KART. Whet
 
 Thank you for considering contributing to KNIT-KART! Your involvement helps us enhance the platform and create a better experience for all users. Please take a moment to review the guidelines below before getting started:
 
-#### Reporting Bugs or Issues:
+- #### Reporting Bugs or Issues:
 
-If you come across any bugs, issues, or have suggestions for improvements, please feel free to [open a new issue](https://github.com/Rahul-K-Saini/knit-kart/issues). When reporting an issue, include a detailed description of the problem, steps to reproduce, and the expected behavior.
+   If you come across any bugs, issues, or have suggestions for improvements, please feel free to [open a new issue](https://github.com/Rahul-K-Saini/knit-kart/issues). When reporting an issue, include a detailed description of the problem, steps to reproduce, and the expected behavior.
 
-#### Submitting Feature Requests:
+- #### Submitting Feature Requests:
 
-We welcome feature requests that align with the project's goals. To submit a feature request, [open a new issue](https://github.com/Rahul-K-Saini/knit-kart/issues) and provide a clear description of the new functionality you'd like to see. Discuss its potential benefits and how it aligns with the project's purpose.
+   We welcome feature requests that align with the project's goals. To submit a feature request, [open a new issue](https://github.com/Rahul-K-Saini/knit-kart/issues) and provide a clear description of the new functionality you'd like to see. Discuss its potential benefits and how it aligns with the project's purpose.
 
-#### Code Contributions:
+- #### Code Contributions
 
-If you're interested in contributing code to KNIT-KART, follow these guidelines:
+   If you're interested in contributing code to KNIT-KART, follow these guidelines:
 
-1. Fork the repository and create your branch from `main`.
-2. Ensure your code follows the project's coding conventions and standards.
-3. Test your changes thoroughly.
-4. Make sure your commit messages are clear and descriptive.
-5. [Open a pull request](https://github.com/Rahul-K-Saini/knit-kart/pulls) with a detailed explanation of your changes.
+   1. Fork the repository and create your branch from `main`.
+   2. Ensure your code follows the project's coding conventions and standards.
+   3. Test your changes thoroughly.
+   4. Make sure your commit messages are clear and descriptive.
+   5. [Open a pull request](https://github.com/Rahul-K-Saini/knit-kart/pulls) with a detailed explanation of your changes.
 
-#### Coding Conventions:
+- #### Coding Conventions
 
-- Follow consistent coding styles, as demonstrated in the existing codebase.
-- Use meaningful variable and function names for clarity.
-- Keep the code modular and well-organized.
+   - Follow consistent coding styles, as demonstrated in the existing codebase.
+   - Use meaningful variable and function names for clarity.
+   - Keep the code modular and well-organized.
 
-#### Discussions:
+- #### Discussions:
 
-Participate in discussions and share your ideas in the [GitHub Discussions](https://github.com/Rahul-K-Saini/knit-kart/discussions) section. Engage with the community to brainstorm new features, address concerns, or provide feedback.
+   Participate in discussions and share your ideas in the [GitHub Discussions](https://github.com/Rahul-K-Saini/knit-kart/discussions) section. Engage with the community to brainstorm new features, address concerns, or provide feedback.
 
 We appreciate your contributions and look forward to collaborating with you to make KNIT-KART even better!
 
