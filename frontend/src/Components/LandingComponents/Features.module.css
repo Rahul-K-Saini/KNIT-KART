@@ -1,0 +1,24 @@
+.feature-section{
+    background-color: #f1ddd9;
+    text-align: center;
+    padding: 2rem;
+}
+.features{
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem;
+}
+
+.feature{
+    padding: 1rem;
+    background-color: #e5d2ce;
+    width: 40vw;
+    padding-left: 2rem;
+    margin: auto;
+    text-align: left;
+}
+
+.feature h4{
+    font-size: 20px;
+    font-weight: 700;
+}
