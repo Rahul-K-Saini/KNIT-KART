@@ -1,11 +1,27 @@
 import React, { useState } from 'react';
-import './Entrance.css';
+import styles from'./Entrance.module.css';
 const Entrance = () => {
 
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState({
+        login: false,
+        headingText: "Already Registered",
+        buttonText: "Log In here"
+    });
 
     const handleToggle = () => {
-        setIsLogin(!isLogin);
+        if(isLogin.login){
+            setIsLogin({
+                login: false,
+                headingText: "Already Registered",
+                buttonText: "Log In here"
+            });
+        } else {
+            setIsLogin({
+                login: true,
+                headingText: "Not Registered yet",
+                buttonText: "Signup here"
+            });
+        }
     };
 
     return (
@@ -13,12 +29,10 @@ const Entrance = () => {
             <div className='bg-white rounded flex w-full h-full'>
                 {/* Log In Section */}
                 <div className='flex flex-col justify-center relative items-center space-y-3 bg-slate-300 w-1/2'>
-                <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${isLogin ? 'login-slide' : 'signup-slide'}`}>
-                    <div>
-                        <h1>Not Registered yet</h1>
-                        <button onClick={handleToggle}>do Sign up</button>
-                        <h1>Already Registered</h1>
-                        <button onClick={handleToggle}>do Login</button>
+                <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${!isLogin.login ? styles['login-slide'] : styles['signup-slide']}`}>
+                    <div className={styles['slider-window']}>
+                        <h1>{isLogin.headingText}</h1>
+                        <button onClick={handleToggle}>{isLogin.buttonText}</button>
                     </div>
                 </div>
                     <h1 className='text-4xl font-bold text-zinc-800'>Log In</h1>
