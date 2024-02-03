@@ -1,0 +1,42 @@
+/* Header */
+.header {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    font-weight: bold;
+    /* height: calc(100vh - 75.8px); */
+    height: 75vh;
+}
+
+/* Hero Section */
+.ctr {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: slideInFromLeft 2s forwards;
+    animation-delay: 0.5s;
+}
+
+.ctr h2 {
+    animation: slideInFromLeft 2s ease-out forwards;
+}
+
+/* Animation keyframes for main Heading */
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
