@@ -15,7 +15,6 @@ const App = () => {
     return (
         <>
             <RouterProvider router={router} />
-            {/* <h1>Hello</h1> */}
         </>
     )
 }
