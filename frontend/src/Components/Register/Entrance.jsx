@@ -13,10 +13,10 @@ const Entrance = () => {
             <div className='bg-white rounded flex w-full h-full'>
                 {/* Log In Section */}
                 <div className='flex flex-col justify-center relative items-center space-y-3 bg-slate-300 w-1/2'>
-                <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${isLogin ? 'login-slide' : 'Entranceup-slide'}`}>
+                <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${isLogin ? 'login-slide' : 'signup-slide'}`}>
                     <div>
                         <h1>Not Registered yet</h1>
-                        <button onClick={handleToggle}>do Entranceup</button>
+                        <button onClick={handleToggle}>do Sign up</button>
                         <h1>Already Registered</h1>
                         <button onClick={handleToggle}>do Login</button>
                     </div>
@@ -30,15 +30,15 @@ const Entrance = () => {
                     </div>
                 </div>
 
-                {/* Entrance Up Section */}
+                {/* Sign Up Section */}
                 <div className='bg-red-500 flex flex-col justify-center items-center space-y-3 w-1/2'>
-                    <h1 className='text-4xl font-bold text-zinc-800'>Entrance Up</h1>
+                    <h1 className='text-4xl font-bold text-zinc-800'>Sign Up</h1>
                     <div className='flex flex-col justify-center items-start space-y-8 py-7'>
                         <input type="text" id="username" placeholder='Enter Your Username' className='drop-shadow-xl text-xl p-2 rounded font-light' />
                         <input type="email" id="email" placeholder='Enter Your Email' className='drop-shadow-xl text-xl p-2 rounded font-light' />
                         <input type="password" id="password" placeholder='Enter Your Password' className='drop-shadow-xl text-xl p-2 rounded font-light' />
                         <input type="password" id="confirmPassword" placeholder='Confirm Your Password' className='drop-shadow-xl text-xl p-2 rounded font-light' />
-                        <button className='bg-blue-600 text-white px-3 py-2 rounded-md text-xl drop-shadow-xl'>Entrance Up</button>
+                        <button className='bg-blue-600 text-white px-3 py-2 rounded-md text-xl drop-shadow-xl'>Sign Up</button>
                     </div>
                 </div>
 
