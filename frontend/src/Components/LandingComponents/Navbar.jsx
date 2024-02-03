@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <nav>
-            <Link to='/'><h1>KNIT KART</h1></Link>
-        </nav>
+        <div style={{position:"sticky", zIndex:"10"}}>
+            <nav>
+                <Link to='/'><h1>KNIT KART</h1></Link>
+            </nav>
+        </div>
     )
 }
 
