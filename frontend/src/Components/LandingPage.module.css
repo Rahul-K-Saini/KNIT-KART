@@ -3,13 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-
-  /* background-color: #020404; */
-  /* color: #252525; */
-  height: 100vh;
-  padding-inline: clamp(1.5rem, 2vw, 2rem);
-}
 
 /* Hide the scrollbar track, but still keep functionality */
 body::-webkit-scrollbar {

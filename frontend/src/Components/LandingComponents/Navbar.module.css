@@ -3,10 +3,12 @@
 nav {
     font-family: Poppins;
     display: flex;
+    position: fixed;
+    width: 100%;
     background-color: rgba(100, 100, 100, 0.2);
     padding: 0px;
     justify-content: center;
-    z-index: 1;
+    z-index: 1000;
     backdrop-filter: blur(8px);
     /* Disable this to have a Macos-like top bar */
 	/* border-radius: 0px 0px 10px 10px;

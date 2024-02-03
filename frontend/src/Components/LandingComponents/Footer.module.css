@@ -90,7 +90,13 @@
 
 .social-icons a {
     margin-right: 10px;
-    color: #fff;
-    font-size: 20px;
-    text-decoration: none;
+    width: 25px;
+}
+
+.follow-copyright{
+    padding: 0 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
