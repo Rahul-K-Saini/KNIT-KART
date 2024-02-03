@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Footer.module.css'
-import { Input } from "@/components/ui/input"
+import { Input } from "../ui/input"
 import { Button } from '../ui/button'
 
 const Footer = () => {
