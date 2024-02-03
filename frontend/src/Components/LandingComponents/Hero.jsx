@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '../ui/button' 
 import styles from './Hero.module.css'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
     return (
@@ -15,7 +16,7 @@ const Hero = () => {
                     </div>
                 </div>
                 <div className={styles['primary-btn']}>
-                    <Button>Get Started</Button>
+                    <Link to='/entrance'><Button>Get Started</Button></Link>
                 </div>
             </div>
         </>
