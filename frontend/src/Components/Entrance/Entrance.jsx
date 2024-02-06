@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import styles from'./Entrance.module.css';
+import styles from './Entrance.module.css';
+import { Link } from 'react-router-dom';
 const Entrance = () => {
 
     const [isLogin, setIsLogin] = useState({
@@ -9,7 +10,7 @@ const Entrance = () => {
     });
 
     const handleToggle = () => {
-        if(isLogin.login){
+        if (isLogin.login) {
             setIsLogin({
                 login: false,
                 headingText: "Already Registered",
@@ -29,12 +30,13 @@ const Entrance = () => {
             <div className='bg-white rounded flex w-full h-full'>
                 {/* Log In Section */}
                 <div className='flex flex-col justify-center relative items-center space-y-3 bg-slate-300 w-1/2'>
-                <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${!isLogin.login ? styles['login-slide'] : styles['signup-slide']}`}>
-                    <div className={styles['slider-window']}>
-                        <h1>{isLogin.headingText}</h1>
-                        <button onClick={handleToggle}>{isLogin.buttonText}</button>
+                    <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${!isLogin.login ? styles['login-slide'] : styles['signup-slide']}`}>
+                        {/* Slider Window */}
+                        <div className={styles['slider-window']}>
+                            <h1>{isLogin.headingText}</h1>
+                            <Link to={`?mode=${!isLogin ? 'signup' : 'login'}`} onClick={handleToggle}>{isLogin.buttonText}</Link>
+                        </div>
                     </div>
-                </div>
                     <h1 className='text-4xl font-bold text-zinc-800'>Log In</h1>
                     <div className='flex flex-col justify-center items-start space-y-8 py-7'>
                         <input type="email" id="email" placeholder='Enter Your Registered Email' className='drop-shadow-xl text-xl p-2 rounded font-light' />
