@@ -17,7 +17,7 @@ const Hero = () => {
                         </div>
                     </div>
                     <div className={styles['primary-btn']}>
-                        <Link to='/entrance'><Button>Get Started</Button></Link>
+                        <Link to='/entrance?mode=signup'><Button>Get Started</Button></Link>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@ const Entrance = () => {
                         {/* Slider Window */}
                         <div className={styles['slider-window']}>
                             <h1>{isLogin.headingText}</h1>
-                            <Link to={`?mode=${!isLogin ? 'signup' : 'login'}`} onClick={handleToggle}>{isLogin.buttonText}</Link>
+                            <Link to={`?mode=${isLogin.login ? 'signup' : 'login'}`} onClick={handleToggle}>{isLogin.buttonText}</Link>
                         </div>
                     </div>
                     <h1 className='text-4xl font-bold text-zinc-800'>Log In</h1>
