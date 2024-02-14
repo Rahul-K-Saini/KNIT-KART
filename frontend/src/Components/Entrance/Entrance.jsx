@@ -47,7 +47,7 @@ const Entrance = () => {
                 </div>
 
                 {/* Sign Up Section */}
-                <div className='bg-red-500 flex flex-col justify-center items-center space-y-3 w-1/2 rounded-3xl'>
+                <div className='bg-yellow-500 flex flex-col justify-center items-center space-y-3 w-1/2 rounded-3xl'>
                     <h1 className='text-4xl font-bold text-zinc-800'>Sign Up</h1>
                     <div className='flex flex-col justify-center items-start space-y-8 py-7'>
                         <input type="text" id="username" placeholder='Enter Your Username' className='drop-shadow-xl text-xl p-2 rounded font-light' />
