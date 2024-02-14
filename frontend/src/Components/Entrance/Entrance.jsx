@@ -30,8 +30,8 @@ const Entrance = () => {
             <div className='bg-white rounded flex w-full h-full'>
                 {/* Log In Section */}
                 <div className='flex flex-col justify-center relative items-center space-y-3 bg-slate-300 w-1/2'>
+                    {/* Slider Window */}
                     <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${!isLogin.login ? styles['login-slide'] : styles['signup-slide']}`}>
-                        {/* Slider Window */}
                         <div className={styles['slider-window']}>
                             <h1>{isLogin.headingText}</h1>
                             <Link to={`?mode=${isLogin.login ? 'signup' : 'login'}`} onClick={handleToggle}>{isLogin.buttonText}</Link>
@@ -42,7 +42,7 @@ const Entrance = () => {
                         <input type="email" id="email" placeholder='Enter Your Registered Email' className='drop-shadow-xl text-xl p-2 rounded font-light' />
                         <input type="password" id="password" placeholder='Enter Your Password' className='drop-shadow-xl text-xl p-2 rounded font-light' />
                         <button className='bg-blue-600 text-white px-3 py-2 rounded-md text-xl drop-shadow-xl'>Log In</button>
-                        <a href="" className='text-blue-600 underline'>Forget Password?</a>
+                        <a href="" className='text-blue-600 underline'>Forgot Password?</a>
                     </div>
                 </div>
 
