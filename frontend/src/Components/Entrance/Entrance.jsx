@@ -27,11 +27,11 @@ const Entrance = () => {
 
     return (
         <div className='bg-cyan-200 w-full h-screen px-12 py-14'>
-            <div className='bg-white rounded flex w-full h-full'>
+            <div className=' rounded flex w-full h-full'>
                 {/* Log In Section */}
-                <div className='flex flex-col justify-center relative items-center space-y-3 bg-slate-300 w-1/2'>
+                <div className='flex flex-col justify-center relative items-center space-y-3 bg-slate-300 w-1/2 rounded-3xl'>
                     {/* Slider Window */}
-                    <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${!isLogin.login ? styles['login-slide'] : styles['signup-slide']}`}>
+                    <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 rounded-3xl ${!isLogin.login ? styles['login-slide'] : styles['signup-slide']}`}>
                         <div className={styles['slider-window']}>
                             <h1>{isLogin.headingText}</h1>
                             <Link to={`?mode=${isLogin.login ? 'signup' : 'login'}`} onClick={handleToggle}>{isLogin.buttonText}</Link>
@@ -47,7 +47,7 @@ const Entrance = () => {
                 </div>
 
                 {/* Sign Up Section */}
-                <div className='bg-red-500 flex flex-col justify-center items-center space-y-3 w-1/2'>
+                <div className='bg-red-500 flex flex-col justify-center items-center space-y-3 w-1/2 rounded-3xl'>
                     <h1 className='text-4xl font-bold text-zinc-800'>Sign Up</h1>
                     <div className='flex flex-col justify-center items-start space-y-8 py-7'>
                         <input type="text" id="username" placeholder='Enter Your Username' className='drop-shadow-xl text-xl p-2 rounded font-light' />
