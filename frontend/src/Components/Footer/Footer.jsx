@@ -1,8 +1,10 @@
 import React from "react";
+import { Instagram, Linkedin, Twitter } from "lucide-react";
+import "./footer.modules.css";
 
 const Footer = () => {
   return (
-    <div className="px-4 md:px-11 py-10 bg-gray-900 text-white">
+    <div className="px-4 md:px-11 py-12  bg-gray-900 text-white">
       <div className="flex flex-col md:flex-row justify-between">
         <div className="flex flex-col mb-8 md:mb-0">
           <h1 className="text-lg md:text-2xl mb-4">Contact Us</h1>
@@ -18,7 +20,7 @@ const Footer = () => {
             <ul className="list-none space-y-4">
               <li className="cursor-pointer">
                 <a
-                  href="/#"
+                  href="/"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full"
                 >
                   Home
@@ -26,7 +28,7 @@ const Footer = () => {
               </li>
               <li className="cursor-pointer">
                 <a
-                  href="/#FAQs"
+                  href="/"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full"
                 >
                   FAQ
@@ -34,7 +36,7 @@ const Footer = () => {
               </li>
               <li className="cursor-pointer">
                 <a
-                  href="/#"
+                  href="/"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full"
                 >
                   About
@@ -42,7 +44,7 @@ const Footer = () => {
               </li>
               <li className="cursor-pointer">
                 <a
-                  href="/#"
+                  href="/"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full"
                 >
                   Contact
@@ -55,9 +57,15 @@ const Footer = () => {
         <div className="flex flex-col mb-8 md:mb-0">
           <h1 className="text-lg md:text-2xl mb-4">Social Media</h1>
           <ul className="list-none space-x-4 flex mb-10">
-            <li className="cursor-pointer hover:scale-125 duration-300">x</li>
-            <li className="cursor-pointer hover:scale-125 duration-300">in</li>
-            <li className="cursor-pointer hover:scale-125 duration-300">f</li>
+            <li className="cursor-pointer duration-300 hover:text-red-600">
+              <Instagram />
+            </li>
+            <li className="cursor-pointer duration-300 hover:text-blue-600">
+              <Linkedin />
+            </li>
+            <li className="cursor-pointer duration-300 hover:text-blue-600">
+              <Twitter />
+            </li>
           </ul>
           <div className="flex flex-col space-y-2">
             <h1 className="text-lg md:text-2xl mb-2">Newsletter</h1>

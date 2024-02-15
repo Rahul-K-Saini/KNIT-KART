@@ -20,7 +20,7 @@ const Faq = () => {
   return (
     <div
       id="FAQs"
-      className="md:p-20 px-4 py-14 flex flex-col justify-center items-center"
+      className="md:p-20 px-4 py-12  flex flex-col justify-center items-center"
       style={{ backgroundColor: "#F4F4F4", color: "#333333" }}
     >
       <h1 className="text-3xl font-medium mb-6">Common Queries</h1>
