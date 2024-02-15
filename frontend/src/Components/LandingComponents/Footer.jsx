@@ -1,73 +1,52 @@
-import React from 'react'
-import styles from './Footer.module.css'
-import { Input } from "../ui/input"
-import { Button } from '../ui/button'
+import React from 'react';
 
 const Footer = () => {
     return (
-        <>
-            <footer className={styles["footer"]}>
-                <div className={styles["footer-content"]}>
-                    <div className={styles['footer-top']}>
-                        <div className={styles["contact-us"]}>
-                            <h3>Contact Us</h3>
-                            <p>Email: contact@knitkart.com</p>
-                            <p>Phone: (123) 456-7890</p>
-                        </div>
-                        <div className={styles["quick-links"]}>
-                            <h3>Quick Links</h3>
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Products</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">FAQ</a></li>
-                            </ul>
-                        </div>
-                        <div className={styles["latest-news"]}>
-                            <h3>Latest News</h3>
-                            <ul>
-                                <li><a href="#">New Product Launch</a></li>
-                                <li><a href="#">Company Updates</a></li>
-                                <li><a href="#">Industry Trends</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className={styles["newsletter"]}>
-                        <div>
-                            <h3>Newsletter Subscription</h3>
-                            <p>Subscribe to our newsletter for the latest updates and promotions.</p>
-                        </div>
-                        <form>
-                            <Input type="email" placeholder="Enter your email" />
-                            <Button>Subscribe</Button>
-                        </form>
+        <div className='px-4 md:px-11 py-16 bg-gray-900 text-white'>
+            <div className='flex flex-col md:flex-row justify-between'>
+                <div className='flex flex-col mb-8 md:mb-0'>
+                    <h1 className='text-lg md:text-2xl mb-4'>Contact Us</h1>
+                    <ul className='list-none space-y-4'>
+                        <li>Phone: +91 1234567890</li>
+                        <li>Email: info@example.com</li>
+                    </ul>
+                </div>
+                
+                <div className='flex flex-col'>
+                    <div className='mb-8 md:mb-0'>
+                        <h1 className='text-lg md:text-2xl mb-4'>Quick Links</h1>
+                        <ul className='list-none space-y-4'>
+                            <li className='cursor-pointer'><a href="/#" className='relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full'>Home</a></li>
+                            <li className='cursor-pointer'><a href="/#FAQs" className='relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full'>FAQ</a></li>
+                            <li className='cursor-pointer'><a href="/#" className='relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full'>About</a></li>
+                            <li className='cursor-pointer'><a href="/#" className='relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full'>Contact</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div  className={styles["follow-copyright"]}>
-                    <div className={styles["social-media"]}>
-                        <h3>Follow Us</h3>
-                        <div className={styles["social-icons"]}>
-                            <a href="https://github.com/Rahul-K-Saini/KNIT-KART" target="_blank" rel="noopener noreferrer">
-                                <img src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" alt="github" />
-                            </a>
-                            <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
-                                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="x" />
-                            </a>
-                            <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1051/1051309.png" alt="facebook" />
-                            </a>
-                            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1419/1419647.png" alt="instagram" />
-                            </a>
-                        </div>
-                    </div>
-                    <div className={styles["copyright"]}>
-                        <p>&copy; 2024 KNIT KART, All Rights Reserved.</p>
-                    </div>
-                </div>
-            </footer>
-        </>
-    )
-}
 
-export default Footer
+                <div className='flex flex-col mb-8 md:mb-0'>
+                    <h1 className='text-lg md:text-2xl mb-4'>Social Media</h1>
+                    <ul className='list-none space-x-4 flex mb-10'>
+                        <li className='cursor-pointer hover:scale-125 duration-300'>x</li>
+                        <li className='cursor-pointer hover:scale-125 duration-300'>in</li>
+                        <li className='cursor-pointer hover:scale-125 duration-300'>f</li>
+                    </ul>
+                    <div className='flex flex-col space-y-2'>
+                        <h1 className='text-lg md:text-2xl mb-2'>Newsletter</h1>
+                        <p>No signup required for exploring the products</p>
+                        <div className='flex space-x-2'>
+                            <input type="email" name="email" placeholder='Enter Your Email' className='h-10 px-2 text-black flex-grow focus:outline-none rounded' />
+                            <button className='px-4 py-1 font-medium text-lg bg-white text-gray-900 transition duration-300 hover:bg-teal-500 hover:text-white rounded'>
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr className='my-10 border-gray-600' />
+            <p className="mt-5 text-center text-sm">&copy; 2024 KNIT KART, All Rights Reserved.</p>
+        </div>
+    );
+};
+
+export default Footer;
