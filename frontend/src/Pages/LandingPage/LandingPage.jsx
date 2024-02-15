@@ -1,14 +1,15 @@
 import React from "react";
 import Features from "../../components/Features/Features";
 import FAQs from "../../components/FAQs/FAQs";
-import Footer from "../../components/Footer/Footer";
+import Hero from "@/Components/Hero/Hero";
+
 
 const LandingPage = () => {
   return (
     <>
+      <Hero/>
       <Features />
       <FAQs />
-      <Footer />
     </>
   );
 };
