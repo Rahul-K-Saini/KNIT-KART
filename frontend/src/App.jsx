@@ -6,8 +6,12 @@ import Entrance from './Components/Entrance/Entrance.jsx'
 
 
 const router = createBrowserRouter([
-    { path: '/', element: <LandingPage /> },
-    { path: '/entrance', element: <Entrance /> }
+    {
+        path: '/', children: [
+            { index: true, element: <LandingPage /> },
+            { path: 'entrance', element: <Entrance /> }
+        ]
+    }
 ])
 
 
