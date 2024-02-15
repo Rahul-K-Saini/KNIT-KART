@@ -4,7 +4,7 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "./accordion"
 const SingleQuestion = (props) => {
     return (
         <>

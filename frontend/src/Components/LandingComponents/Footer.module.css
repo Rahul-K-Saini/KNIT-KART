@@ -1,5 +1,5 @@
 .footer {
-    background-color: #7582a9;
+    background-color: #7BD3EA;
     color: #252525;
     padding: 1rem;
     font-weight: 500;
@@ -90,7 +90,13 @@
 
 .social-icons a {
     margin-right: 10px;
-    color: #fff;
-    font-size: 20px;
-    text-decoration: none;
+    width: 25px;
+}
+
+.follow-copyright{
+    padding: 0 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }

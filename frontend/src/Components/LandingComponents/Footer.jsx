@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Footer.module.css'
-import { Input } from "@/components/ui/input"
+import { Input } from "../ui/input"
 import { Button } from '../ui/button'
 
 const Footer = () => {
@@ -43,22 +43,27 @@ const Footer = () => {
                         </form>
                     </div>
                 </div>
-                <div className={styles["social-media"]}>
-                    <h3>Follow Us</h3>
-                    <div className={styles["social-icons"]}>
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <i className={styles["fab fa-facebook"]}></i>
-                        </a>
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <i className={styles["fab fa-twitter"]}></i>
-                        </a>
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <i className={styles["fab fa-instagram"]}></i>
-                        </a>
+                <div  className={styles["follow-copyright"]}>
+                    <div className={styles["social-media"]}>
+                        <h3>Follow Us</h3>
+                        <div className={styles["social-icons"]}>
+                            <a href="https://github.com/Rahul-K-Saini/KNIT-KART" target="_blank" rel="noopener noreferrer">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" alt="github" />
+                            </a>
+                            <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
+                                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="x" />
+                            </a>
+                            <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1051/1051309.png" alt="facebook" />
+                            </a>
+                            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1419/1419647.png" alt="instagram" />
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div className={styles["copyright"]}>
-                    <p>&copy; 2024 KNIT KART, All Rights Reserved.</p>
+                    <div className={styles["copyright"]}>
+                        <p>&copy; 2024 KNIT KART, All Rights Reserved.</p>
+                    </div>
                 </div>
             </footer>
         </>
