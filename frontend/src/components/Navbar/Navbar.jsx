@@ -5,7 +5,6 @@ function Navbar() {
   return (
     <>
         <h2>KNIT-<span className='font-semibold'>KART</span></h2>
-        
         <ThemeToggle />
     </>
   )
