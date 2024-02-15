@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from'lucide-react';
-import "../../custom.modules.css";
+
 const Question = ({ question, answer }) => {
   const [showAnswer, setShowAnswer] = useState(false);
 
@@ -9,7 +9,7 @@ const Question = ({ question, answer }) => {
   };
 
   return (
-    <div className="border-b py-4 cursor-pointer">
+    <div className="border-b py-4 cursor-pointer ">
       <div className="flex items-center justify-between" onClick={toggleAnswer}>
         <a className="font-medium">{question}</a>
         <button className="mr-6">
