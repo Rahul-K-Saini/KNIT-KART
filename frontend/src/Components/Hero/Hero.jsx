@@ -3,6 +3,7 @@ import React from "react";
 function Hero() {
   return (
     <section className="bg-gradient-to-b from-teal-100 to-teal-900 dark:from-teal-900 dark:to-[#121212] px-5 py-10">
+      <div className="max-w-3xl">
       <h1 className="text-4xl text-gray-800 dark:text-white mb-5">
         KNIT's Arcade For Recycled Treasures
       </h1>
@@ -15,6 +16,7 @@ function Hero() {
       <button className="px-5 py-4 bg-black text-white rounded hover:bg-gray-900">
         Browse Ads
       </button>
+      </div>
     </section>
   );
 }
