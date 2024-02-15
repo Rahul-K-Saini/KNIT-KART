@@ -4,7 +4,7 @@ import  ThemeToggle  from './theme-toggle';
 function Navbar() {
   return (
     <>
-        <h2>KNIT-<span className='font-semibold'>KART</span></h2>
+        <h2>KNIT22-<span className='font-semibold'>KART</span></h2>
         <ThemeToggle />
     </>
   )
