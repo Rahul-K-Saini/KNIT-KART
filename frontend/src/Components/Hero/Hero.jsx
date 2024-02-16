@@ -18,7 +18,9 @@ function Hero() {
           Browse Ads
         </button>
       </div>
-      <img src={heroImg} alt="hero" />
+      <div className={styles.imgContainer}>
+        <img src={heroImg} alt="hero" />
+      </div>
     </section>
   );
 }
