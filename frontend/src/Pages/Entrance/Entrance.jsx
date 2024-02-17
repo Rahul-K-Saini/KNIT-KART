@@ -1,12 +1,38 @@
 import React, { useState } from 'react';
 import styles from './Entrance.module.css';
 import { Link } from 'react-router-dom';
+
+import Lottie from "react-lottie";
+import loginLottie from '../../media/loginLottie'
+import signupLottie from '../../media/signupLottie'
 const Entrance = () => {
+
+    const defaultOptionsLogin = {
+        loop: true,
+        autoplay: true,
+        animationData: loginLottie,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+        }
+    };
+    const defaultOptionsSignup = {
+        loop: true,
+        autoplay: true,
+        animationData: signupLottie,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+        }
+    };
 
     const [isLogin, setIsLogin] = useState({
         login: false,
         headingText: "Already Registered",
-        buttonText: "Log In here"
+        buttonText: "Log In here",
+        compon: <Lottie
+            options={defaultOptionsSignup}
+            height={500}
+            width={500}
+        />
     });
 
     const handleToggle = () => {
@@ -14,16 +40,28 @@ const Entrance = () => {
             setIsLogin({
                 login: false,
                 headingText: "Already Registered",
-                buttonText: "Log In here"
+                buttonText: "Log In here",
+                compon: <Lottie
+                    options={defaultOptionsSignup}
+                    height={500}
+                    width={500}
+                />
             });
         } else {
             setIsLogin({
                 login: true,
                 headingText: "Not Registered yet",
-                buttonText: "Signup here"
+                buttonText: "Signup here",
+                compon: <Lottie
+                    options={defaultOptionsLogin}
+                    height={500}
+                    width={500}
+                />
             });
         }
     };
+
+    
 
     return (
         <div className='bg-cyan-200 w-full h-screen px-12 py-14'>
@@ -33,6 +71,9 @@ const Entrance = () => {
                     <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${!isLogin.login ? styles['login-slide'] : styles['signup-slide']}`}>
                         {/* Slider Window */}
                         <div className={styles['slider-window']}>
+                            <div>
+                                {isLogin.compon}
+                            </div>
                             <h1>{isLogin.headingText}</h1>
                             <Link to={`?mode=${isLogin.login ? 'signup' : 'login'}`} onClick={handleToggle}>{isLogin.buttonText}</Link>
                         </div>

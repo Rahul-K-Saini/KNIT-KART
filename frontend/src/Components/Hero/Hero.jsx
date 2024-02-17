@@ -1,6 +1,6 @@
 import React from "react";
 import heroImg from '../../media/imHero.png';
-import styles from './style.module.css'
+import styles from './Hero.module.css'
 function Hero() {
   return (
     <section className="bg-gradient-to-b from-teal-100  to-teal-900 dark:from-teal-900 dark:to-[#121212] px-5">
