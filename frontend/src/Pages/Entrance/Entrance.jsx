@@ -26,8 +26,8 @@ const Entrance = () => {
 
     const [isLogin, setIsLogin] = useState({
         login: false,
-        headingText: "Already Registered",
-        buttonText: "Log In here",
+        headingText: "Already have an account ?",
+        buttonText: "Signin here",
         compon: <Lottie
             options={defaultOptionsSignup}
             height={500}
@@ -39,8 +39,6 @@ const Entrance = () => {
         if (isLogin.login) {
             setIsLogin({
                 login: false,
-                headingText: "Already Registered",
-                buttonText: "Log In here",
                 compon: <Lottie
                     options={defaultOptionsSignup}
                     height={500}
@@ -50,8 +48,6 @@ const Entrance = () => {
         } else {
             setIsLogin({
                 login: true,
-                headingText: "Not Registered yet",
-                buttonText: "Signup here",
                 compon: <Lottie
                     options={defaultOptionsLogin}
                     height={500}
@@ -71,16 +67,11 @@ const Entrance = () => {
                     <div className={`bg-pink-500  absolute top-0 w-full h-full z-10 ${!isLogin.login ? style['login-slide'] : style['signup-slide']}`}>
                         {/* Slider Window */}
                         <div className={style['slider-window']}>
-                            <div>
                                 {isLogin.compon}
-                            </div>
-                            <h1>{isLogin.headingText}</h1>
-                            <Link to={`?mode=${isLogin.login ? 'signup' : 'login'}`} onClick={handleToggle}>{isLogin.buttonText}</Link>
                         </div>
                     </div>
                     <form className={style.form}>
                         <p className={style.title}>Log In </p>
-                        
                         <label>
                             <input className={style.input} type="email" placeholder="" required="" />
                             <span>Email</span>
@@ -90,7 +81,7 @@ const Entrance = () => {
                             <input className={style.input} type="password" placeholder="" required="" />
                         <span>Password</span>
                         </label>                        <button className={style.submit}>Submit</button>
-                        <p className={style.signin}>Already have an acount ? <a href="#">Signin</a> </p>
+                        <p className={style.signin}>Don't have an account yet?   <Link onClick={handleToggle}>Signup here.</Link> </p>
                     </form>
                 </div>
 
@@ -125,7 +116,7 @@ const Entrance = () => {
                             <span>Confirm password</span>
                         </label>
                         <button className={style.submit}>Submit</button>
-                        <p className={style.signin}>Already have an acount ? <a href="#">Signin</a> </p>
+                        <p className={style.signin}>Already have an account ?   <Link onClick={handleToggle}>Signin here.</Link> </p>
                     </form>
                 </div>
 
