@@ -8,7 +8,7 @@ import signupLottie from '../../media/signupLottie'
 const Entrance = () => {
 
     const defaultOptionsLogin = {
-        loop: true,
+        loop: false,
         autoplay: true,
         animationData: loginLottie,
         rendererSettings: {
