@@ -12,7 +12,7 @@ import "./AdPage.css";
 // call the action I will use
 // import { add_items } from "../actions";
 
-const Hero = () => {
+const AdPage = () => {
 
 
     // increase or decrease desired item quantity before checkout
@@ -241,4 +241,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default AdPage;
