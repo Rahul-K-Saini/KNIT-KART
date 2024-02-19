@@ -1,7 +1,28 @@
 import React, { useState } from 'react';
 import style from './Entrance.module.css';
 import { Link } from 'react-router-dom';
+
+import Lottie from "react-lottie";
+import loginLottie from '../../assets/lottieFiles/loginLottie'
+import signupLottie from '../../assets/lottieFiles/signupLottie'
 const Entrance = () => {
+
+    const defaultOptionsLogin = {
+        loop: false,
+        autoplay: true,
+        animationData: loginLottie,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+        }
+    };
+    const defaultOptionsSignup = {
+        loop: true,
+        autoplay: true,
+        animationData: signupLottie,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+        }
+    };
 
     const [isLogin, setIsLogin] = useState({
         login: false,
@@ -29,10 +50,13 @@ const Entrance = () => {
         <div className='bg-cyan-200 w-full h-screen px-12 py-14'>
             <div className=' rounded flex w-full h-full'>
                 {/* Log In Section */}
-                <div className='flex flex-col justify-center relative items-center space-y-3 bg-slate-300 w-1/2 rounded-3xl'>
-                    {/* Slider Window */}
-                    <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 rounded-3xl ${!isLogin.login ? style['login-slide'] : style['signup-slide']}`}>
+                <div className='flex flex-col justify-center relative items-center space-y-3 bg-slate-300 w-1/2'>
+                    <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${!isLogin.login ? style['login-slide'] : style['signup-slide']}`}>
+                        {/* Slider Window */}
                         <div className={style['slider-window']}>
+                            <div>
+                                {isLogin.compon}
+                            </div>
                             <h1>{isLogin.headingText}</h1>
                             <Link onClick={handleToggle}>{isLogin.buttonText}</Link>
                         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import ThemeToggle from "./theme-toggle";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -8,7 +9,7 @@ function Navbar() {
         KNIT-<span className="font-semibold">KART</span>
       </h2>
       <div className="flex items-center gap-8">
-        <button>Log in</button>
+        <Link to="/entrance"><button>Log in</button></Link>
         <ThemeToggle />
       </div>
     </nav>
