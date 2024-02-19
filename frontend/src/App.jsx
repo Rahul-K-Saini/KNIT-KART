@@ -1,21 +1,16 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import LandingPage from './Components/LandingPage.jsx'
-import Entrance from './Components/Entrance/Entrance.jsx'
-
-
-
-const router = createBrowserRouter([
-    { path: '/', element: <LandingPage /> },
-    { path: '/entrance', element: <Entrance /> }
-])
-
+import {Outlet} from 'react-router-dom'
+import Navbar from './components/Navbar/Navbar'
+import Footer from './Components/Footer/Footer'
+import { ThemeProvider } from './context/ThemeProvider'
 
 const App = () => {
     return (
-        <>
-            <RouterProvider router={router} />
-        </>
+        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+            <Navbar />
+            <Outlet />
+            <Footer />
+        </ThemeProvider>
     )
 }
 

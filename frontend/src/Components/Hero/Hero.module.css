@@ -1,0 +1,26 @@
+section{
+    display: flex;
+    overflow: hidden;
+}
+section>div:first-child{
+    padding-top: 150px;
+}
+.imgContainer{
+    width: fit-content;
+    height: fit-content;
+    animation: rotate 60s linear infinite;
+}
+img{
+    width:50vw;
+    height:50vw;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
