@@ -5,6 +5,7 @@ import App from "./App";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import Entrance from "./Pages/Entrance/Entrance";
+import AdPage from "./Pages/AdPage/AdPage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "entrance",
         element: <Entrance />,
+      },
+      {
+        path: "ad",
+        element: <AdPage />,
       },
     ],
   },

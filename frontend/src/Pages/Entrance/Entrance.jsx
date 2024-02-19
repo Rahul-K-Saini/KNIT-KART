@@ -3,8 +3,8 @@ import style from './Entrance.module.css';
 import { Link } from 'react-router-dom';
 
 import Lottie from "react-lottie";
-import loginLottie from '../../media/loginLottie'
-import signupLottie from '../../media/signupLottie'
+import loginLottie from '../../assets/lottieFiles/loginLottie'
+import signupLottie from '../../assets/lottieFiles/signupLottie'
 const Entrance = () => {
 
     const defaultOptionsLogin = {
