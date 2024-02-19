@@ -1,6 +1,6 @@
 import React from "react";
-import Features from "../../components/Features/Features";
-import FAQs from "../../components/FAQs/FAQs";
+import Features from "../../Components/Features/Features";
+import FAQs from "../../Components/FAQs/FAQs";
 import Hero from "@/Components/Hero/Hero";
 
 
