@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Entrance.module.css';
+import style from './Entrance.module.css';
 import { Link } from 'react-router-dom';
 
 import Lottie from "react-lottie";
@@ -68,9 +68,9 @@ const Entrance = () => {
             <div className='bg-white rounded flex w-full h-full'>
                 {/* Log In Section */}
                 <div className='flex flex-col justify-center relative items-center space-y-3 bg-slate-300 w-1/2'>
-                    <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${!isLogin.login ? styles['login-slide'] : styles['signup-slide']}`}>
+                    <div className={`bg-pink-500 absolute top-0 w-full h-full z-10 ${!isLogin.login ? style['login-slide'] : style['signup-slide']}`}>
                         {/* Slider Window */}
-                        <div className={styles['slider-window']}>
+                        <div className={style['slider-window']}>
                             <div>
                                 {isLogin.compon}
                             </div>
@@ -88,15 +88,38 @@ const Entrance = () => {
                 </div>
 
                 {/* Sign Up Section */}
-                <div className='bg-red-500 flex flex-col justify-center items-center space-y-3 w-1/2'>
-                    <h1 className='text-4xl font-bold text-zinc-800'>Sign Up</h1>
-                    <div className='flex flex-col justify-center items-start space-y-8 py-7'>
-                        <input type="text" id="username" placeholder='Enter Your Username' className='drop-shadow-xl text-xl p-2 rounded font-light' />
-                        <input type="email" id="email" placeholder='Enter Your Email' className='drop-shadow-xl text-xl p-2 rounded font-light' />
-                        <input type="password" id="password" placeholder='Enter Your Password' className='drop-shadow-xl text-xl p-2 rounded font-light' />
-                        <input type="password" id="confirmPassword" placeholder='Confirm Your Password' className='drop-shadow-xl text-xl p-2 rounded font-light' />
-                        <button className='bg-blue-600 text-white px-3 py-2 rounded-md text-xl drop-shadow-xl'>Sign Up</button>
-                    </div>
+                <div className='bg-red-500 flex flex-col justify-center items-center space-y-3 w-1/2 rounded-3xl'>
+                    <form className={style.form}>
+                        <p className={style.title}>Register </p>
+                        <p className={style.message}>Signup now and get full access to our app. </p>
+                        <div className={style.flex}>
+                            <label>
+                                <input className={style.input} type="text" placeholder="" required="" />
+                                <span>Firstname</span>
+                            </label>
+
+                            <label>
+                                <input className={style.input} type="text" placeholder="" required="" />
+                                <span>Lastname</span>
+                            </label>
+                        </div>
+
+                        <label>
+                            <input className={style.input} type="email" placeholder="" required="" />
+                            <span>Email</span>
+                        </label>
+
+                        <label>
+                            <input className={style.input} type="password" placeholder="" required="" />
+                            <span>Password</span>
+                        </label>
+                        <label>
+                            <input className={style.input} type="password" placeholder="" required="" />
+                            <span>Confirm password</span>
+                        </label>
+                        <button className={style.submit}>Submit</button>
+                        <p className={style.signin}>Already have an acount ? <a href="#">Signin</a> </p>
+                    </form>
                 </div>
 
             </div>
