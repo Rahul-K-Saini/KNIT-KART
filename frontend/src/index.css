@@ -11,6 +11,7 @@
         --primary: #7215f4;
         --secondary: #f9847b;
         --accent: #f7b355;
+        --footer:#ebe5f2;
     }
 
     .dark {
@@ -19,7 +20,7 @@
         --primary: #680bea;
         --secondary: #840f06;
         --accent: #aa6708;
-    }
+        --footer:#130c1a;
 }
 
 
@@ -92,4 +93,5 @@ h5 {
 small {
     font-size: 0.750rem;
     /* 12px */
+}
 }
