@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import Entrance from "./Pages/Entrance/Entrance";
 import AdPage from "./Pages/AdPage/AdPage";
-import PostAd from "./Pages/PostAd";
+import PostAd from "./Pages/PostAd/PostAd";
 
 const router = createBrowserRouter([
   {

@@ -1,5 +1,5 @@
 import React from "react";
-import ImageUpload from "../Components/ImageUpload/ImageUpload";
+import ImageUpload from "../../Components/ImageUpload/ImageUpload";
 function PostAd() {
   return (
     <div className="max-w-md mx-auto  md:max-w-2xl">
