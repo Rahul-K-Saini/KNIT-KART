@@ -91,6 +91,7 @@ module.exports = {
         'primary': 'var(--primary)',
         'secondary': 'var(--secondary)',
         'accent': 'var(--accent)',
+        'footer': 'var(--footer)',
       },
       fontSize: {
         sm: '0.750rem',
