@@ -1,11 +1,11 @@
 import React from "react";
 import heroImg from '../../assets/images/imHero.png';
-import styles from './Hero.module.css'
+
 function Hero() {
   return (
-    <section className="bg-gradient-to-b from-teal-100  to-teal-900 dark:from-teal-900 dark:to-[#121212] px-5">
+    <section className="flex overflow-hidden bg-gradient-to-b from-teal-100  to-teal-900 dark:from-teal-900 dark:to-[#121212] px-5">
       <div className="max-w-2xl">
-        <h1 className="text-4xl text-gray-800 dark:text-white mb-5">
+        <h1 className="text-4xl text-gray-800 dark:text-white mb-5 pt-36">
           KNIT's Arcade For Recycled Treasures
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-50 mb-5">
@@ -18,8 +18,8 @@ function Hero() {
           Browse Ads
         </button>
       </div>
-      <div className={styles.imgContainer}>
-        <img src={heroImg} alt="hero" />
+      <div className='w-fit h-fit px-5 animate-spin' style={{ animationDuration: '60s' }}>
+        <img src={heroImg} alt="hero" className=""/>
       </div>
     </section>
   );
