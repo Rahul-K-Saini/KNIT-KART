@@ -47,8 +47,8 @@
 body {
     scrollbar-width: thin;
     scrollbar-color: #3498db #ecf0f1;
-    font-family: 'Maven Pro';
-    font-weight: 400;
+    /* font-family: 'Maven Pro';
+    font-weight: 400; */
 }
 
 
@@ -57,8 +57,8 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: 'Maven Pro';
-    font-weight: 700;
+    /* font-family: 'Maven Pro';
+    font-weight: 700; */
 }
 
 html {

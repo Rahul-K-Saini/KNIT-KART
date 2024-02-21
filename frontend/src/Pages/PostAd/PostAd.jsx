@@ -1,8 +1,8 @@
 import React from "react";
-
+import ImageUpload from "../../Components/ImageUpload/ImageUpload";
 function PostAd() {
   return (
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div className="max-w-md mx-auto  md:max-w-2xl">
       <div className="p-6">
         <h2 className="text-3xl font-medium mb-4">Post Ad</h2>
         <div className="mb-4">
@@ -32,43 +32,37 @@ function PostAd() {
             <option value="">Kitchen Ware</option>
             <option value="">Stationaries </option>
             <option value="">Furniture</option>
-            <option value="">Tools and Utilities</option>
           </select>
         </div>
         <div className="mb-4">
           <label htmlFor="price" className="block text-gray-700">
             Price
           </label>
-          <div className="border-2 border-gray-200 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500">
-            <span>₹  </span>
-            <input type="text" className="outline-none px-2 border-l border-gray-200" />
+          <div className="border-2 border-gray-200 rounded w-full py-2 px-3  focus:border-blue-500">
+            <span>₹ </span>
+            <input
+              type="text"
+              placeholder="Price"
+              id="price"
+              className=" border-l-[1px] px-2 w-[90%]  focus:outline-none"
+            />
           </div>
         </div>
-      <div className="mb-4">
-        <label htmlFor="image" className="block text-gray-700">
-          Images
-        </label>
-        <input
-          type="file"
-          accept="image/*"
-          id="image"
-          className="border-2 border-gray-200 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
-        />
+        <ImageUpload />
+        <div className="mb-4">
+          <label htmlFor="description" className="block text-gray-700">
+            Description
+          </label>
+          <textarea
+            placeholder="About your product"
+            id="description"
+            className="border-2 border-gray-200 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <button className="bg-accent hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Post Ad
+        </button>
       </div>
-      <div className="mb-4">
-        <label htmlFor="description" className="block text-gray-700">
-          Description
-        </label>
-        <textarea
-          placeholder="About your product"
-          id="description"
-          className="border-2 border-gray-200 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
-        />
-      </div>
-      <button className="bg-accent text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Post Ad
-      </button>
-    </div>
     </div>
   );
 }

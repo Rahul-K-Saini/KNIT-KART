@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from './entrance.module.css';
 import { Link } from 'react-router-dom';
-import "./entrance.modules.css";
-const Entrance = () => {
 
+
+const Entrance = () => {
     const [isLogin, setIsLogin] = useState({
         login: false,
         headingText: "Already Registered",
