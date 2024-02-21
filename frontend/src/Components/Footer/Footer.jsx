@@ -4,7 +4,7 @@ import "./footer.modules.css";
 
 const Footer = () => {
   return (
-    <div className="px-4 md:px-11 py-12 bg-backgroud dark:bg-background text-text-950">
+    <div className="px-4 md:px-11 py-12 bg-footer text-text">
       <div className="flex flex-col md:flex-row justify-between">
         <div className="flex flex-col mb-8 md:mb-0">
           <h1 className="text-lg md:text-2xl mb-4">Contact Us</h1>
@@ -77,7 +77,7 @@ const Footer = () => {
                 placeholder="Enter Your Email"
                 className="h-10 px-2 text-black flex-grow focus:outline-none rounded"
               />
-              <button className="px-4 py-1 font-medium text-lg bg-primary-500 text-white transition duration-300 hover:bg-teal-500 hover:text-white rounded">
+              <button className="px-4 py-1 font-medium text-lg bg-accent text-white transition duration-300 hover:bg-teal-500 hover:text-white rounded">
                 Subscribe
               </button>
             </div>
