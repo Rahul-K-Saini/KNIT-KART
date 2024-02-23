@@ -64,7 +64,7 @@ const Entrance = () => {
             <div className='bg-white rounded flex w-full h-full'>
                 {/* Log In Section */}
                 <div className='flex flex-col justify-center relative items-center space-y-3 w-1/2'>
-                    <div className={`bg-pink-500  absolute top-0 w-full h-full z-10 ${!isLogin.login ? style['login-slide'] : style['signup-slide']}`}>
+                    <div className={`bg-white  absolute top-0 w-full h-full z-10 ${!isLogin.login ? style['login-slide'] : style['signup-slide']}`}>
                         {/* Slider Window */}
                         <div className={style['slider-window']}>
                                 {isLogin.compon}
