@@ -58,15 +58,15 @@ const Footer = () => {
         <div className="flex flex-col mb-8 md:mb-0">
           <h1 className="text-lg md:text-2xl mb-4">Social Media</h1>
           <ul className="list-none space-x-4 flex mb-10">
-            <li className="cursor-pointer duration-300 hover:text-teal-500">
-              <FaInstagram className="text-2xl"/>
+            <li className="cursor-pointer duration-300 hover:text-secondary">
+              <FaInstagram className="text-2xl" />
             </li>
-            <li className="cursor-pointer duration-300 hover:text-teal-500">
-              <FaLinkedinIn className="text-2xl"/>
+            <li className="cursor-pointer duration-300 hover:text-secondary">
+              <FaLinkedinIn className="text-2xl" />
             </li>
 
-            <li className="cursor-pointer duration-300 hover:text-teal-500">
-              <FaXTwitter className="text-2xl"/>
+            <li className="cursor-pointer duration-300 hover:text-secondary">
+              <FaXTwitter className="text-2xl" />
             </li>
           </ul>
           <div className="flex flex-col space-y-2">
