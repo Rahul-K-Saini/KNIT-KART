@@ -1,5 +1,6 @@
 import React from "react";
-import { Moon, Sun } from "lucide-react";
+import { IoSunnyOutline } from "react-icons/io5";
+import { FiMoon } from "react-icons/fi";
 import { useTheme } from "../../context/ThemeProvider";
 
 function ThemeToggle() {
@@ -15,8 +16,8 @@ function ThemeToggle() {
 
   return (
     <button onClick={handleTheme} className="dark:text-gray-50">
-      {theme === "dark" && <Sun />}
-      {theme === "light" && <Moon />}
+      {theme === "dark" && <IoSunnyOutline className="text-2xl"/>}
+      {theme === "light" && <FiMoon className="text-2xl"/>}
     </button>
   );
 }

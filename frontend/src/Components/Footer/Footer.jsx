@@ -1,5 +1,7 @@
 import React from "react";
-import { Instagram, Linkedin, Twitter } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -57,13 +59,14 @@ const Footer = () => {
           <h1 className="text-lg md:text-2xl mb-4">Social Media</h1>
           <ul className="list-none space-x-4 flex mb-10">
             <li className="cursor-pointer duration-300 hover:text-teal-500">
-              <Instagram />
+              <FaInstagram className="text-2xl"/>
             </li>
             <li className="cursor-pointer duration-300 hover:text-teal-500">
-              <Linkedin />
+              <FaLinkedinIn className="text-2xl"/>
             </li>
+
             <li className="cursor-pointer duration-300 hover:text-teal-500">
-              <Twitter />
+              <FaXTwitter className="text-2xl"/>
             </li>
           </ul>
           <div className="flex flex-col space-y-2">
