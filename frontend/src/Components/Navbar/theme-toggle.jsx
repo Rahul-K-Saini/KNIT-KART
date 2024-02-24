@@ -4,7 +4,7 @@ import { useTheme } from "../../context/ThemeProvider";
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  
+
   const handleTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -12,15 +12,11 @@ function ThemeToggle() {
       setTheme("light");
     }
   };
-  
+
   return (
-    <button onClick={handleTheme}>
-      {theme === "light" && (
-        <Sun />
-      )}
-      {theme === "dark" && (
-        <Moon />
-      )}
+    <button onClick={handleTheme} className="dark:text-gray-50">
+      {theme === "dark" && <Sun />}
+      {theme === "light" && <Moon />}
     </button>
   );
 }
