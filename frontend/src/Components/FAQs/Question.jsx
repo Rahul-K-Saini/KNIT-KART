@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp } from'lucide-react';
+import { IoChevronUpOutline, IoChevronDownOutline } from "react-icons/io5";
 
 const Question = ({ question, answer }) => {
   const [showAnswer, setShowAnswer] = useState(false);
@@ -13,7 +13,7 @@ const Question = ({ question, answer }) => {
       <div className="flex items-center justify-between" onClick={toggleAnswer}>
         <a className="font-medium">{question}</a>
         <button className="mr-6">
-        {showAnswer ? <ChevronUp />:<ChevronDown />}
+        {showAnswer ? <IoChevronUpOutline />:<IoChevronDownOutline />}
         </button>
       </div>
       <p

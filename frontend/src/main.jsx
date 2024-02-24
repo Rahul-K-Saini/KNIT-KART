@@ -7,6 +7,7 @@ import LandingPage from "./Pages/LandingPage/LandingPage";
 import Entrance from "./Pages/Entrance/Entrance";
 import AdPage from "./Pages/AdPage/AdPage";
 import PostAd from "./Pages/PostAd/PostAd";
+import Profile from "./Pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "postad",
         element: <PostAd />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
     ],
   },
