@@ -1,99 +1,95 @@
-@import url('https://fonts.googleapis.com/css?family=Maven%20Pro:700|Maven%20Pro:400');
+@import url("https://fonts.googleapis.com/css?family=Maven%20Pro:700|Maven%20Pro:400");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --text: #0e011e;
-        --background: #f7f1fe;
-        --primary: #7215f4;
-        --secondary: #f9847b;
-        --accent: #f7b355;
-        --footer: #ebe5f2;
-        --footer:#ebe5f2;
-    }
+  :root {
+    --text: #0e011e;
+    --background: #f7f1fe;
+    --primary: #7215f4;
+    --secondary: #f9847b;
+    --accent: #f7b355;
+    --footer: #ebe5f2;
+  }
 
-    .dark {
-        --text: #eee1fe;
-        --background: #07010e;
-        --primary: #680bea;
-        --secondary: #840f06;
-        --accent: #aa6708;
-        --footer: #130c1a;
-        --footer:#130c1a;
+  .dark {
+    --text: #9583ac;
+    --background: #07010e;
+    --primary: #680bea;
+    --secondary: #840f06;
+    --accent: #aa6708;
+    --footer: #130c1a;
+  }
 }
-
 
 /* WebKit (Chrome, Safari) */
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #134e4a;
-    /* Color of the scrollbar handle */
-    border-radius: 10px;
-    /* Border around the scrollbar handle */
+  background-color: #134e4a;
+  /* Color of the scrollbar handle */
+  border-radius: 10px;
+  /* Border around the scrollbar handle */
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #c5fffb;
-    /* Color of the scrollbar track */
-    border-radius: 10px;
+  background-color: #c5fffb;
+  /* Color of the scrollbar track */
+  border-radius: 10px;
 }
 
 body {
-    scrollbar-width: thin;
-    scrollbar-color: #3498db #ecf0f1;
-    /* font-family: 'Maven Pro';
-    font-weight: 400; */
+  scrollbar-width: thin;
+  scrollbar-color: #3498db #ecf0f1;
+  font-family: "Maven Pro";
+  font-weight: 400;
 }
-
 
 h1,
 h2,
 h3,
 h4,
 h5 {
-    /* font-family: 'Maven Pro';
-    font-weight: 700; */
+  font-family: "Maven Pro";
+  font-weight: 700;
 }
 
 html {
-    font-size: 100%;
+  font-size: 100%;
 }
 
 /* 16px */
 
 h1 {
-    font-size: 4.210rem;
-    /* 67.36px */
+  font-size: 4.21rem;
+  /* 67.36px */
 }
 
 h2 {
-    font-size: 3.158rem;
-    /* 50.56px */
+  font-size: 3.158rem;
+  /* 50.56px */
 }
 
 h3 {
-    font-size: 2.369rem;
-    /* 37.92px */
+  font-size: 2.369rem;
+  /* 37.92px */
 }
 
 h4 {
-    font-size: 1.777rem;
-    /* 28.48px */
+  font-size: 1.777rem;
+  /* 28.48px */
 }
 
 h5 {
-    font-size: 1.333rem;
-    /* 21.28px */
+  font-size: 1.333rem;
+  /* 21.28px */
 }
 
 small {
-    font-size: 0.750rem;
-    /* 12px */
-}
+  font-size: 0.75rem;
+  /* 12px */
 }

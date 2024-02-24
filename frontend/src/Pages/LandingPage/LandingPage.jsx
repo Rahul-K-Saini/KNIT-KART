@@ -3,13 +3,14 @@ import Features from "../../Components/Features/Features";
 import FAQs from "../../Components/FAQs/FAQs";
 import Hero from "@/Components/Hero/Hero";
 
-
 const LandingPage = () => {
   return (
     <>
-      <Hero/>
-      <Features />
-      <FAQs />
+      <div className="m-0 p-0 box-border">
+        <Hero />
+        <Features />
+        <FAQs />
+      </div>
     </>
   );
 };
