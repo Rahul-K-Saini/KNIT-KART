@@ -6,7 +6,7 @@ const Faq = () => {
   return (
     <div
       id="FAQs"
-      className="md:p-20 px-4 py-12  flex flex-col justify-center items-center bg-gray-100 text-gray-700 dark:bg-[#121212] dark:text-gray-50"
+      className="md:p-20 border-t-4 border-secondary px-4 py-12  flex flex-col justify-center items-center bg-background text-gray-700 dark:bg-background dark:text-gray-50"
     >
       <h1 className="text-3xl font-medium mb-6">Common Queries</h1>
       <p className="mb-8">Where Your Questions Meet Solutions</p>

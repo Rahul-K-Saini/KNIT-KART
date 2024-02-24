@@ -2,6 +2,7 @@ import Categories from "@/Components/Categories/Categories";
 import React from "react";
 import { useState } from "react";
 import Hero from "@/Components/Hero/Hero";
+import Faq from "@/Components/FAQs/FAQs";
 
 function Homepage() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -28,6 +29,7 @@ function Homepage() {
         />
       </div>
       <Hero />
+      <Faq />
     </>
   );
 }

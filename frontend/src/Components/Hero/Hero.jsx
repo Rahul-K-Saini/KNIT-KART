@@ -4,7 +4,7 @@ import { TypewriterEffectDemo } from "../TypeWriterDemo/TypeWriterDemo";
 
 function Hero() {
   return (
-    <section className="w-full bg-gradient-to-b from-[#f7f1fe] to-gray-50 dark:text-gray-50 dark:bg-gradient-to-b dark:from-footer dark:to-background">
+    <section className="w-full bg-gradient-to-b from-[#f7f1fe] to-background dark:text-gray-50 dark:bg-gradient-to-b dark:from-footer dark:to-background">
       <div className="flex justify-between items-stretch max-w-7xl mx-auto">
         <div className="flex-1 flex flex-col justify-center px-5">
           <TypewriterEffectDemo />
@@ -14,7 +14,7 @@ function Hero() {
             architecto consequuntur recusandae ipsam laborum porro doloremque
             tempore earum ducimus quas nemo.
           </p>
-          <button className="py-3 px-2 bg-accent dark:bg-accent border-2 border border-transparent rounded w-[30%] hover:border-black">
+          <button className="py-3 px-2 bg-accent dark:bg-accent border-2 border-transparent rounded w-[30%] hover:border-black hover:dark:border-white">
             Get Started
           </button>
         </div>
