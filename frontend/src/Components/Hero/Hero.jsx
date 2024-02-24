@@ -4,19 +4,22 @@ import { TypewriterEffectDemo } from "../TypeWriterDemo/TypeWriterDemo";
 
 function Hero() {
   return (
-    <section className="w-full bg-gray-50 dark:text-gray-50 dark:bg-background dark:bg-opacity-50">
-      <div className=" flex justify-between items-center flex-1">
-        <div className="px-5">
+    <section className="w-full bg-gradient-to-b from-[#f7f1fe] to-gray-50 dark:text-gray-50 dark:bg-gradient-to-b dark:from-footer dark:to-background">
+      <div className="flex justify-between items-stretch max-w-7xl mx-auto">
+        <div className="flex-1 flex flex-col justify-center px-5">
           <TypewriterEffectDemo />
-          <p className="mt-5">
+          <p className="mt-5 mb-3">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
             sapiente sequi quibusdam. Amet itaque, fugiat, quidem, non ex
             architecto consequuntur recusandae ipsam laborum porro doloremque
             tempore earum ducimus quas nemo.
           </p>
+          <button className="py-3 px-2 bg-accent dark:bg-accent border-2 border border-transparent rounded w-[30%] hover:border-black">
+            Get Started
+          </button>
         </div>
-        <div>
-          <img src={heroImage} alt="" srcset="" />
+        <div className="flex-1 flex justify-center border-l-8 border-secondary">
+          <img src={heroImage} alt="Hero" className="h-full" />
         </div>
       </div>
     </section>
