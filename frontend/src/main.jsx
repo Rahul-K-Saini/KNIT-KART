@@ -7,11 +7,8 @@ import LandingPage from "./Pages/LandingPage/LandingPage";
 import Entrance from "./Pages/Entrance/Entrance";
 import AdPage from "./Pages/AdPage/AdPage";
 import PostAd from "./Pages/PostAd/PostAd";
-<<<<<<< HEAD
 import Profile from "./Pages/Profile/Profile";
-=======
 import Dashboard from "./Components/Dashboard/Dashboard";
->>>>>>> 8e2ffb00fb0092170b6449a29cf48132d4112607
 
 const router = createBrowserRouter([
   {
@@ -35,15 +32,13 @@ const router = createBrowserRouter([
         element: <PostAd />,
       },
       {
-<<<<<<< HEAD
         path: "profile",
         element: <Profile />,
       },
-=======
+      {
         path: "dashboard",
         element: <Dashboard />
       }
->>>>>>> 8e2ffb00fb0092170b6449a29cf48132d4112607
     ],
   },
 ]);
