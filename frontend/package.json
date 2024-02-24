@@ -16,6 +16,7 @@
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.6",
     "localforage": "^1.10.0",
+    "lucide-react": "^0.338.0",
     "match-sorter": "^6.3.3",
     "path": "^0.12.7",
     "prop-types": "^15.8.1",
