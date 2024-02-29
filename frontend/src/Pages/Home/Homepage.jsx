@@ -32,7 +32,7 @@ function Homepage() {
   };
   return (
     <>
-      <div className="flex justify-between sticky top-20 z-50">
+      <div className="flex justify-between bg-background sticky top-20 z-50">
         <Categories
           categories={categories}
           selectedCategory={selectedCategory}
