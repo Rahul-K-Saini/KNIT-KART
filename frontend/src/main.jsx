@@ -7,7 +7,7 @@ import Entrance from "./Components/Entrance/Entrance";
 import AdPage from "./Pages/AdPage/AdPage";
 import PostAd from "./Pages/PostAd/PostAd";
 import Profile from "./Pages/Profile/Profile";
-import Dashboard from "./Components/Dashboard/Dashboard";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 import Homepage from "./Pages/Home/Homepage";
 
 const router = createBrowserRouter([

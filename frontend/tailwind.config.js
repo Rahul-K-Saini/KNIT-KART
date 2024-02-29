@@ -94,6 +94,8 @@ module.exports = {
         'secondary': 'var(--secondary)',
         'accent': 'var(--accent)',
         'footer': 'var(--footer)',
+        'danger': 'var(--danger)',
+        'dangerHover': 'var(--dangerHover)',
       },
       fontSize: {
         sm: '0.750rem',

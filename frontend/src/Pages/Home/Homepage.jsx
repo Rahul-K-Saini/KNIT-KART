@@ -3,8 +3,19 @@ import React from "react";
 import { useState } from "react";
 import Hero from "@/Components/Hero/Hero";
 import Faq from "@/Components/FAQs/FAQs";
+import Button from "@/Components/Buttons/Button";
+import { Link, useNavigate } from "react-router-dom";
 
 function Homepage() {
+  const navigate = useNavigate();
+  const [isLoggedin, setisLoggedin] = useState(false);
+  const postAdHandler = ()=>{
+    if(isLoggedin){
+      navigate('/postAd')
+    } else {
+      navigate('/entrance')
+    }
+  }
   const [selectedCategory, setSelectedCategory] = useState(null);
   const categories = [
     { id: 1, name: "Electronics" },
@@ -21,12 +32,18 @@ function Homepage() {
   };
   return (
     <>
-      <div className="sticky top-20 z-50">
+      <div className="flex justify-between sticky top-20 z-50">
         <Categories
           categories={categories}
           selectedCategory={selectedCategory}
           onSelectCategory={handleSelectCategory}
         />
+        <Link
+            onClick={postAdHandler}
+            className="dark:text-gray-50 bg-accent data:bg-accent px-4 py-2 rounded hover:opacity-85"
+          >
+            Post Ad
+          </Link>
       </div>
       <Hero />
       <Faq />
