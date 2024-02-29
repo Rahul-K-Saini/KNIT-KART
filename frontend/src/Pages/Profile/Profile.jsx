@@ -71,12 +71,12 @@ const Profile = () => {
                         {isEditingProfile ? (
                             <div className='flex items-start flex-col'>
                                 <span className='md:text-3xl text-2xl'>Profile</span>
-                                <div className='flex space-x-12'>
-                                    <span className='text-xl flex items-center font-light cursor-pointer' onClick={handleEditable}>
+                                <div className='flex nd:space-x-12 md:flex-row flex-col space-y-2'>
+                                    <span className='md:text-xl text-base flex items-center font-light cursor-pointer' onClick={handleEditable}>
                                         Enable Editing
-                                        <FaRegEdit className={`${isEditable ? 'text-secondary' : 'text-text'} ml-1 cursor-pointer`} />
+                                        <FaRegEdit className={`${isEditable ? 'text-secondary' : 'text-text'} md:ml-1 cursor-pointer`} />
                                     </span>
-                                    <span className='text-xl flex items-center font-light cursor-pointer' onClick={clearInput}>
+                                    <span className='md:text-xl text-base flex items-center font-light cursor-pointer' onClick={clearInput}>
                                         Clear All
                                         <TbReload className='ml-1' />
                                     </span>
