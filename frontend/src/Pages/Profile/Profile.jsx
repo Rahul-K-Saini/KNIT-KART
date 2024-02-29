@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import user from '../../assets/images/user.jpeg'
 import { FaRegEdit } from "react-icons/fa";
-import { MdArrowBackIosNew, MdModeEditOutline, MdOutlineManageAccounts } from "react-icons/md";
+import { MdModeEditOutline, MdOutlineManageAccounts } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
+import { FaGear } from 'react-icons/fa6';
 
 const Profile = () => {
     const [isEditingProfile, setIsEditingProfile] = useState(true);
@@ -51,7 +52,7 @@ const Profile = () => {
         <div className='w-screen h-fit flex bg-background text-text'>
             <div className='flex flex-col md:w-1/5 w-2/12 py-7 pl-5 border-r'>
                 <div className='flex items-center space-x-4'>
-                    <MdArrowBackIosNew className='md:text-lg text-2xl' />
+                    <FaGear />
                     <button className='font-bold text-2xl text-start md:block hidden'>Settings</button>
                 </div>
                 <div className='flex flex-col ml-2 space-y-3 mt-11'>
@@ -71,7 +72,7 @@ const Profile = () => {
                         {isEditingProfile ? (
                             <div className='flex items-start flex-col'>
                                 <span className='md:text-3xl text-2xl'>Profile</span>
-                                <div className='flex nd:space-x-12 md:flex-row flex-col space-y-2'>
+                                <div className='flex md:space-x-12 md:flex-row flex-col space-y-2'>
                                     <span className='md:text-xl text-base flex items-center font-light cursor-pointer' onClick={handleEditable}>
                                         Enable Editing
                                         <FaRegEdit className={`${isEditable ? 'text-secondary' : 'text-text'} md:ml-1 cursor-pointer`} />
