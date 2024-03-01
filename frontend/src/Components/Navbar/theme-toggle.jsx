@@ -9,9 +9,7 @@ function ThemeToggle() {
   const dispatch = useDispatch();
 
   const handleTheme = () => {
-    console.log("curr theme: "+theme);
     dispatch(themeActions.toggle());
-    console.log("now curr theme: "+theme);
   };
 
   return (
