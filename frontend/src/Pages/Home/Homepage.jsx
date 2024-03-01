@@ -3,7 +3,6 @@ import React from "react";
 import { useState } from "react";
 import Hero from "@/Components/Hero/Hero";
 import Faq from "@/Components/FAQs/FAQs";
-import Button from "@/Components/Buttons/Button";
 import { Link, useNavigate } from "react-router-dom";
 
 function Homepage() {
