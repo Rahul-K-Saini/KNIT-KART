@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import ThemeToggle from "./theme-toggle";
-import { useTheme } from "@/context/ThemeProvider";
 import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import logoDark from "../../assets/images/logo-dark.png";
+import { useSelector } from "react-redux";
 
 function Navbar() {
-  const { theme } = useTheme();
+  const theme = useSelector(state => state.theme.theme);
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
