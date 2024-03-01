@@ -1,134 +1,118 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 350px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 20px;
-  position: relative;
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+@media (min-width: 768px) {
+  .mobile-form {
+    display: none;
+  }
+  .desktop-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+  }
+} 
+
+@media (max-width: 768px) {
+  .desktop-form {
+    display: none;
+  }
 }
 
-.title {
-  font-size: 28px;
-  color: royalblue;
-  font-weight: 600;
-  letter-spacing: -1px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding-left: 30px;
-}
-
-.title::before,
-.title::after {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  left: 0px;
-  background-color: royalblue;
-}
-
-.title::before {
-  width: 18px;
-  height: 18px;
-  background-color: royalblue;
-}
-
-.title::after {
-  width: 18px;
-  height: 18px;
-  animation: pulse 1s linear infinite;
-}
-
-.message,
-.signin {
-  color: rgba(88, 87, 87, 0.822);
-  font-size: 14px;
-}
-
-.signin {
+h2 {
+  font-size: 30px;
+  color: #555;
   text-align: center;
 }
 
-.signin a {
-  color: royalblue;
-}
-
-.signin a:hover {
-  text-decoration: underline royalblue;
-}
-
-.flex {
-  display: flex;
-  width: 100%;
-  gap: 6px;
-}
-
-.form label {
+.input-group {
   position: relative;
-}
-
-.form label .input {
   width: 100%;
-  padding: 10px 10px 20px 10px;
-  outline: 0;
-  border: 1px solid rgba(105, 105, 105, 0.397);
-  border-radius: 10px;
+  margin: 30px 0;
 }
 
-.form label .input+span {
+.input-group label {
   position: absolute;
-  left: 10px;
-  top: 15px;
-  color: grey;
-  font-size: 0.9em;
-  cursor: text;
-  transition: 0.3s ease;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #333;
+  padding: 0 5px;
+  pointer-events: none;
+  transition: .5s;
 }
 
-.form label .input:placeholder-shown+span {
-  top: 15px;
-  font-size: 0.9em;
+.input-group input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  color: #333;
+  padding: 0 10px;
+  background: transparent;
+  border: 1px solid #333;
+  outline: none;
+  border-radius: 5px;
 }
 
-.form label .input:focus+span,
-.form label .input:valid+span {
-  top: 0px;
-  font-size: 0.7em;
-  font-weight: 600;
+.input-group input:focus~label,
+.input-group input:valid~label {
+  top: 0;
+  font-size: 12px;
+  background: #fff;
 }
 
-.form label .input:valid+span {
-  color: green;
+.forgot-password {
+  margin: -15px 0 15px;
+  
 }
 
-.submit {
+.forgot-password a {
+  color: #3333;
+  font-size: 14px;
+  text-decoration:none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  /* background: linear-gradient(to right, #2196f3, #e91e63); */
+  background:  #7215f4;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .4);
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 5px;
   border: none;
   outline: none;
-  background-color: royalblue;
-  padding: 10px;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 16px;
-  transform: .3s ease;
 }
 
-.submit:hover {
-  background-color: rgb(56, 90, 194);
+.Sign-link {
+  font-size: 14px;
+  text-align: center;
+  margin: 25px 0;
+}
+
+.Sign-link p {
+  color: #333;
+}
+
+.Sign-link p button {
+  color: #e91e63;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  background-color: #00000000;
+}
+
+.Sign-link p  button:hover {
+  text-decoration: underline;
   cursor: pointer;
-}
-
-@keyframes pulse {
-  from {
-    transform: scale(0.9);
-    opacity: 1;
-  }
-
-  to {
-    transform: scale(1.8);
-    opacity: 0;
-  }
 }
