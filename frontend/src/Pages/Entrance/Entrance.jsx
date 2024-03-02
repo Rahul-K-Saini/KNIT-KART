@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as Components from './Components';
 //  import { ResponsiveContainer } from './ResponsiveComponents';
 import "./styles.css";
-import style from "./eEntrance.module.css";
+import style from "./Entrance.module.css";
 
 function App() {
     const [signIn, toggle] = React.useState(true);
