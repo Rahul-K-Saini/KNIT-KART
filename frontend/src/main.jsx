@@ -7,8 +7,10 @@ import Entrance from "./Components/Entrance/Entrance";
 import AdPage from "./Pages/AdPage/AdPage";
 import PostAd from "./Pages/PostAd/PostAd";
 import Profile from "./Pages/Profile/Profile";
-import Dashboard from "./Components/Dashboard/Dashboard";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 import Homepage from "./Pages/Home/Homepage";
+import { Provider } from 'react-redux';
+import store from './store';
 
 
 const router = createBrowserRouter([
@@ -40,13 +42,12 @@ const router = createBrowserRouter([
         path: "dashboard",
         element: <Dashboard />
       },
-      {
-
-      }
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );

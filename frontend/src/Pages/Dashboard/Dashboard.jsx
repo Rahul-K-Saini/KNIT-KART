@@ -1,5 +1,5 @@
 import React from 'react'
-import AdCard from '../AdCard/AdCard';
+import AdCard from '../../Components/AdCard/AdCard';
 
 const Dashboard = () => {
     const DUMMY_DATA = [
@@ -20,6 +20,22 @@ const Dashboard = () => {
         },
         {
             id: 3,
+            productName: "JBL Headphone",
+            category: "Wearable",
+            description: "Amazing Sound Quality, Brand New Product with bluetooth support",
+            imageURL: 'https://rukminim1.flixcart.com/blobio/1160/1160/imr-201907/blobio-imr-201907_cf6670eb0079426fab6ef9c538290065.jpg'
+
+        },
+        {
+            id: 4,
+            productName: "JBL Headphone",
+            category: "Wearable",
+            description: "Amazing Sound Quality, Brand New Product with bluetooth support",
+            imageURL: 'https://rukminim1.flixcart.com/blobio/1160/1160/imr-201907/blobio-imr-201907_cf6670eb0079426fab6ef9c538290065.jpg'
+
+        },
+        {
+            id: 5,
             productName: "Mechanical Keyboard",
             category: "Gaming",
             description: "A very nice and fully working Gaming keyboard. Must have for pro gamers.",
@@ -28,7 +44,7 @@ const Dashboard = () => {
     ]
     return (
         <>
-            <div className='flex flex-row justify-evenly mt-4'>
+            <div className='grid grid-cols-3 bg-background'>
                 {DUMMY_DATA.map((ad) => <AdCard key={ad.id} ad={ad} />)}
             </div>
 
