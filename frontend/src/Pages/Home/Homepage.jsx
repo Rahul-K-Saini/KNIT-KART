@@ -21,13 +21,14 @@ function Homepage() {
   };
   return (
     <>
-      <div className="sticky top-20 z-50">
-        <Categories
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onSelectCategory={handleSelectCategory}
-        />
-      </div>
+     <div className="sticky top-20 z-50 hidden sm:block md:block">
+  <Categories
+    categories={categories}
+    selectedCategory={selectedCategory}
+    onSelectCategory={handleSelectCategory}
+  />
+</div>
+
       <Hero />
       <Faq />
     </>

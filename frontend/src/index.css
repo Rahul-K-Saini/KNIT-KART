@@ -12,15 +12,17 @@
     --secondary: #f9847b;
     --accent: #f7b355;
     --footer: #ebe5f2;
+    --input_box: #c7b6e7;
   }
 
   .dark {
-    --text: #9583ac;
+    --text: #f4f4f4;
     --background: #07010e;
     --primary: #680bea;
     --secondary: #840f06;
     --accent: #aa6708;
     --footer: #130c1a;
+    --input_box: #ffffff;
   }
 }
 
