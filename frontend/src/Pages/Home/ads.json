@@ -1,0 +1,101 @@
+[
+    {
+        "id": 1,
+        "title": "Household Item 1",
+        "category": "Household",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 1500,
+        "exchange": "item",
+        "description": "This is a description for household item 1."
+    },
+    {
+        "id": 2,
+        "title": "Household Item 2",
+        "category": "Household",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 1800,
+        "exchange": "item",
+        "description": "This is a description for household item 2."
+    },
+    {
+        "id": 3,
+        "title": "Electronics 1",
+        "category": "Electronics",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 2500,
+        "exchange": "item",
+        "description": "This is a description for electronics item 1."
+    },
+    {
+        "id": 4,
+        "title": "Electronics 2",
+        "category": "Electronics",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 3200,
+        "exchange": "item",
+        "description": "This is a description for electronics item 2."
+    },
+    {
+        "id": 5,
+        "title": "Sports Item 1",
+        "category": "Sports",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 1200,
+        "exchange": "item",
+        "description": "This is a description for sports item 1."
+    },
+    {
+        "id": 6,
+        "title": "Sports Item 2",
+        "category": "Sports",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 1500,
+        "exchange": "item",
+        "description": "This is a description for sports item 2."
+    },
+    {
+        "id": 7,
+        "title": "Study Materials 1",
+        "category": "Study Materials",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 2000,
+        "exchange": "item",
+        "description": "This is a description for study materials item 1."
+    },
+    {
+        "id": 8,
+        "title": "Study Materials 2",
+        "category": "Study Materials",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 1800,
+        "exchange": "item",
+        "description": "This is a description for study materials item 2."
+    },
+    {
+        "id": 9,
+        "title": "Home Decor 1",
+        "category": "Household",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 1700,
+        "exchange": "item",
+        "description": "This is a description for home decor item 1."
+    },
+    {
+        "id": 10,
+        "title": "Home Decor 2",
+        "category": "Household",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 2100,
+        "exchange": "item",
+        "description": "This is a description for home decor item 2."
+    },
+    {
+        "id": 11,
+        "title": "Gaming Console 1",
+        "category": "Electronics",
+        "imageURL": "https://images.pexels.com/photos/2047902/pexels-photo-2047902.jpeg",
+        "price": 3000,
+        "exchange": "item",
+        "description": "This is a description for gaming console item 1."
+    }
+]

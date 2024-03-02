@@ -4,18 +4,20 @@ import { useState } from "react";
 import Hero from "@/Components/Hero/Hero";
 import Faq from "@/Components/FAQs/FAQs";
 import { Link, useNavigate } from "react-router-dom";
+import AdDisplay from "./AdDisplay";
 
 function Homepage() {
   const navigate = useNavigate();
   const [isLoggedin, setisLoggedin] = useState(false);
-  const postAdHandler = ()=>{
-    if(isLoggedin){
-      navigate('/postAd')
+  const postAdHandler = () => {
+    if (isLoggedin) {
+      navigate("/postAd");
     } else {
-      navigate('/entrance')
+      navigate("/entrance");
     }
-  }
+  };
   const [selectedCategory, setSelectedCategory] = useState(null);
+
   const categories = [
     { id: 1, name: "Electronics" },
     { id: 2, name: "Household" },
@@ -38,13 +40,14 @@ function Homepage() {
           onSelectCategory={handleSelectCategory}
         />
         <Link
-            onClick={postAdHandler}
-            className="dark:text-gray-50 bg-accent data:bg-accent px-4 py-2 rounded hover:opacity-85"
-          >
-            Post Ad
-          </Link>
+          onClick={postAdHandler}
+          className="dark:text-gray-50 bg-accent data:bg-accent px-4 py-2 rounded hover:opacity-85"
+        >
+          Post Ad
+        </Link>
       </div>
       <Hero />
+      <AdDisplay selectedCategory={selectedCategory} />
       <Faq />
     </>
   );
