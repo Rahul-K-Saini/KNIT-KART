@@ -8,7 +8,7 @@ import AdDisplay from "./AdDisplay";
 
 function Homepage() {
   const navigate = useNavigate();
-  const [isLoggedin, setisLoggedin] = useState(false);
+  const [isLoggedin, setisLoggedin] = useState(true);
   const postAdHandler = () => {
     if (isLoggedin) {
       navigate("/postAd");

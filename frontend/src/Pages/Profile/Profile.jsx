@@ -17,13 +17,13 @@ const Profile = () => {
         roomNo: ''
     });
 
-  const handleEditable = () => {
-    setIsEditable((prev) => !prev);
-  };
+    const handleEditable = () => {
+        setIsEditable((prev) => !prev);
+    };
 
-  const handleEditProfileClick = () => {
-    setIsEditingProfile(true);
-  };
+    const handleEditProfileClick = () => {
+        setIsEditingProfile(true);
+    };
 
     const handleChangePasswordClick = () => {
         setIsEditingProfile(false);
