@@ -12,6 +12,7 @@ import Homepage from "./Pages/Home/Homepage";
 import { Provider } from 'react-redux';
 import store from './store';
 
+
 const router = createBrowserRouter([
   {
     path: "/",

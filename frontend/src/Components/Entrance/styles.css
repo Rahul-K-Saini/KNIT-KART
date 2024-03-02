@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+.wrapper{
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.form-wrapper {
+  position: absolute;
+  top: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 500px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.wrapper.animate-signUp .form-wrapper.sign-in {
+  transform: rotate(7deg);
+  animation: animateRotate .7s ease-in-out forwards;
+  animation-delay: .3s;
+}
+
+.wrapper.animate-signIn .form-wrapper.sign-in {
+  animation: animateSignIn 1.5s ease-in-out forwards;
+}
+
+@keyframes animateSignIn {
+  0% {
+      transform: translateX(0);
+  }
+  50% {
+      transform: translateX(-500px);
+  }
+  100% {
+      transform: translateX(0) rotate(7deg);
+  }
+}
+.wrapper .form-wrapper.sign-Up {
+  transform: rotate(7deg);
+}
+
+.wrapper.animate-signIn .form-wrapper.sign-Up {
+  animation: animateRotate .7s ease-in-out forwards;
+  animation-delay: .3s;
+}
+
+@keyframes animateRotate {
+  0% {
+      transform: rotate(7deg);
+  }
+  
+  100% {
+      transform: rotate(0);
+      z-index: 1;
+  }
+}
+
+.wrapper.animate-signUp .form-wrapper.sign-Up {
+  animation: animateSignUp 1.5s ease-in-out forwards;
+}
+
+@keyframes animateSignUp {
+  0% {
+      transform: translateX(0);
+      z-index: 1;
+  }
+  50% {
+      transform: translateX(500px);
+  }
+  100% {
+      transform: translateX(0) rotate(7deg);
+  }
+}

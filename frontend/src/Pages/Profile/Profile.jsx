@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import user from '../../assets/images/user.jpeg'
+import React, { useState } from "react";
+import user from "../../assets/images/user.jpeg";
 import { FaRegEdit } from "react-icons/fa";
 import { MdModeEditOutline, MdOutlineManageAccounts } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
@@ -17,13 +17,13 @@ const Profile = () => {
         roomNo: ''
     });
 
-    const handleEditable = () => {
-        setIsEditable(prev => !prev);
-    }
+  const handleEditable = () => {
+    setIsEditable((prev) => !prev);
+  };
 
-    const handleEditProfileClick = () => {
-        setIsEditingProfile(true);
-    };
+  const handleEditProfileClick = () => {
+    setIsEditingProfile(true);
+  };
 
     const handleChangePasswordClick = () => {
         setIsEditingProfile(false);

@@ -7,7 +7,7 @@ import logoDark from "../../assets/images/logo-dark.png";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-  const theme = useSelector(state => state.theme.theme);
+  const theme = useSelector((state) => state.theme.theme);
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -19,7 +19,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="w-full px-4 py-1 top-0 sticky z-50 border-b-2 border-gray-300 dark:bg-footer bg-background">
+    <nav className="w-full px-4 py-1 top-0 sticky z-50 border-b-2 border-gray-300  bg-background">
       <div className="flex justify-between items-center">
         <div>
           <Link to="/">
@@ -46,7 +46,7 @@ function Navbar() {
             <Search className="absolute right-3 top-1/2 transform -translate-y-1/2" />
           </div>
           <button className="dark:text-gray-50 bg-secondary data:bg-secondary px-4 py-2 rounded hover:opacity-85">
-            Products
+            <a href="#products">Products</a>
           </button>
           <Link
             to="/entrance"
