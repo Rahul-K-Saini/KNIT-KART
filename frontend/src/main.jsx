@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Entrance from "./Components/Entrance/Entrance";
+import Entrance from "./Pages/Entrance/Entrance";
 import AdPage from "./Pages/AdPage/AdPage";
 import PostAd from "./Pages/PostAd/PostAd";
 import Profile from "./Pages/Profile/Profile";

@@ -19,7 +19,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="w-full px-4 py-1 top-0 sticky z-100 border-b-2 border-gray-300 dark:bg-footer bg-background">
+    <nav className="w-full px-4 py-1 top-0 sticky z-50 border-b-2 border-gray-300 dark:bg-footer bg-background">
       <div className="flex justify-between items-center">
         <div>
           <Link to="/">
