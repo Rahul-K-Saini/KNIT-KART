@@ -7,7 +7,6 @@ import Entrance from "./Pages/Entrance/Entrance";
 import AdPage from "./Pages/AdPage/AdPage";
 import PostAd from "./Pages/PostAd/PostAd";
 import Profile from "./Pages/Profile/Profile";
-import Dashboard from "./Pages/Dashboard/Dashboard";
 import Homepage from "./Pages/Home/Homepage";
 import { Provider } from 'react-redux';
 import store from './store';
@@ -37,10 +36,6 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
-      },
-      {
-        path: "dashboard",
-        element: <Dashboard />
       },
     ],
   },

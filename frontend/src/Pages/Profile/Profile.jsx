@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import user from "../../assets/images/user.jpeg";
+import AdCard from "@/Components/AdCard/AdCard";
 import { FaRegEdit } from "react-icons/fa";
-import { MdModeEditOutline, MdOutlineManageAccounts } from "react-icons/md";
+import { MdModeEditOutline, MdOutlineManageAccounts, MdDashboard } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
 import { FaGear } from 'react-icons/fa6';
 
 const Profile = () => {
-    const [isEditingProfile, setIsEditingProfile] = useState(true);
     const [isEditable, setIsEditable] = useState(false);
+    const [activeSection, setActiveSection] = useState('profile');
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -21,12 +22,8 @@ const Profile = () => {
         setIsEditable((prev) => !prev);
     };
 
-    const handleEditProfileClick = () => {
-        setIsEditingProfile(true);
-    };
-
-    const handleChangePasswordClick = () => {
-        setIsEditingProfile(false);
+    const handleSectionChange = (section) => {
+        setActiveSection(section);
     };
 
     const clearInput = () => {
@@ -48,6 +45,47 @@ const Profile = () => {
         }));
     };
 
+    const DUMMY_DATA = [
+        {
+            id: 1,
+            productName: "MSD ka Cricket Bat",
+            category: "Sports",
+            description: "DSC Wooden Bat with white grip. easy to hit Six with my bat",
+            imageURL: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/A_Modern_Cricket_Bat.jpg'
+        },
+        {
+            id: 2,
+            productName: "JBL Headphone",
+            category: "Wearable",
+            description: "Amazing Sound Quality, Brand New Product with bluetooth support",
+            imageURL: 'https://rukminim1.flixcart.com/blobio/1160/1160/imr-201907/blobio-imr-201907_cf6670eb0079426fab6ef9c538290065.jpg'
+
+        },
+        {
+            id: 3,
+            productName: "JBL Headphone",
+            category: "Wearable",
+            description: "Amazing Sound Quality, Brand New Product with bluetooth support",
+            imageURL: 'https://rukminim1.flixcart.com/blobio/1160/1160/imr-201907/blobio-imr-201907_cf6670eb0079426fab6ef9c538290065.jpg'
+
+        },
+        {
+            id: 4,
+            productName: "JBL Headphone",
+            category: "Wearable",
+            description: "Amazing Sound Quality, Brand New Product with bluetooth support",
+            imageURL: 'https://rukminim1.flixcart.com/blobio/1160/1160/imr-201907/blobio-imr-201907_cf6670eb0079426fab6ef9c538290065.jpg'
+
+        },
+        {
+            id: 5,
+            productName: "Mechanical Keyboard",
+            category: "Gaming",
+            description: "A very nice and fully working Gaming keyboard. Must have for pro gamers.",
+            imageURL: 'https://hips.hearstapps.com/hmg-prod/images/pop-mechanical-keyboards-64e4ce5645fe9.jpg'
+        }
+    ]
+
     return (
         <div className='w-screen h-fit flex bg-background text-text'>
             <div className='flex flex-col md:w-1/5 w-2/12 py-7 pl-5 border-r'>
@@ -56,20 +94,24 @@ const Profile = () => {
                     <button className='font-bold text-2xl text-start md:block hidden'>Settings</button>
                 </div>
                 <div className='flex flex-col ml-2 space-y-3 mt-11'>
-                    <div onClick={handleEditProfileClick} className='flex items-center space-x-3 hover:text-primary'>
+                    <div onClick={() => handleSectionChange('profile')} className='flex items-center space-x-3 hover:text-primary'>
                         <MdModeEditOutline className='md:text-lg text-2xl' />
                         <button className='text-lg transition-colors duration-300 md:block hidden'>Edit Profile</button>
                     </div>
-                    <div onClick={handleChangePasswordClick} className='flex items-center space-x-3 hover:text-primary'>
+                    <div onClick={() => handleSectionChange('password')} className='flex items-center space-x-3 hover:text-primary'>
                         <MdOutlineManageAccounts className='md:text-lg text-2xl' />
                         <button className='text-lg transition-colors duration-300 md:block hidden'>Manage Password</button>
+                    </div>
+                    <div onClick={() => handleSectionChange('dashboard')} className='flex items-center space-x-3 hover:text-primary'>
+                        <MdDashboard className='md:text-lg text-2xl' />
+                        <button className='text-lg transition-colors duration-300 md:block hidden'>Dashboard</button>
                     </div>
                 </div>
             </div>
             <div className='w-full py-10 space-y-7'>
                 <div className='flex items-center justify-between md:w-9/12 w-10/12 mx-auto'>
                     <h1>
-                        {isEditingProfile ? (
+                        {activeSection === 'profile' ? (
                             <div className='flex items-start flex-col'>
                                 <span className='md:text-3xl text-2xl'>Profile</span>
                                 <div className='flex md:space-x-12 md:flex-row flex-col space-y-2'>
@@ -83,14 +125,16 @@ const Profile = () => {
                                     </span>
                                 </div>
                             </div>
+                        ) : activeSection === 'password' ? (
+                            <><h1 className='md:text-3xl text-2xl'>Profile</h1></>
                         ) : (
-                            <>Password</>
+                            <><h1 className='md:text-3xl text-2xl'>Dashboard</h1></>
                         )}
                     </h1>
                     <img src={user} alt="img" className='md:h-32 h-16 md:w-32 w-16 rounded-full' />
                 </div>
 
-                {isEditingProfile ? (
+                {activeSection === 'profile' ? (
                     <div className="grid md:grid-cols-2 grid-cols-1 gap-4 md:w-9/12 w-10/12 mx-auto">
                         {Object.entries(formData).map(([key, value]) => (
                             <div key={key}>
@@ -99,7 +143,7 @@ const Profile = () => {
                             </div>
                         ))}
                     </div>
-                ) : (
+                ) : activeSection === 'password' ? (
                     <div className="grid grid-cols-1 gap-4 md:w-9/12 w-10/12 mx-auto">
                         <div>
                             <label htmlFor="currentPassword" className="block mb-1">Current Password</label>
@@ -113,6 +157,12 @@ const Profile = () => {
                         <div>
                             <label htmlFor="confirmPassword" className="block mb-1">Confirm Password</label>
                             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" className="border p-2 md:w-1/3 w-5/6 focus:outline-none" />
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <div className='grid grid-cols-3 bg-background'>
+                            {DUMMY_DATA.map((ad) => <AdCard key={ad.id} ad={ad} />)}
                         </div>
                     </div>
                 )}
