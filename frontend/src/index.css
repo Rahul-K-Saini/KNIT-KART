@@ -12,10 +12,10 @@
     --secondary: #f9847b;
     --accent: #f7b355;
     --footer: #ebe5f2;
-    --danger: #FF5050;
-    --dangerHover: #FF3333;
+    --danger: #ff5050;
+    --dangerHover: #ff3333;
   }
-  
+
   .dark {
     --text: #f4f4f4;
     --background: #07010e;
@@ -23,8 +23,8 @@
     --secondary: #840f06;
     --accent: #aa6708;
     --footer: #130c1a;
-    --danger: #CC0000;
-    --dangerHover: #FF0000;
+    --danger: #cc0000;
+    --dangerHover: #ff0000;
   }
 }
 
@@ -95,5 +95,6 @@ h5 {
 
 small {
   font-size: 0.75rem;
+  color: red;
   /* 12px */
 }
