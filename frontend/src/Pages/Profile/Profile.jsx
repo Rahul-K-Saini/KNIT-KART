@@ -10,8 +10,8 @@ const Profile = () => {
     const [isEditable, setIsEditable] = useState(false);
     const [activeSection, setActiveSection] = useState('profile');
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        name: '',
+        gender: '',
         email: '',
         contact: '',
         hostelName: '',
@@ -28,8 +28,8 @@ const Profile = () => {
 
     const clearInput = () => {
         setFormData({
-            firstName: '',
-            lastName: '',
+            name: '',
+            gender: '',
             email: '',
             contact: '',
             hostelName: '',
@@ -161,7 +161,7 @@ const Profile = () => {
                     </div>
                 ) : (
                     <div>
-                        <div className='grid grid-cols-3 bg-background'>
+                        <div className='grid md:grid-cols-3 grid-cols-1 bg-background'>
                             {DUMMY_DATA.map((ad) => <AdCard key={ad.id} ad={ad} />)}
                         </div>
                     </div>
