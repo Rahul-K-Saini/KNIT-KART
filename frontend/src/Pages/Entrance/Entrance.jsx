@@ -17,6 +17,7 @@ function App() {
   const [errorContact, setErrorContact] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
+
   const [signIn, setSignIn] = useState(true);
 
   const [isLoginPage, setIsLoginPage] = useState({
@@ -25,6 +26,7 @@ function App() {
   });
 
   const loginToggle = () => {
+  
     setIsLoginPage((prevState) => ({
       loginPage: !prevState.loginPage,
       class: prevState.loginPage ? "animate-signUp" : "animate-signIn",
