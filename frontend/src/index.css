@@ -34,23 +34,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #134e4a;
+  background-color: #aa6708;
   /* Color of the scrollbar handle */
   border-radius: 10px;
   /* Border around the scrollbar handle */
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #c5fffb;
+  background-color: #dabfff;
   /* Color of the scrollbar track */
   border-radius: 10px;
-}
-
-body {
-  scrollbar-width: thin;
-  scrollbar-color: #3498db #ecf0f1;
-  font-family: "Maven Pro";
-  font-weight: 400;
 }
 
 h1,
