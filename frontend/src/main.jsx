@@ -8,6 +8,7 @@ import AdPage from "./Pages/AdPage/AdPage";
 import PostAd from "./Pages/PostAd/PostAd";
 import Profile from "./Pages/Profile/Profile";
 import Homepage from "./Pages/Home/Homepage";
+import ProtectedRoute from './Pages/ProtectedRoute/ProtectedRoute'
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -31,11 +32,11 @@ const router = createBrowserRouter([
       },
       {
         path: "postad",
-        element: <PostAd />,
+        element: <ProtectedRoute><PostAd/></ProtectedRoute>,
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: <ProtectedRoute><Profile /></ProtectedRoute>,
       },
     ],
   },
