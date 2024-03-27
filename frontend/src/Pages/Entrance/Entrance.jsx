@@ -41,6 +41,7 @@ function App() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    console.log(e.name);
     if (errorEmail !== "" || errorContact !== "" || errorPassword !== "") {
       alert("Enter valid details");
       return;
