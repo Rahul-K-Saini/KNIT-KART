@@ -10,19 +10,22 @@ const adSchema = new mongoose.Schema({
         required: true,
     },
     exchange_item: {
-        type: String
+        type: String,
+        required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     price: {
         type: Number,
         required: true
     },
-    catagory: {
+    category: {
         type: String,
-        enum: ["Electronics and gadgets", "Household", "Sports Items", "Kitchenware", "Stationaries", "Furniture", "Others"]
+        enum: ["Electronics and gadgets", "Household", "Sports Items", "Kitchenware", "Stationaries", "Furniture", "Others"],
+        required: true
     }
-});
+},{timestamps:true});
 
-export const User = mongoose.model("ad", adSchema);
+export default Ad = mongoose.model("ad", adSchema);

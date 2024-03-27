@@ -20,7 +20,7 @@ export const SignUpContainer = styled.div`
   width: 50%;
   opacity: 0;
   z-index: 1;
-  ${props => props.signinIn !== true ? `
+  ${props => props.signin !== true ? `
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
@@ -37,7 +37,7 @@ export const SignInContainer = styled.div`
  left: 0;
  width: 50%;
  z-index: 2;
- ${props => (props.signinIn !== true ? `transform: translateX(100%);` : null)}
+ ${props => (props.signin !== true ? `transform: translateX(100%);` : null)}
  `;
 
 export const Form = styled.form`
@@ -106,7 +106,7 @@ overflow: hidden;
 transition: transform 0.6s ease-in-out;
 z-index: 10;
 ${props =>
-    props.signinIn !== true ? `transform: translateX(-100%);` : null}
+    props.signin !== true ? `transform: translateX(-100%);` : null}
 `;
 
 export const Overlay = styled.div`
@@ -124,7 +124,7 @@ height: 100%;
 width: 200%;
 transform: translateX(0);
 transition: transform 0.6s ease-in-out;
-${props => (props.signinIn !== true ? `transform: translateX(50%);` : null)}
+${props => (props.signin !== true ? `transform: translateX(50%);` : null)}
 `;
 
 export const OverlayPanel = styled.div`
@@ -144,13 +144,13 @@ export const OverlayPanel = styled.div`
 
 export const LeftOverlayPanel = styled(OverlayPanel)`
    transform: translateX(-20%);
-   ${props => props.signinIn !== true ? `transform: translateX(0);` : null}
+   ${props => props.signin !== true ? `transform: translateX(0);` : null}
  `;
 
 export const RightOverlayPanel = styled(OverlayPanel)`
      right: 0;
      transform: translateX(0);
-     ${props => props.signinIn !== true ? `transform: translateX(20%);` : null}
+     ${props => props.signin !== true ? `transform: translateX(20%);` : null}
  `;
 
 export const Paragraph = styled.p`
