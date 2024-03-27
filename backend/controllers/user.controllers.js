@@ -64,7 +64,7 @@ export const handleUserLogin = async (req, res) => {
             });
         }
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET || "qazxswedc");
 
         return res.status(200).send({
             message: "Login successful!",
