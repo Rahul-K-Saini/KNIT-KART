@@ -6,29 +6,28 @@ import "./styles.css";
 import style from "./Entrance.module.css";
 
 function App() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [contact, setContact] = useState("");
+    const [user, setUser] = useState({
+        email: '',
+        password: '',
+        contact: '',
+    })
 
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
+    const [userLogin, setUserLogin] = useState({
+        email: '',
+        password: '',
+    });
 
-    const [mob_email, setMobEmail] = useState("");
-    const [mob_password, setMobPassword] = useState("");
-    const [mob_contact, setMobContact] = useState("");
-
-    const [mob_loginEmail, setMobLoginEmail] = useState("");
-    const [mob_loginPassword, setMobLoginPassword] = useState("");
-
-    const [errorEmail, setErrorEmail] = useState("");
-    const [errorContact, setErrorContact] = useState("");
-    const [errorPassword, setErrorPassword] = useState("");
+    const [error, setError] = useState({
+        email: '',
+        contact: '',
+        password: ''
+    })
 
     const [signIn, setSignIn] = useState(true);
 
     const [isLoginPage, setIsLoginPage] = useState({
         loginPage: true,
-        class: "",
+        class: '',
     });
 
     const loginToggle = () => {
@@ -40,19 +39,21 @@ function App() {
 
     const handleSignUp = async (e) => {
         e.preventDefault();
-        if (errorEmail !== "" || errorContact !== "" || errorPassword !== "") {
+        if (error.email !== "" || error.contact !== "" || error.password !== "") {
             alert("Enter valid details");
             return;
         }
-        setEmail("");
-        setContact("");
-        setPassword("");
-        console.log(email, password, contact);
+        setUser({
+            email: '',
+            password: '',
+            contact: '',
+        })
+        console.log(user.email, user.password, user.contact);
         const { data } = await axios.post('http://localhost:8000/user/register', {
             fullname: 'fullname field add karo ya backend se maangwao mat',
-            email: email,
-            password: password,
-            contact_no: contact
+            email: user.email,
+            password: user.password,
+            contact_no: user.contact
         }, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -63,59 +64,17 @@ function App() {
 
     const handleSignIn = async (e) => {
         e.preventDefault();
-        if (errorEmail !== "" || errorPassword !== "") {
+        if (error.email !== "" || error.password !== "") {
             alert("Enter valid details");
             return;
         }
-        setEmail("");
-        setContact("");
-        setPassword("");
-        const { data } = await axios.post('http://localhost:8000/user/login', {
-            email: loginEmail,
-            password: loginPassword,
-        }, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
+        setUserLogin({
+            email: '',
+            password: '',
         })
-        console.log(data.message);
-    }
-
-    const handleMobSignUp = async (e) => {
-        e.preventDefault();
-        if (errorEmail !== "" || errorContact !== "" || errorPassword !== "") {
-            alert("Enter valid details");
-            return;
-        }
-        setMobEmail("");
-        setMobContact("");
-        setMobPassword("");
-        console.log(mob_email, mob_password, mob_contact);
-        const { data } = await axios.post('http://localhost:8000/user/register', {
-            fullname: 'fullname field add karo ya backend se maangwao mat',
-            email: mob_email,
-            password: mob_password,
-            contact_no: mob_contact
-        }, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
-        console.log(data.message);
-    };
-
-    const handleMobSignIn = async (e) => {
-        e.preventDefault();
-        if (errorEmail !== "" || errorPassword !== "") {
-            alert("Enter valid details");
-            return;
-        }
-        setMobEmail("");
-        setMobContact("");
-        setMobPassword("");
         const { data } = await axios.post('http://localhost:8000/user/login', {
-            email: mob_loginEmail,
-            password: mob_loginPassword,
+            email: userLogin.email,
+            password: userLogin.password,
         }, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -129,16 +88,16 @@ function App() {
             <div className={style["desktop-form"]}>
                 {/* <ResponsiveContainer> */}
                 <Components.Container>
-                    <Components.SignUpContainer signin={signIn}>
+                    <Components.SignUpContainer $signin={signIn}>
                         <Components.Form>
                             <Components.Title>Create Account</Components.Title>
                             <Components.Input
                                 onChange={(e) => {
                                     if (!e.target.value.toLowerCase().endsWith("@knit.ac.in")) {
-                                        setErrorEmail("Enter Knit Domain Email");
+                                        setError({ ...error, email: "Enter Knit Domain Email" });
                                     } else {
-                                        setErrorEmail("");
-                                        setEmail(e.target.value);
+                                        setError({ ...error, email: "" });
+                                        setUser({ ...user, email: e.target.value });
                                     }
                                 }}
                                 type="email"
@@ -146,65 +105,63 @@ function App() {
                                 style={{
                                     outline: "none",
                                     border: "2px solid",
-                                    borderColor: errorEmail ? "red" : "",
+                                    borderColor: error.email ? "red" : "",
                                 }}
                             />
-                            <small>{errorEmail}</small>
+                            <small>{error.email}</small>
                             <Components.Input
                                 onChange={(e) => {
                                     if (e.target.value.length !== 10) {
-                                        setErrorContact("Invalid Contact number");
+                                        setError({ ...error, contact: "Invalid Contact number" });
                                     } else {
-                                        setErrorContact("");
-                                        setContact(e.target.value);
+                                        setError({ ...error, contact: "" });
+                                        setUser({ ...user, contact: e.target.value });
                                     }
                                 }}
                                 style={{
                                     outline: "none",
                                     border: "2px solid",
-                                    borderColor: errorContact ? "red" : "",
+                                    borderColor: error.contact ? "red" : "",
                                 }}
                                 type="text"
                                 placeholder="Contact No."
                             />
-                            <small>{errorContact}</small>
+                            <small>{error.contact}</small>
                             <Components.Input
                                 onChange={(e) => {
                                     if (e.target.value.length < 5) {
-                                        setErrorPassword(
-                                            "Password must be at least 5 characters long"
-                                        );
+                                        setError({ ...error, password: "Password must be at least 5 characters long" });
                                     } else {
-                                        setErrorPassword("");
-                                        setPassword(e.target.value);
+                                        setError({ ...error, password: "" });
+                                        setUser({ ...user, password: e.target.value });
                                     }
                                 }}
                                 style={{
                                     outline: "none",
                                     border: "2px solid",
                                     borderRadius: "5px",
-                                    borderColor: errorPassword ? "red" : "",
+                                    borderColor: error.password ? "red" : "",
                                 }}
                                 type="password"
                                 placeholder="Password"
                             />
-                            <small>{errorPassword}</small>
+                            <small>{error.password}</small>
                             <Components.Button onClick={handleSignUp}>
                                 Sign Up
                             </Components.Button>
                         </Components.Form>
                     </Components.SignUpContainer>
 
-                    <Components.SignInContainer signin={signIn}>
+                    <Components.SignInContainer $signin={signIn}>
                         <Components.Form>
                             <Components.Title>Sign in</Components.Title>
                             <Components.Input
                                 onChange={(e) => {
                                     if (!e.target.value.toLowerCase().endsWith("@knit.ac.in")) {
-                                        setErrorEmail("Enter Knit Domain Email");
+                                        setError({ ...error, email: "Enter Knit Domain Email" });
                                     } else {
-                                        setErrorEmail("");
-                                        setLoginEmail(e.target.value);
+                                        setError({ ...error, email: "" });
+                                        setUserLogin({ ...userLogin, email: e.target.value });
                                     }
                                 }}
                                 type="email"
@@ -212,31 +169,29 @@ function App() {
                                 style={{
                                     outline: "none",
                                     border: "2px solid",
-                                    borderColor: errorEmail ? "red" : "",
+                                    borderColor: error.email ? "red" : "",
                                 }}
                             />
-                            <small>{errorEmail}</small>
+                            <small>{error.email}</small>
                             <Components.Input
                                 onChange={(e) => {
                                     if (e.target.value.length < 5) {
-                                        setErrorPassword(
-                                            "Password must be at least 5 characters long"
-                                        );
+                                        setError({ ...error, password: "Password must be at least 5 characters long" });
                                     } else {
-                                        setErrorPassword("");
-                                        setLoginPassword(e.target.value);
+                                        setError({ ...error, password: "" });
+                                        setUserLogin({ ...userLogin, password: e.target.value });
                                     }
                                 }}
                                 style={{
                                     outline: "none",
                                     border: "2px solid",
                                     borderRadius: "5px",
-                                    borderColor: errorPassword ? "red" : "",
+                                    borderColor: error.password ? "red" : "",
                                 }}
                                 type="password"
                                 placeholder="Password"
                             />
-                            <small>{errorPassword}</small>
+                            <small>{error.password}</small>
                             <Components.Anchor href="#">
                                 Forgot your password?
                             </Components.Anchor>
@@ -246,9 +201,9 @@ function App() {
                         </Components.Form>
                     </Components.SignInContainer>
 
-                    <Components.OverlayContainer signin={signIn}>
-                        <Components.Overlay signin={signIn}>
-                            <Components.LeftOverlayPanel signin={signIn}>
+                    <Components.OverlayContainer $signin={signIn}>
+                        <Components.Overlay $signin={signIn}>
+                            <Components.LeftOverlayPanel $signin={signIn}>
                                 <Components.Title>Welcome Back!</Components.Title>
                                 <Components.Paragraph>
                                     To keep connected with us please login with your personal info
@@ -258,7 +213,7 @@ function App() {
                                 </Components.GhostButton>
                             </Components.LeftOverlayPanel>
 
-                            <Components.RightOverlayPanel signin={signIn}>
+                            <Components.RightOverlayPanel $signin={signIn}>
                                 <Components.Title>Hello, Friend!</Components.Title>
                                 <Components.Paragraph>
                                     Enter Your personal details and start journey with us
@@ -280,37 +235,37 @@ function App() {
                             <h2>Sign Up</h2>
                             <div className={style["input-group"]}>
                                 <input
-                                    value={mob_email}
+                                    value={user.email}
                                     required
                                     onChange={(e) => {
                                         if (!e.target.value.toLowerCase().endsWith("@knit.ac.in")) {
-                                            setErrorEmail("Enter Knit Domain Email");
+                                            setError({ ...error, email: "Enter Knit Domain Email" });
                                         } else {
-                                            setErrorEmail("");
+                                            setError({ ...error, email: "" });
                                         }
-                                        setMobEmail(e.target.value);
+                                        setUser({ ...user, email: e.target.value });
                                     }}
                                     type="email"
                                 />
-                                <small style={{ display: "block" }}>{errorEmail}</small>
+                                <small style={{ display: "block" }}>{error.email}</small>
                                 <label htmlFor="">Email(KNIT)</label>{" "}
                                 <i className="bx bxs-user"></i>
                             </div>
                             <div className={style["input-group"]}>
                                 <input
                                     type="text"
-                                    value={mob_contact}
+                                    value={user.contact}
                                     required
                                     onChange={(e) => {
                                         if (e.target.value.length !== 10) {
-                                            setErrorContact("Invalid Contact number");
+                                            setError({ ...error, contact: "Invalid Contact number" });
                                         } else {
-                                            setErrorContact("");
+                                            setError({ ...error, contact: "" });
                                         }
-                                        setMobContact(e.target.value);
+                                        setUser({ ...user, contact: e.target.value });
                                     }}
                                 />
-                                <small style={{ display: "block" }}>{errorContact}</small>
+                                <small style={{ display: "block" }}>{error.contact}</small>
                                 <label htmlFor="">Contact No.</label>{" "}
                                 <i className="bx bxs-envelope"></i>
                                 <i className="bx bxs-user"></i>
@@ -318,26 +273,24 @@ function App() {
                             <div className={style["input-group"]}>
                                 <input
                                     type="password"
-                                    value={mob_password}
+                                    value={user.password}
                                     required
                                     onChange={(e) => {
                                         if (e.target.value.length < 5) {
-                                            setErrorPassword(
-                                                "Password must be at least 5 characters long"
-                                            );
+                                            setError({ ...error, password: "Password must be at least 5 characters long" });
                                         } else {
-                                            setErrorPassword("");
+                                            setError({ ...error, password: "" });
                                         }
-                                        setMobPassword(e.target.value);
+                                        setUser({ ...user, password: e.target.value });
                                     }}
                                 />
-                                <small style={{ display: "block" }}>{errorPassword}</small>
+                                <small style={{ display: "block" }}>{error.password}</small>
                                 <label htmlFor="">Password</label>{" "}
                                 <i className="bx bxs-lock-alt"></i>
                             </div>
                             <button
                                 type="submit"
-                                onClick={handleMobSignUp}
+                                onClick={handleSignUp}
                                 className={style["btn"]}
                             >
                                 Sign Up
@@ -363,39 +316,37 @@ function App() {
                             <h2>Login</h2>
                             <div className={style["input-group"]}>
                                 <input
-                                    value={mob_loginEmail}
+                                    value={userLogin.email}
                                     required
                                     onChange={(e) => {
                                         if (!e.target.value.toLowerCase().endsWith("@knit.ac.in")) {
-                                            setErrorEmail("Enter Knit Domain Email");
+                                            setError({ ...error, email: "Enter Knit Domain Email" });
                                         } else {
-                                            setErrorEmail("");
+                                            setError({ ...error, email: "" });
                                         }
-                                        setMobLoginEmail(e.target.value);
+                                        setUserLogin({ ...userLogin, email: e.target.value });
                                     }}
                                     type="email"
                                 />
-                                <small style={{ display: "block" }}>{errorEmail}</small>
+                                <small style={{ display: "block" }}>{error.email}</small>
                                 <label htmlFor="">Email</label> <i className="bx bxs-user"></i>
                             </div>
 
                             <div className={style["input-group"]}>
                                 <input
-                                    value={mob_loginPassword}
+                                    value={userLogin.password}
                                     required
                                     onChange={(e) => {
                                         if (e.target.value.length < 5) {
-                                            setErrorPassword(
-                                                "Password must be at least 5 characters long"
-                                            );
+                                            setError({ ...error, password: "Password must be at least 5 characters long" });
                                         } else {
-                                            setErrorPassword("");
+                                            setError({ ...error, password: "" });
                                         }
-                                        setMobLoginPassword(e.target.value);
+                                        setUserLogin({ ...userLogin, password: e.target.value });
                                     }}
-                                    type="text"
+                                    type="password"
                                 />
-                                <small style={{ display: "block" }}>{errorPassword}</small>
+                                <small style={{ display: "block" }}>{error.password}</small>
                                 <label htmlFor="">Password</label>
                                 <i className="bx bxs-lock-alt"></i>
                             </div>
@@ -404,7 +355,7 @@ function App() {
                             </div>
                             <button
                                 type="submit"
-                                onClick={handleMobSignIn}
+                                onClick={handleSignIn}
                                 className={style["btn"]}
                             >
                                 Login
