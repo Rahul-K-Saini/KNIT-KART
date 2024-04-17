@@ -121,7 +121,7 @@ function App() {
                                         setUser({ ...user, email: e.target.value });
                                     }
                                 }}
-                                type="email"
+                                type="text"
                                 placeholder="Email(KNIT)"
                                 style={{
                                     outline: "none",
@@ -187,7 +187,7 @@ function App() {
                                         setUserLogin({ ...userLogin, email: e.target.value });
                                     }
                                 }}
-                                type="email"
+                                type="text"
                                 placeholder="Email(KNIT)"
                                 style={{
                                     outline: "none",
@@ -291,7 +291,7 @@ function App() {
                                         }
                                         setUser({ ...user, email: e.target.value });
                                     }}
-                                    type="email"
+                                    type="text"
                                 />
                                 <small style={{ display: "block" }}>{error.email}</small>
 
@@ -376,7 +376,7 @@ function App() {
                                         }
                                         setUserLogin({ ...userLogin, email: e.target.value });
                                     }}
-                                    type="email"
+                                    type="text"
                                 />
                                 <small style={{ display: "block" }}>{error.email}</small>
                                 <label htmlFor="">Email</label> <i className="bx bxs-user"></i>
