@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import * as Components from "./Components";
 import axios from "axios";
-// import { ResponsiveContainer } from './ResponsiveComponents';
 import "./styles.css";
 import style from "./Entrance.module.css";
 
