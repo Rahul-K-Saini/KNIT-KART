@@ -5,22 +5,6 @@ import "./styles.css";
 import style from "./Entrance.module.css";
 
 function App() {
-//   const [user, setUser] = useState({
-//     email: "",
-//     password: "",
-//     contact: "",
-//   });
-
-//   const [userLogin, setUserLogin] = useState({
-//     email: "",
-//     password: "",
-//   });
-
-  const [error, setError] = useState({
-    email: "",
-    contact: "",
-    password: "",
-  });
 
   const [signIn, setSignIn] = useState(true);
 
@@ -36,26 +20,23 @@ function App() {
     }));
   };
 
+  
   const handleSignUp = async (e) => {
+
     e.preventDefault();
-    if (error.email !== "" || error.contact !== "" || error.password !== "") {
-      alert("Enter valid details");
-      return;
-    }
-    setUser({
-      email: "",
-      password: "",
-      contact: "",
-    });
-    console.log(user.email, user.password, user.contact);
+
+    const form = e.target;
+    const name = form.fullname.value;
+    const email = from.email.value;
+    const password = from.password.value;
+
+    const userData = {
+        name,email, password
+     };
+
     const { data } = await axios.post(
       "http://localhost:8000/user/register",
-      {
-        fullname: "fullname field add karo ya backend se maangwao mat",
-        email: user.email,
-        password: user.password,
-        contact_no: user.contact,
-      },
+      userData,
       {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -67,20 +48,17 @@ function App() {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    if (error.email !== "" || error.password !== "") {
-      alert("Enter valid details");
-      return;
-    }
-    setUserLogin({
-      email: "",
-      password: "",
-    });
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    const userData = {
+        email, password
+     };
+
     const { data } = await axios.post(
       "http://localhost:8000/user/login",
-      {
-        email: userLogin.email,
-        password: userLogin.password,
-      },
+     userData,
       {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -107,14 +85,6 @@ function App() {
                 }}
               />
               <Components.Input
-                onChange={(e) => {
-                  if (e.target.value.length !== 10) {
-                    setError({ ...error, contact: "Invalid Contact number" });
-                  } else {
-                    setError({ ...error, contact: "" });
-                    setUser({ ...user, contact: e.target.value });
-                  }
-                }}
                 style={{
                   outline: "none",
                   border: "2px solid",
@@ -203,6 +173,7 @@ function App() {
 
       <div className={style["mobile-form"]}>
         <div className={`wrapper ${isLoginPage.class}`}>
+
           <div className="form-wrapper sign-Up">
             <form action="">
               <h2>Sign Up</h2>
@@ -283,11 +254,12 @@ function App() {
               </div>
             </form>
           </div>
+
         </div>
       </div>
     </>
   );
-  a;
+  
 }
 
 export default App;
