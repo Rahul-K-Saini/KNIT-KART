@@ -5,7 +5,6 @@ import "./styles.css";
 import style from "./Entrance.module.css";
 
 function App() {
-
   const [signIn, setSignIn] = useState(true);
 
   const [isLoginPage, setIsLoginPage] = useState({
@@ -20,19 +19,21 @@ function App() {
     }));
   };
 
-  
   const handleSignUp = async (e) => {
-
     e.preventDefault();
 
     const form = e.target;
     const name = form.fullname.value;
     const email = from.email.value;
     const password = from.password.value;
+    const contact = form.contact.value;
 
     const userData = {
-        name,email, password
-     };
+      name,
+      email,
+      password,
+      contact,
+    };
 
     const { data } = await axios.post(
       "http://localhost:8000/user/register",
@@ -53,12 +54,13 @@ function App() {
     const password = form.password.value;
 
     const userData = {
-        email, password
-     };
+      email,
+      password,
+    };
 
     const { data } = await axios.post(
       "http://localhost:8000/user/login",
-     userData,
+      userData,
       {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -72,75 +74,52 @@ function App() {
     <>
       <div className={style["desktop-form"]}>
         <Components.Container>
+          {/* desktop -form for signUp */}
           <Components.SignUpContainer $signin={signIn}>
-            <Components.Form>
+            <Components.Form onSubmit={handleSignUp}>
               <Components.Title>Create Account</Components.Title>
+              <Components.Input
+                type="text"
+                placeholder="Full Name"
+                name="fullname"
+              />
               <Components.Input
                 type="email"
                 placeholder="Email(KNIT)"
-                style={{
-                  outline: "none",
-                  border: "2px solid",
-                  borderColor: error.email ? "red" : "",
-                }}
+                name="email"
               />
               <Components.Input
-                style={{
-                  outline: "none",
-                  border: "2px solid",
-                  borderColor: error.contact ? "red" : "",
-                }}
                 type="text"
+                name="contact"
                 placeholder="Contact No."
               />
-
               <Components.Input
-                style={{
-                  outline: "none",
-                  border: "2px solid",
-                  borderRadius: "5px",
-                  borderColor: error.password ? "red" : "",
-                }}
+                name="password"
                 type="password"
                 placeholder="Password"
               />
-
-              <Components.Button onClick={handleSignUp}>
-                Sign Up
-              </Components.Button>
+              <Components.Button type="submit">Sign Up</Components.Button>
             </Components.Form>
           </Components.SignUpContainer>
 
+          {/* // desktop -form for sign in */}
           <Components.SignInContainer $signin={signIn}>
-            <Components.Form>
+            <Components.Form onSubmit={handleSignIn}>
               <Components.Title>Sign in</Components.Title>
               <Components.Input
                 type="email"
                 placeholder="Email(KNIT)"
-                style={{
-                  outline: "none",
-                  border: "2px solid",
-                  borderColor: error.email ? "red" : "",
-                }}
+                name="email"
               />
-
               <Components.Input
-                style={{
-                  outline: "none",
-                  border: "2px solid",
-                  borderRadius: "5px",
-                  borderColor: error.password ? "red" : "",
-                }}
+                name="password"
                 type="password"
                 placeholder="Password"
               />
-
               <Components.Anchor href="#">
                 Forgot your password?
               </Components.Anchor>
-              <Components.Button onClick={handleSignIn}>
-                Sign In
-              </Components.Button>
+              <Components.Button type="submit">Sign In</Components.Button>
             </Components.Form>
           </Components.SignInContainer>
 
@@ -168,36 +147,36 @@ function App() {
             </Components.Overlay>
           </Components.OverlayContainer>
         </Components.Container>
-        {/* </ResponsiveContainer> */}
       </div>
 
+      {/* mobile - form for sign up */}
       <div className={style["mobile-form"]}>
         <div className={`wrapper ${isLoginPage.class}`}>
-
           <div className="form-wrapper sign-Up">
-            <form action="">
+            <form onSubmit={handleSignUp}>
               <h2>Sign Up</h2>
               <div className={style["input-group"]}>
-                <input value={user.email} required type="email" />
+                <input name="fullname" type="text" required />
+                <label htmlFor="">Fullname</label>{" "}
+                <i className="bx bxs-user"></i>
+              </div>
+              <div className={style["input-group"]}>
+                <input name="email" type="email" required />
                 <label htmlFor="">Email(KNIT)</label>{" "}
                 <i className="bx bxs-user"></i>
               </div>
               <div className={style["input-group"]}>
-                <input type="text" value={user.contact} required />
+                <input type="text" name="contact" required />
                 <label htmlFor="">Contact No.</label>{" "}
                 <i className="bx bxs-envelope"></i>
                 <i className="bx bxs-user"></i>
               </div>
               <div className={style["input-group"]}>
-                <input type="password" value={user.password} required />
+                <input type="password" name="password" required />
                 <label htmlFor="">Password</label>{" "}
                 <i className="bx bxs-lock-alt"></i>
               </div>
-              <button
-                type="submit"
-                onClick={handleSignUp}
-                className={style["btn"]}
-              >
+              <button type="submit" className={style["btn"]}>
                 Sign Up
               </button>
 
@@ -216,16 +195,17 @@ function App() {
             </form>
           </div>
 
+          {/* mobile -form for sign in */}
           <div className="form-wrapper sign-in">
-            <form action="">
+            <form onSubmit={handleSignIn}>
               <h2>Login</h2>
               <div className={style["input-group"]}>
-                <input value={userLogin.email} required type="email" />
+                <input type="email" name="email" required />
                 <label htmlFor="">Email</label> <i className="bx bxs-user"></i>
               </div>
 
               <div className={style["input-group"]}>
-                <input value={userLogin.password} required type="password" />
+                <input type="password" name="password" required />
 
                 <label htmlFor="">Password</label>
                 <i className="bx bxs-lock-alt"></i>
@@ -233,11 +213,7 @@ function App() {
               <div className={style["forgot-password"]}>
                 <a href="">Forgot Password?</a>
               </div>
-              <button
-                type="submit"
-                onClick={handleSignIn}
-                className={style["btn"]}
-              >
+              <button type="submit" className={style["btn"]}>
                 Login
               </button>
               <div className={style["Sign-link"]}>
@@ -254,12 +230,10 @@ function App() {
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </>
   );
-  
 }
 
 export default App;
