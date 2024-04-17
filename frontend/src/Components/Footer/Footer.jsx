@@ -22,7 +22,7 @@ const Footer = () => {
               <li className="cursor-pointer">
                 <a
                   href="/"
-                  className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full"
+                  className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   Home
                 </a>
@@ -30,7 +30,7 @@ const Footer = () => {
               <li className="cursor-pointer">
                 <a
                   href="/"
-                  className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full"
+                  className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   FAQ
                 </a>
@@ -38,7 +38,7 @@ const Footer = () => {
               <li className="cursor-pointer">
                 <a
                   href="/"
-                  className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full"
+                  className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   About
                 </a>
@@ -46,7 +46,7 @@ const Footer = () => {
               <li className="cursor-pointer">
                 <a
                   href="/"
-                  className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full"
+                  className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   Contact
                 </a>

@@ -39,13 +39,13 @@ function PostAd() {
             <label htmlFor="price" className="block text-text">
               Price
             </label>
-            <div className="border-2 border-gray-200 text-text rounded w-full py-1  px-3  focus:border-blue-500">
-              <span>₹ </span>
+            <div className="border-2 border-gray-200 text-text rounded w-full py-1  pl-3 pr-1 focus:border-blue-500 flex items-center justify-between">
+              <span className="pr-3">₹</span>
               <input
                 type="text"
                 placeholder="Price"
                 id="price"
-                className=" border-l-[1px] border-text px-2 w-[97%] rounded-r py-2  focus:outline-none"
+                className=" border-l-[1px] border-text px-2 w-[97%] rounded py-2  focus:outline-none"
               />
             </div>
           </div>

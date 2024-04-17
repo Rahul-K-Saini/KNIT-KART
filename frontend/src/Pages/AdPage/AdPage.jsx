@@ -125,7 +125,7 @@ const AdPage = () => {
     return (
         <main className="mb-24">
             <div className="gallery">
-                <div className="main-image">
+                <div className="main-image ">
                     <button onClick={togglePhotoModal}>
                         <img className="previewed-img" src={activeImage} alt="item image" />
                     </button>
@@ -160,7 +160,7 @@ const AdPage = () => {
             <div className="description">
                 <div className="info">
                     <p className="catagory">Stationary</p>
-                    <h1>IKIGAI  - The Japanese Word for 'Reason For Being'</h1>
+                    <h1 className="text-xl md:text-3xl mb-6">IKIGAI  - The Japanese Word for 'Reason For Being'</h1>
                     <p className="item-info">
                         {" "}
                         IKIGAI - The Japanese Secret to a Long and Happy Life. The international Best Seller Book writter by Hector Gargia and Francesc Miralles. Publishing house Penguin Random House UK. Marked Price £12.99
