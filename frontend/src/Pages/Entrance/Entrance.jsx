@@ -6,6 +6,7 @@ import style from "./Entrance.module.css";
 
 function App() {
     const [user, setUser] = useState({
+        fullname: '',
         email: '',
         password: '',
         contact: '',
@@ -17,6 +18,7 @@ function App() {
     });
 
     const [error, setError] = useState({
+        fullname: '',
         email: '',
         contact: '',
         password: ''
@@ -90,6 +92,26 @@ function App() {
                     <Components.SignUpContainer $signin={signIn}>
                         <Components.Form>
                             <Components.Title>Create Account</Components.Title>
+
+                            <Components.Input
+                                onChange={(e) => {
+                                    if (e.target.value.trim().length<3) {
+                                        setError({ ...error, fullname: "Enter Valid Name, Full name must contain more than 2 letters" });
+                                    } else {
+                                        setError({ ...error, fullname: "" });
+                                        setUser({ ...user, fullname: e.target.value.trim() });
+                                    }
+                                }}
+                                type="text"
+                                placeholder="Full Name"
+                                style={{
+                                    outline: "none",
+                                    border: "2px solid",
+                                    borderColor: error.fullname ? "red" : "",
+                                }}
+                            />
+                            <small>{error.fullname}</small>
+
                             <Components.Input
                                 onChange={(e) => {
                                     if (!e.target.value.toLowerCase().endsWith("@knit.ac.in")) {
@@ -108,6 +130,7 @@ function App() {
                                 }}
                             />
                             <small>{error.email}</small>
+
                             <Components.Input
                                 onChange={(e) => {
                                     if (e.target.value.length !== 10) {
@@ -126,6 +149,7 @@ function App() {
                                 placeholder="Contact No."
                             />
                             <small>{error.contact}</small>
+
                             <Components.Input
                                 onChange={(e) => {
                                     if (e.target.value.length < 5) {
@@ -232,7 +256,30 @@ function App() {
                     <div className="form-wrapper sign-Up">
                         <form action="">
                             <h2>Sign Up</h2>
+                            
                             <div className={style["input-group"]}>
+
+                                <input
+                                    value={user.fullname}
+                                    required
+                                    onChange={(e) => {
+                                        if (e.target.value.trim().length<3) {
+                                            setError({ ...error, fullname: "Enter Valid Name, Full name must contain more than 2 letters" });
+                                        } else {
+                                            setError({ ...error, fullname: "" });
+                                            setUser({ ...user, fullname: e.target.value.trim() });
+                                        }
+                                        setUser({ ...user, fullname: e.target.value.trim() });
+                                    }}
+                                    type="text"
+                                />
+                                <small style={{ display: "block" }}>{error.fullname}</small>
+                                <label htmlFor="">Full Name</label>{" "}
+                                <i className="bx bxs-user"></i>
+                            </div>
+
+                            <div className={style["input-group"]}>
+
                                 <input
                                     value={user.email}
                                     required
@@ -247,9 +294,13 @@ function App() {
                                     type="email"
                                 />
                                 <small style={{ display: "block" }}>{error.email}</small>
+
+
                                 <label htmlFor="">Email(KNIT)</label>{" "}
                                 <i className="bx bxs-user"></i>
                             </div>
+
+
                             <div className={style["input-group"]}>
                                 <input
                                     type="text"
