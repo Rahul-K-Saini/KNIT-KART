@@ -17,7 +17,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Page404 />,
     children: [
       {
         path: "/",
@@ -38,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "*",
+        element: <Page404 />,
       },
     ],
   },
