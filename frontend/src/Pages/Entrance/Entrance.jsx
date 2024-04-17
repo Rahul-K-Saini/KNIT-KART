@@ -95,7 +95,7 @@ function App() {
 
                             <Components.Input
                                 onChange={(e) => {
-                                    if (e.target.value.trim().length<3) {
+                                    if (e.target.value.trim().length < 3) {
                                         setError({ ...error, fullname: "Enter Valid Name, Full name must contain more than 2 letters" });
                                     } else {
                                         setError({ ...error, fullname: "" });
@@ -256,14 +256,14 @@ function App() {
                     <div className="form-wrapper sign-Up">
                         <form action="">
                             <h2>Sign Up</h2>
-                            
+
                             <div className={style["input-group"]}>
 
                                 <input
                                     value={user.fullname}
                                     required
                                     onChange={(e) => {
-                                        if (e.target.value.trim().length<3) {
+                                        if (e.target.value.trim().length < 3) {
                                             setError({ ...error, fullname: "Enter Valid Name, Full name must contain more than 2 letters" });
                                         } else {
                                             setError({ ...error, fullname: "" });
