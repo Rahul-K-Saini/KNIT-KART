@@ -86,7 +86,7 @@ function App() {
 
     return (
         <>
-            <div className={style["desktop-form"]}>
+            <div className={`${style["desktop-form"]} bg-background`}>
                 {/* <ResponsiveContainer> */}
                 <Components.Container>
                     <Components.SignUpContainer $signin={signIn}>
@@ -251,7 +251,7 @@ function App() {
                 {/* </ResponsiveContainer> */}
             </div>
 
-            <div className={style["mobile-form"]}>
+            <div className={`${style["mobile-form"]} bg-background`}>
                 <div className={`wrapper ${isLoginPage.class}`}>
                     <div className="form-wrapper sign-Up">
                         <form action="">
