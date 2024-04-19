@@ -10,6 +10,11 @@ main {
 	cursor: default;
 }
 
+.main-image:first-child{
+	display: grid;
+	place-items: center;
+}
+
 .main-image img {
 	width: 100%;
 	height: auto;
@@ -53,10 +58,6 @@ main {
 	letter-spacing: 2px;
 	font-weight: bold;
 	margin-bottom: 1rem;
-}
-
-h1 {
-	margin-bottom: 1.4rem;
 }
 
 .item-info {
