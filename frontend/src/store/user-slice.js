@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialUserState = {
+    isLoggedIn: false,
     user: {
         name: "Dohn Joe",
         gender: "M",
@@ -18,6 +19,9 @@ export default createSlice({
         setUser(state, action) {
             console.log("user received : " + action.payload);
             return state.user = action.payload;
+        },
+        loginToggle(state) {
+            return state.isLoggedIn = !state.isLoggedIn;
         }
     },
 })
