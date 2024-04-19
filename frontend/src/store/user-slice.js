@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialUserState = {
+    isLoggedIn: false,
     user: {
         name: "Dohn Joe",
         gender: "M",
@@ -17,6 +18,9 @@ export default createSlice({
     reducers: {
         setUser(state, action) {
             return state.user = action.payload;
+        },
+        loginToggle(state) {
+            return state.isLoggedIn = !state.isLoggedIn;
         }
     },
 })
