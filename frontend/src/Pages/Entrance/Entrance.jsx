@@ -4,10 +4,9 @@ import axios from "axios";
 import "./styles.css";
 import style from "./Entrance.module.css";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
-
   const navigate = useNavigate();
 
   const [signIn, setSignIn] = useState(true);
@@ -28,9 +27,9 @@ function App() {
     e.preventDefault();
 
     const form = e.target;
-    const name = form.fullname.value;
-    const email = from.email.value;
-    const password = from.password.value;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
     const contact = form.contact.value;
 
     const userData = {
@@ -39,17 +38,30 @@ function App() {
       password,
       contact,
     };
-
-    const { data } = await axios.post(
-      "http://localhost:8000/user/register",
-      userData,
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
+    try {
+      const { data } = await axios.post(
+        "http://localhost:8000/user/register",
+        userData,
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      if (data.success) {
+        toast(data.message);
+        console.log(data);
+        form.reset();
+      } else {
+        let message = data.message.message;
+        let error = message.substring(message.indexOf(":")+1).replaceAll(",","\n");
+        toast.error(error);
+        console.log(data);
       }
-    );
-    console.log(data.message);
+    } catch (e) {
+      console.log(e);
+      toast.error(e.message);
+    }
   };
 
   const handleSignIn = async (e) => {
@@ -72,12 +84,13 @@ function App() {
         },
       }
     );
+
     console.log(data.message);
   };
 
   return (
     <>
-    <Toaster/>
+      <Toaster />
       <div className={`${style["desktop-form"]} bg-background`}>
         <Components.Container>
           {/* desktop -form for signUp */}
@@ -87,22 +100,26 @@ function App() {
               <Components.Input
                 type="text"
                 placeholder="Full Name"
-                name="fullname"
+                name="name"
+                required
               />
               <Components.Input
                 type="email"
                 placeholder="Email(KNIT)"
                 name="email"
+                required
               />
               <Components.Input
                 type="text"
                 name="contact"
                 placeholder="Contact No."
+                required
               />
               <Components.Input
                 name="password"
                 type="password"
                 placeholder="Password"
+                required
               />
               <Components.Button type="submit">Sign Up</Components.Button>
             </Components.Form>
