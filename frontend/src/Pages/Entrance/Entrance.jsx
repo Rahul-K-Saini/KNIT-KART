@@ -105,13 +105,15 @@ function App() {
                 name="contact"
                 placeholder="Contact No."
               />
-              <div className="flex items-center justify-between">
-                <Components.Input
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="Password"
-                />
-                <div onClick={toggleShowPassword}>
+              <div className="flex w-full">
+                <div className="w-full">
+                  <Components.Input
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Password"
+                  />
+                </div>
+                <div onClick={toggleShowPassword} className="grid place-items-center">
                   {
                     (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
                   }
@@ -130,15 +132,15 @@ function App() {
                 placeholder="Email(KNIT)"
                 name="email"
               />
-              <div style={{display:"flex", width:"100%"}}>
-                <div style={{ width: "100%" }}>
+              <div className="flex w-full">
+                <div className="w-full">
                   <Components.Input
                     name="password"
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     placeholder="Password"
                   />
                 </div>
-                <div style={{display:"grid",placeItems:"center"}} onClick={toggleShowPassword}>
+                <div onClick={toggleShowPassword} className="grid place-items-center">
                   {
                     (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
                   }
@@ -203,7 +205,7 @@ function App() {
                 <input type={showPassword ? "text" : "password"} name="password" required />
                 <label htmlFor="">Password</label>{" "}
                 <i className="bx bxs-lock-alt"></i>
-                <div onClick={toggleShowPassword}>
+                <div onClick={toggleShowPassword} className="grid place-items-center">
                   {
                     (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
                   }
@@ -241,7 +243,7 @@ function App() {
                 <input type={showPassword ? "text" : "password"} name="password" required />
                 <label htmlFor="">Password</label>{" "}
                 <i className="bx bxs-lock-alt"></i>
-                <div onClick={toggleShowPassword}>
+                <div onClick={toggleShowPassword} className="grid place-items-center">
                   {
                     (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
                   }
