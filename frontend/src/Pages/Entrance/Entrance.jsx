@@ -5,6 +5,7 @@ import "./styles.css";
 import style from "./Entrance.module.css";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
+import { IoIosEyeOff, IoIosEye } from "react-icons/io";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
     loginPage: true,
     class: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const loginToggle = () => {
     setIsLoginPage((prevState) => ({
@@ -75,9 +77,13 @@ function App() {
     console.log(data.message);
   };
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword)
+  }
+
   return (
     <>
-    <Toaster/>
+      <Toaster />
       <div className={`${style["desktop-form"]} bg-background`}>
         <Components.Container>
           {/* desktop -form for signUp */}
@@ -99,11 +105,18 @@ function App() {
                 name="contact"
                 placeholder="Contact No."
               />
-              <Components.Input
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
+              <div className="flex items-center justify-between">
+                <Components.Input
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password"
+                />
+                <div onClick={toggleShowPassword}>
+                  {
+                    (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
+                  }
+                </div>
+              </div>
               <Components.Button type="submit">Sign Up</Components.Button>
             </Components.Form>
           </Components.SignUpContainer>
@@ -117,11 +130,18 @@ function App() {
                 placeholder="Email(KNIT)"
                 name="email"
               />
-              <Components.Input
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
+              <div className="flex items-center justify-between">
+                <Components.Input
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password"
+                />
+                <div onClick={toggleShowPassword}>
+                  {
+                    (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
+                  }
+                </div>
+              </div>
               <Components.Anchor href="#">
                 Forgot your password?
               </Components.Anchor>
@@ -177,10 +197,15 @@ function App() {
                 <i className="bx bxs-envelope"></i>
                 <i className="bx bxs-user"></i>
               </div>
-              <div className={style["input-group"]}>
-                <input type="password" name="password" required />
+              <div className={`${style["input-group"]} flex justify-center`}>
+                <input type={showPassword ? "text" : "password"} name="password" required />
                 <label htmlFor="">Password</label>{" "}
                 <i className="bx bxs-lock-alt"></i>
+                <div onClick={toggleShowPassword}>
+                  {
+                    (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
+                  }
+                </div>
               </div>
               <button type="submit" className={style["btn"]}>
                 Sign Up
@@ -210,11 +235,15 @@ function App() {
                 <label htmlFor="">Email</label> <i className="bx bxs-user"></i>
               </div>
 
-              <div className={style["input-group"]}>
-                <input type="password" name="password" required />
-
-                <label htmlFor="">Password</label>
+              <div className={`${style["input-group"]} flex justify-center`}>
+                <input type={showPassword ? "text" : "password"} name="password" required />
+                <label htmlFor="">Password</label>{" "}
                 <i className="bx bxs-lock-alt"></i>
+                <div onClick={toggleShowPassword}>
+                  {
+                    (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
+                  }
+                </div>
               </div>
               <div className={style["forgot-password"]}>
                 <a href="">Forgot Password?</a>
