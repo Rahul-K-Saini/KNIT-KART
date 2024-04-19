@@ -77,7 +77,7 @@ function App() {
 
   return (
     <>
-    <Toaster/>
+      <Toaster />
       <div className={`${style["desktop-form"]} bg-background`}>
         <Components.Container>
           {/* desktop -form for signUp */}
@@ -117,11 +117,18 @@ function App() {
                 placeholder="Email(KNIT)"
                 name="email"
               />
-              <Components.Input
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
+              <div style={{width:"100%"}}>
+                <Components.Input
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                />
+              </div>
+              <div onClick={toggleShowPassword}>
+                  {
+                    (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
+                  }
+                </div>
               <Components.Anchor href="#">
                 Forgot your password?
               </Components.Anchor>
