@@ -32,6 +32,7 @@ export const handleUserRegistration = async (req, res) => {
             message: "User created successfully",
             user: newUser,
         });
+        
     } catch (error) {
         console.error("Error registering user:", error);
         return res.status(500).send({
