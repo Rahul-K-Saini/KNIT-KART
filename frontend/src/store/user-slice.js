@@ -7,6 +7,7 @@ export default createSlice({
     initialState: initialUserState,
     reducers: {
         setUser(state, action) {
+            console.log("user received");
             return state.user = action.payload;
         }
     },

@@ -5,8 +5,12 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdModeEditOutline, MdOutlineManageAccounts, MdDashboard } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
 import { FaGear } from 'react-icons/fa6';
+import { useDispatch } from "react-redux";
 
 const Profile = () => {
+
+    const dispatch = useDispatch();
+
     const [isEditable, setIsEditable] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [activeSection, setActiveSection] = useState('profile');
