@@ -6,6 +6,8 @@ import { MdModeEditOutline, MdOutlineManageAccounts, MdDashboard } from "react-i
 import { TbReload } from "react-icons/tb";
 import { FaGear } from 'react-icons/fa6';
 import { useDispatch } from "react-redux";
+import { userActions } from "../../store/index";
+
 
 const Profile = () => {
 
@@ -53,7 +55,9 @@ const Profile = () => {
     };
 
     const handleSave = () => {
-        console.log("Updated Profile Data:", formData);
+        console.log("Updated Profile Data: is", formData);
+        dispatch(userActions.setUser(formData))
+
     };
 
     const DUMMY_DATA = [
