@@ -5,7 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdModeEditOutline, MdOutlineManageAccounts, MdDashboard } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
 import { FaGear } from 'react-icons/fa6';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../store/index";
 
 
@@ -17,13 +17,15 @@ const Profile = () => {
     const [disabled, setDisabled] = useState(true);
     const [activeSection, setActiveSection] = useState('profile');
 
+    const user = useSelector(state => state.user.user);
+
     const [formData, setFormData] = useState({
-        name: '',
-        gender: '',
-        email: '',
-        contact: '',
-        hostelName: '',
-        roomNo: ''
+        name: user.name,
+        gender: user.gender,
+        email: user.email,
+        contact: user.contact,
+        hostel: user.hostel,
+        roomNo: user.roomNo
     });
 
     const handleEditable = () => {
@@ -162,32 +164,32 @@ const Profile = () => {
                         {Object.entries(formData).map(([key, value]) => (
                             <div key={key}>
                                 <label htmlFor={key} className="block mb-1">{key.charAt(0).toUpperCase() + key.slice(1)}</label>
-                                <input type="text" id={key} name={key} placeholder={key.charAt(0).toUpperCase() + key.slice(1)} className="border p-2 w-full focus:outline-none text-black" value={value} onChange={handleInputChange} disabled={disabled}/>
+                                <input type="text" id={key} name={key} placeholder={key.charAt(0).toUpperCase() + key.slice(1)} className="border p-2 w-full focus:outline-none text-black" value={value} onChange={handleInputChange} disabled={disabled} />
                             </div>
                         ))}
                     </div>
                 ) : activeSection === 'password' ? (
-                <div className="grid grid-cols-1 gap-4 md:w-9/12 w-10/12 mx-auto">
-                    <div>
-                        <label htmlFor="currentPassword" className="block mb-1">Current Password</label>
-                        <input type="password" id="currentPassword" name="currentPassword" placeholder="Current Password" className="border p-2 md:w-1/3 w-5/6 focus:outline-none" />
-                        <a href="https://www.google.com" className='underline text-primary ml-8 text-lg'>Forget Password?</a>
+                    <div className="grid grid-cols-1 gap-4 md:w-9/12 w-10/12 mx-auto">
+                        <div>
+                            <label htmlFor="currentPassword" className="block mb-1">Current Password</label>
+                            <input type="password" id="currentPassword" name="currentPassword" placeholder="Current Password" className="border p-2 md:w-1/3 w-5/6 focus:outline-none" />
+                            <a href="https://www.google.com" className='underline text-primary ml-8 text-lg'>Forget Password?</a>
+                        </div>
+                        <div>
+                            <label htmlFor="newPassword" className="block mb-1">New Password</label>
+                            <input type="password" id="newPassword" name="newPassword" placeholder="New Password" className="border p-2 md:w-1/3 w-5/6 focus:outline-none" />
+                        </div>
+                        <div>
+                            <label htmlFor="confirmPassword" className="block mb-1">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" className="border p-2 md:w-1/3 w-5/6 focus:outline-none" />
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="newPassword" className="block mb-1">New Password</label>
-                        <input type="password" id="newPassword" name="newPassword" placeholder="New Password" className="border p-2 md:w-1/3 w-5/6 focus:outline-none" />
-                    </div>
-                    <div>
-                        <label htmlFor="confirmPassword" className="block mb-1">Confirm Password</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" className="border p-2 md:w-1/3 w-5/6 focus:outline-none" />
-                    </div>
-                </div>
                 ) : (
-                <div>
-                    <div className='grid md:grid-cols-3 grid-cols-1 bg-background'>
-                        {DUMMY_DATA.map((ad) => <AdCard key={ad.id} ad={ad} />)}
+                    <div>
+                        <div className='grid md:grid-cols-3 grid-cols-1 bg-background'>
+                            {DUMMY_DATA.map((ad) => <AdCard key={ad.id} ad={ad} />)}
+                        </div>
                     </div>
-                </div>
                 )}
 
                 {/* Save and cancel btn */}
