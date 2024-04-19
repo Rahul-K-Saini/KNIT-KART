@@ -5,16 +5,17 @@ const userSchema = new mongoose.Schema({
   fullname: {
     type: String,
     required: true,
+    lowercase: true,
   },
   email: {
     type: String,
     required: true,
     unique: true,
+    lowercase: true,
     validate: {
       validator: function (email) {
-        email = email.toLowerCase().trim();
+        email = email.trim();
         return email.split("@")[1] == 'knit.ac.in';
-         
       },
       message: "Please enter a knit domain email address",
     },
@@ -22,15 +23,25 @@ const userSchema = new mongoose.Schema({
   contact_no: {
     type: String,
     required: true,
-    validate: {
-      validator: function (num) {
-        return num.length === 10;
+    lowercase: true,
+    validate: [
+      {
+        validator: function (num) {
+          return num.length === 10;
+        },
+        message: "Contact number should be of 10 digits",
       },
-      message: "Contact number should be of 10 digits",
-    },
+      {
+        validator: function (num) {
+          return validator.isNumeric(num);
+        },
+        message: "Contact number should contain only numeric digits",
+      }
+    ],
   },
   branch: {
     type: String,
+    lowercase: true,
     enum: [
       "mca",
       "computer science",
@@ -47,18 +58,22 @@ const userSchema = new mongoose.Schema({
   },
   hostel: {
     type: String,
+    lowercase: true,
   },
   profile_pic: {
     type: String,
+    lowercase: true,
     default:
       "https://media.istockphoto.com/id/1305665241/vector/anonymous-gender-neutral-face-avatar-incognito-head-silhouette-stock-illustration.jpg",
   },
   gender: {
     type: String,
+    lowercase: true,
     enum: ["male", "female", "prefer not to say"],
   },
   course: {
     type: String,
+    lowercase: true,
     enum: ["mca", "b.tech", "m.tech"],
   },
   password: {

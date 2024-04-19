@@ -57,7 +57,6 @@ const Profile = () => {
     const handleSave = () => {
         console.log("Updated Profile Data: is", formData);
         dispatch(userActions.setUser(formData))
-
     };
 
     const DUMMY_DATA = [
