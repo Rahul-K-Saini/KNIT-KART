@@ -5,10 +5,16 @@ import "./styles.css";
 import style from "./Entrance.module.css";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
+import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 function App() {
 
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword)
+  }
 
   const [signIn, setSignIn] = useState(true);
 
@@ -117,18 +123,20 @@ function App() {
                 placeholder="Email(KNIT)"
                 name="email"
               />
-              <div style={{width:"100%"}}>
-                <Components.Input
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                />
-              </div>
-              <div onClick={toggleShowPassword}>
+              <div style={{display:"flex", width:"100%"}}>
+                <div style={{ width: "100%" }}>
+                  <Components.Input
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password"
+                  />
+                </div>
+                <div style={{display:"grid",placeItems:"center"}} onClick={toggleShowPassword}>
                   {
                     (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
                   }
                 </div>
+              </div>
               <Components.Anchor href="#">
                 Forgot your password?
               </Components.Anchor>
