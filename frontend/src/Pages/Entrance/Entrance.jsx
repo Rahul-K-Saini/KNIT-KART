@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 function App() {
+  
   const navigate = useNavigate();
 
   const [signIn, setSignIn] = useState(true);
@@ -49,7 +50,7 @@ function App() {
         }
       );
       if (data.success) {
-        toast(data.message);
+        toast.success(data.message);
         console.log(data);
         form.reset();
       } else {
@@ -74,18 +75,33 @@ function App() {
       email,
       password,
     };
-
-    const { data } = await axios.post(
-      "http://localhost:8000/user/login",
-      userData,
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
+    try{
+      const { data } = await axios.post(
+        "http://localhost:8000/user/login",
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if(data.success){
+        console.log(data);
+        localStorage.setItem("token", JSON.stringify(data.data.token));
+        toast.success(data.message);
+        form.reset();
       }
-    );
+      else{
+        toast.error(data.message);
+      }
 
-    console.log(data.message);
+    }
+    catch(e){
+      console.log(e);
+    }
+    
+
+    
   };
 
   return (

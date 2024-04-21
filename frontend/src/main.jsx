@@ -11,6 +11,7 @@ import Profile from "./Pages/Profile/Profile";
 import Homepage from "./Pages/Home/Homepage";
 import { Provider } from 'react-redux';
 import store from './store';
+import ProtectedRoute from "./Pages/Protected/ProtectedRoute";
 
 
 const router = createBrowserRouter([
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Homepage />,
+        element: <ProtectedRoute><Homepage /></ProtectedRoute>,
       },
       {
         path: "entrance",
