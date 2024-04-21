@@ -5,7 +5,7 @@ import { TypewriterEffectDemo } from "../TypeWriterDemo/TypeWriterDemo";
 function Hero() {
   return (
     <section className="w-full bg-background text-text h-screen">
-      <div className="flex md:flex-row flex-col justify-between items-stretch  py-8">
+      <div className="flex md:flex-row flex-col justify-between py-8">
         <div className="flex-1 flex flex-col justify-center md:items-start items-center px-5">
           <TypewriterEffectDemo />
           <p className="mt-5 mb-3 md:text-xl md:text-start text-center">

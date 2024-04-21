@@ -22,7 +22,7 @@ export default function ProtectedRoute({ children }) {
         }
       );
       console.log(res);
-      // if (res.data.success) {
+      // if (res.success) {
       //   dispatch(res.data.data);
       // } else {
       //   <Navigate to="/login" />;

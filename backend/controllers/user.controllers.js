@@ -3,9 +3,9 @@ import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 
 export const handleUserRegistration = async (req, res) => {
+
     try {
-        console.log(req.body);
-        const { name, email, password,contact } = req.body;
+        const { name, email, password, contact } = req.body;
 
         const existingUser = await User.findOne({ email });
 
@@ -13,9 +13,23 @@ export const handleUserRegistration = async (req, res) => {
             return res.status(200).send({
                 success: false,
                 message: {
-                    message:"User Already Exists"
+                    message: "User Already Exists"
                 },
             });
+        }
+
+        // had to do it here for the time being as user creation is called after the password hashed and after password hash 
+        // password length increases hence user can input one length of password so before creating user  password length is checked here 
+        // i will find the better way to do it in the future |||| Apologies 🙏 for the inconvenience
+
+        if (password.length < 8) {
+            return res.send({
+                success: false,
+                message: {
+                    message: "Password must be at least 8 characters long"
+                }
+            }
+            )
         }
 
         const saltRounds = 10;
@@ -33,7 +47,7 @@ export const handleUserRegistration = async (req, res) => {
             message: "Sign up Successful ! You can sign in now",
             user: newUser,
         });
-        
+
     } catch (error) {
         console.error("Error registering user:", error);
         return res.send({
@@ -47,12 +61,14 @@ export const handleUserRegistration = async (req, res) => {
 export const handleUserLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
+        console.log(email,password);
 
         const user = await User.findOne({ email });
 
+
         if (!user) {
             return res.status(200).send({
-                message: "User not found",
+                message: "User not Registered",
                 success: false,
             });
         }

@@ -1,3 +1,5 @@
+import { GoEyeClosed } from "react-icons/go";
+import { GoEye } from "react-icons/go";
 import { useState } from "react";
 import * as Components from "./Components";
 import axios from "axios";
@@ -7,9 +9,9 @@ import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 function App() {
-  
   const navigate = useNavigate();
 
+  const [showPassword, setShowPassword] = useState(false);
   const [signIn, setSignIn] = useState(true);
 
   const [isLoginPage, setIsLoginPage] = useState({
@@ -51,13 +53,13 @@ function App() {
       );
       if (data.success) {
         toast.success(data.message);
-        console.log(data);
         form.reset();
       } else {
         let message = data.message.message;
-        let error = message.substring(message.indexOf(":")+1).replaceAll(",","\n");
+        let error = message
+          .substring(message.indexOf(":") + 1)
+          .replaceAll(",", "\n");
         toast.error(error);
-        console.log(data);
       }
     } catch (e) {
       console.log(e);
@@ -75,7 +77,7 @@ function App() {
       email,
       password,
     };
-    try{
+    try {
       const { data } = await axios.post(
         "http://localhost:8000/user/login",
         userData,
@@ -85,23 +87,18 @@ function App() {
           },
         }
       );
-      if(data.success){
+      if (data.success) {
         console.log(data);
         localStorage.setItem("token", JSON.stringify(data.data.token));
         toast.success(data.message);
         form.reset();
-      }
-      else{
+        navigate("/");
+      } else {
         toast.error(data.message);
       }
-
-    }
-    catch(e){
+    } catch (e) {
       console.log(e);
     }
-    
-
-    
   };
 
   return (
@@ -131,12 +128,24 @@ function App() {
                 placeholder="Contact No."
                 required
               />
-              <Components.Input
-                name="password"
-                type="password"
-                placeholder="Password"
-                required
-              />
+              <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative">
+                <Components.Input
+                  className="outline-none flex-grow  px-4"
+                  name="password"
+                  type={`${showPassword ? "text" : "password"}`}
+                  placeholder="Password"
+                  aria-label="Password input"
+                  required
+                />
+                <button
+                  type="button"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 focus:outline-none"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <GoEye /> : <GoEyeClosed />}
+                </button>
+              </div>
+
               <Components.Button type="submit">Sign Up</Components.Button>
             </Components.Form>
           </Components.SignUpContainer>
@@ -150,11 +159,23 @@ function App() {
                 placeholder="Email(KNIT)"
                 name="email"
               />
-              <Components.Input
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
+              <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative">
+                <Components.Input
+                  className="outline-none flex-grow  px-4"
+                  name="password"
+                  type={`${showPassword ? "text" : "password"}`}
+                  placeholder="Password"
+                  aria-label="Password input"
+                  required
+                />
+                <button
+                  type="button"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 focus:outline-none"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <GoEye /> : <GoEyeClosed />}
+                </button>
+              </div>
               <Components.Anchor href="#">
                 Forgot your password?
               </Components.Anchor>
