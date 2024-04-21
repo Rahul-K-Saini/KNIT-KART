@@ -49,7 +49,8 @@ function App() {
         }
       );
       if (data.success) {
-        toast(data.message);
+        toast.success(data.message);
+        setSignIn(true);
         console.log(data);
         form.reset();
       } else {
