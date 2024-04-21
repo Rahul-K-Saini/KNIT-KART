@@ -5,10 +5,10 @@ import { TypewriterEffectDemo } from "../TypeWriterDemo/TypeWriterDemo";
 function Hero() {
   return (
     <section className="w-full bg-background text-text h-screen">
-      <div className="flex md:flex-row flex-col justify-between items-stretch max-w-7xl mx-auto py-8">
+      <div className="flex md:flex-row flex-col justify-between py-8">
         <div className="flex-1 flex flex-col justify-center md:items-start items-center px-5">
           <TypewriterEffectDemo />
-          <p className="mt-5 mb-3 md:text-2xl text-xl md:text-start text-center">
+          <p className="mt-5 mb-3 md:text-xl md:text-start text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
             sapiente sequi quibusdam. Amet itaque, fugiat, quidem, non
             architecto consequuntur recusandae ipsam laborum porro doloremque
