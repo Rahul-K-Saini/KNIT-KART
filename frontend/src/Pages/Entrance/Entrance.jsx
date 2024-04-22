@@ -10,12 +10,8 @@ import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
-
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword)
-  }
-
   const [signIn, setSignIn] = useState(true);
 
   const [isLoginPage, setIsLoginPage] = useState({
@@ -237,15 +233,10 @@ function App() {
                 <i className="bx bxs-envelope"></i>
                 <i className="bx bxs-user"></i>
               </div>
-              <div className={`${style["input-group"]} flex justify-center`}>
-                <input type={showPassword ? "text" : "password"} name="password" required />
+              <div className={style["input-group"]}>
+                <input type="password" name="password" required />
                 <label htmlFor="">Password</label>{" "}
                 <i className="bx bxs-lock-alt"></i>
-                <div onClick={toggleShowPassword} className="grid place-items-center">
-                  {
-                    (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
-                  }
-                </div>
               </div>
               <button type="submit" className={style["btn"]}>
                 Sign Up
@@ -275,15 +266,11 @@ function App() {
                 <label htmlFor="">Email</label> <i className="bx bxs-user"></i>
               </div>
 
-              <div className={`${style["input-group"]} flex justify-center`}>
-                <input type={showPassword ? "text" : "password"} name="password" required />
-                <label htmlFor="">Password</label>{" "}
+              <div className={style["input-group"]}>
+                <input type="password" name="password" required />
+
+                <label htmlFor="">Password</label>
                 <i className="bx bxs-lock-alt"></i>
-                <div onClick={toggleShowPassword} className="grid place-items-center">
-                  {
-                    (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
-                  }
-                </div>
               </div>
               <div className={style["forgot-password"]}>
                 <a href="">Forgot Password?</a>
@@ -293,7 +280,7 @@ function App() {
               </button>
               <div className={style["Sign-link"]}>
                 <p>
-                  Don't have an account?{" "}
+                  Don't have any account?{" "}
                   <a
                     href="#"
                     onClick={loginToggle}
