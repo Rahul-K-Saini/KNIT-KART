@@ -280,7 +280,7 @@ function App() {
               </button>
               <div className={style["Sign-link"]}>
                 <p>
-                  Don't have an account?{" "}
+                  Don't have any account?{" "}
                   <a
                     href="#"
                     onClick={loginToggle}
