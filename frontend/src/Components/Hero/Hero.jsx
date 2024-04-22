@@ -11,7 +11,7 @@ function Hero() {
   }, [])
 
   return (
-    <section className="w-full bg-background text-text h-screen">
+    <section className="w-full bg-background text-text h-fit">
       <div className="flex md:flex-row flex-col justify-between py-8">
         <div className="flex-1 flex flex-col justify-center md:items-start items-center px-5" data-aos="fade-right">
           <TypewriterEffectDemo />
@@ -21,7 +21,7 @@ function Hero() {
             architecto consequuntur recusandae ipsam laborum porro doloremque
             tempore earum ducimus quas nemo.
           </p>
-          <button className="py-3 px-2 bg-accent dark:bg-accent border-2 border-transparent rounded w-[30%] dark:text-[#f4f4f4] hover:border-black hover:dark:border-white">
+          <button className="py-3 px-2 mb-4 bg-accent dark:bg-accent border-2 border-transparent rounded w-[30%] dark:text-[#f4f4f4] hover:border-black hover:dark:border-white transform transition-all duration-300 hover:scale-105">
             Get Started
           </button>
         </div>

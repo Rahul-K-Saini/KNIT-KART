@@ -204,8 +204,8 @@ const Profile = () => {
 
                 {/* Save and cancel btn */}
                 <div className='flex items-start space-x-8 md:w-9/12 w-10/12 mx-auto'>
-                    <button className='border-2 border-accent text-accent text-lg py-1 px-6'>Cancel</button>
-                    <button className='border-2 border-accent bg-accent text-white text-lg py-1 px-6' onClick={handleSave}>Save</button>
+                    <button className='border-2 border-accent text-accent text-lg py-1 px-6 transform transition-all duration-300 hover:scale-105'>Cancel</button>
+                    <button className='border-2 border-accent bg-accent text-white text-lg py-1 px-6 transform transition-all duration-300 hover:scale-105' onClick={handleSave}>Save</button>
                 </div>
                 {/* Save and cancel btn */}
             </div>
