@@ -94,7 +94,7 @@ function App() {
         localStorage.setItem("token", JSON.stringify(data.data.token));
         toast.success(data.message);
         form.reset();
-        navigate("/");
+        navigate("/profile");
       } else {
         toast.error(data.message);
       }
@@ -160,6 +160,7 @@ function App() {
                 type="email"
                 placeholder="Email(KNIT)"
                 name="email"
+                required
               />
               <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative">
                 <Components.Input
