@@ -4,12 +4,19 @@ import { useState } from "react";
 import * as Components from "./Components";
 import axios from "axios";
 import "./styles.css";
+import { useDispatch } from "react-redux";
 import style from "./Entrance.module.css";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { userActions } from "@/store";
+import { useSelector } from "react-redux";
 
 function App() {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const storeUser = useSelector(state => state.user.user);
 
   const [showPassword, setShowPassword] = useState(false);
   const [signIn, setSignIn] = useState(true);
@@ -91,6 +98,21 @@ function App() {
       );
       if (data.success) {
         console.log(data);
+        const receivedData = data.data.user;
+        console.log("rece data ", receivedData);
+        const user = {
+          id: receivedData._id,
+          name: receivedData.name,
+          gender: "M", // bhai gender bhijwa do backend se
+          email: receivedData.email,
+          contact: receivedData.contact,
+          hostelName: "Aryab", // bhai hostel name bhijwa do backend se
+          roomNo: "GI3" // bhai room no. bhijwa do backend se
+        };
+        console.log("prev user", storeUser);
+        console.log("now ready to populate ", user)
+        dispatch(userActions.setUser(user));
+        console.log("after population ", user)
         localStorage.setItem("token", JSON.stringify(data.data.token));
         toast.success(data.message);
         form.reset();

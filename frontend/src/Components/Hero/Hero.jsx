@@ -3,12 +3,18 @@ import heroImage from "../../assets/images/hero.jpeg";
 import { TypewriterEffectDemo } from "../TypeWriterDemo/TypeWriterDemo";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
 
+  const navigate = useNavigate();
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, [])
+
+  const temporary = ()=>{
+    navigate("/profile");
+  }
 
   return (
     <section className="w-full bg-background text-text h-screen">
@@ -21,7 +27,7 @@ function Hero() {
             architecto consequuntur recusandae ipsam laborum porro doloremque
             tempore earum ducimus quas nemo.
           </p>
-          <button className="py-3 px-2 bg-accent dark:bg-accent border-2 border-transparent rounded w-[30%] dark:text-[#f4f4f4] hover:border-black hover:dark:border-white">
+          <button onClick={temporary} className="py-3 px-2 bg-accent dark:bg-accent border-2 border-transparent rounded w-[30%] dark:text-[#f4f4f4] hover:border-black hover:dark:border-white">
             Get Started
           </button>
         </div>
