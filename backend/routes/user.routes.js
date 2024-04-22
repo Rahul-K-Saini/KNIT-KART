@@ -8,3 +8,4 @@ userRouter.post('/login', handleUserLogin);
 userRouter.post("/get-user", protect, authController);
 
 export default userRouter;
+

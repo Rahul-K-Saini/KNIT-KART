@@ -33,7 +33,7 @@ function Homepage() {
   };
   return (
     <>
-      <div className="flex justify-between bg-background sticky top-20 z-50">
+      <div className="flex justify-between items-center bg-background sticky top-20 z-50">
         <Categories
           categories={categories}
           selectedCategory={selectedCategory}
@@ -41,7 +41,7 @@ function Homepage() {
         />
         <Link
           onClick={postAdHandler}
-          className="dark:text-gray-50 bg-accent data:bg-accent px-4 py-2 rounded hover:opacity-85"
+          className="dark:text-gray-50 bg-accent data:bg-accent mx-6 px-4 py-2 rounded hover:opacity-85"
         >
           Post Ad
         </Link>

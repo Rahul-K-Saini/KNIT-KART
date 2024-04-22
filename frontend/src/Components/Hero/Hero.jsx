@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import heroImage from "../../assets/images/hero.jpeg";
 import { TypewriterEffectDemo } from "../TypeWriterDemo/TypeWriterDemo";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function Hero() {
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, [])
+
   return (
-    <section className="w-full bg-background text-text border-b-4 border-secondary">
-      <div className="flex justify-between items-stretch max-w-7xl mx-auto">
-        <div className="flex-1 flex flex-col justify-center px-5">
+    <section className="w-full bg-background text-text h-screen">
+      <div className="flex md:flex-row flex-col justify-between py-8">
+        <div className="flex-1 flex flex-col justify-center md:items-start items-center px-5" data-aos="fade-right">
           <TypewriterEffectDemo />
-          <p className="mt-5 mb-3">
+          <p className="mt-5 mb-3 md:text-xl md:text-start text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
             sapiente sequi quibusdam. Amet itaque, fugiat, quidem, non
             architecto consequuntur recusandae ipsam laborum porro doloremque
@@ -18,8 +25,8 @@ function Hero() {
             Get Started
           </button>
         </div>
-        <div className="flex-1 flex justify-center border-l-8 border-secondary">
-          <img src={heroImage} alt="Hero" className="h-full" />
+        <div className="flex-1 justify-center px-3">
+          <img src={heroImage} alt="Hero" className="h-full" data-aos="fade-left"/>
         </div>
       </div>
     </section>
