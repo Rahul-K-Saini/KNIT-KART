@@ -134,13 +134,13 @@ function App() {
                 placeholder="Contact No."
                 required
               />
-              <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative">
+              <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit" >
                 <Components.Input
-                  className="outline-none flex-grow  px-4"
+               
+                  className="outline-none flex-grow px-4 border-black"
                   name="password"
                   type={`${showPassword ? "text" : "password"}`}
                   placeholder="Password"
-                  aria-label="Password input"
                   required
                 />
                 <button
@@ -148,7 +148,7 @@ function App() {
                   className="absolute right-2 top-1/2 -translate-y-1/2 focus:outline-none"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <GoEye /> : <GoEyeClosed />}
+                  {showPassword ? <GoEye className=""/> : <GoEyeClosed />}
                 </button>
               </div>
 
