@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import user from "../../assets/images/user.jpeg";
+import userImg from "../../assets/images/user.jpeg";
 import AdCard from "@/Components/AdCard/AdCard";
 import { FaRegEdit } from "react-icons/fa";
 import { MdModeEditOutline, MdOutlineManageAccounts, MdDashboard } from "react-icons/md";
@@ -164,7 +164,7 @@ const Profile = () => {
                             <><h1 className='md:text-3xl text-2xl'>Dashboard</h1></>
                         )}
                     </h1>
-                    <img src={user} alt="img" className='md:h-32 h-16 md:w-32 w-16 rounded-full' />
+                    <img src={userImg} alt="img" className='md:h-32 h-16 md:w-32 w-16 rounded-full' />
                 </div>
                 {/* Heading and pofile picture end */}
 

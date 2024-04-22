@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image1 from "../../assets/images/product-1.jpg";
 import Image2 from "../../assets/images/product-2.jpg";
 import Image3 from "../../assets/images/product-3.jpg";
@@ -11,8 +11,15 @@ import "./AdPage.css";
 // import { useDispatch } from "react-redux";
 // call the action I will use
 // import { add_items } from "../actions";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 
 const AdPage = () => {
+
+    useEffect(() => {
+        Aos.init({ duration: 1000 });
+    }, [])
 
 
     // increase or decrease desired item quantity before checkout
@@ -124,7 +131,7 @@ const AdPage = () => {
 
     return (
         <main className="mb-24">
-            <div className="gallery">
+            <div className="gallery" data-aos="zoom-in">
                 <div className="main-image ">
                     <button onClick={togglePhotoModal}>
                         <img className="previewed-img" src={activeImage} alt="item image" />
@@ -157,7 +164,7 @@ const AdPage = () => {
                     ></button>
                 </div>
             </div>
-            <div className="description">
+            <div className="description" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="0" data-aos-offset="0">
                 <div className="info">
                     <p className="catagory">Stationary</p>
                     <h1 className="text-xl md:text-3xl mb-6">IKIGAI  - The Japanese Word for 'Reason For Being'</h1>
