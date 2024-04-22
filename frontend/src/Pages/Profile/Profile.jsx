@@ -17,7 +17,18 @@ const Profile = () => {
     const [disabled, setDisabled] = useState(true);
     const [activeSection, setActiveSection] = useState('profile');
 
-    const user = useSelector(state => state.user.user);
+    let user = useSelector(state => state.user.user);
+
+    if (!user) {
+        user = {
+            name: '',
+            gender: '',
+            email: '',
+            contact: '',
+            hostel: '',
+            roomNo: ''
+        }
+    }
 
     const [formData, setFormData] = useState({
         name: user.name,

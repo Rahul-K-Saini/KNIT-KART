@@ -132,7 +132,7 @@ function App() {
               />
               <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit" >
                 <Components.Input
-               
+
                   className="outline-none flex-grow px-4 border-black"
                   name="password"
                   type={`${showPassword ? "text" : "password"}`}
@@ -144,7 +144,7 @@ function App() {
                   className="absolute right-2 top-1/2 -translate-y-1/2 focus:outline-none"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <GoEye className=""/> : <GoEyeClosed />}
+                  {showPassword ? <GoEye className="" /> : <GoEyeClosed />}
                 </button>
               </div>
 
@@ -281,7 +281,7 @@ function App() {
               </button>
               <div className={style["Sign-link"]}>
                 <p>
-                  Don't have an account?{" "}
+                  Don't have any account?{" "}
                   <a
                     href="#"
                     onClick={loginToggle}
