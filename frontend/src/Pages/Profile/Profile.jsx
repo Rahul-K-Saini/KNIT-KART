@@ -21,12 +21,12 @@ const Profile = () => {
 
     if (!user) {
         user = {
-            name: null,
-            gender: null,
-            email: null,
-            contact: null,
-            hostel: null,
-            roomNo: null
+            name: '',
+            gender: '',
+            email: '',
+            contact: '',
+            hostel: '',
+            roomNo: ''
         }
     }
 
