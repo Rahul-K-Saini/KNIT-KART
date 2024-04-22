@@ -1,14 +1,14 @@
+import { GoEyeClosed } from "react-icons/go";
+import { GoEye } from "react-icons/go";
 import { useState } from "react";
 import * as Components from "./Components";
 import axios from "axios";
 import "./styles.css";
 import style from "./Entrance.module.css";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
-import { IoIosEye, IoIosEyeOff } from "react-icons/io";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
-
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -34,9 +34,9 @@ function App() {
     e.preventDefault();
 
     const form = e.target;
-    const name = form.fullname.value;
-    const email = from.email.value;
-    const password = from.password.value;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
     const contact = form.contact.value;
 
     const userData = {
@@ -45,17 +45,32 @@ function App() {
       password,
       contact,
     };
-
-    const { data } = await axios.post(
-      "http://localhost:8000/user/register",
-      userData,
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
+    try {
+      const { data } = await axios.post(
+        "http://localhost:8000/user/register",
+        userData,
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      if (data.success) {
+        toast.success(data.message);
+        setSignIn(true);
+        console.log(data);
+        form.reset();
+      } else {
+        let message = data.message.message;
+        let error = message
+          .substring(message.indexOf(":") + 1)
+          .replaceAll(",", "\n");
+        toast.error(error);
       }
-    );
-    console.log(data.message);
+    } catch (e) {
+      console.log(e);
+      toast.error(e.message);
+    }
   };
 
   const handleSignIn = async (e) => {
@@ -68,17 +83,28 @@ function App() {
       email,
       password,
     };
-
-    const { data } = await axios.post(
-      "http://localhost:8000/user/login",
-      userData,
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
+    try {
+      const { data } = await axios.post(
+        "http://localhost:8000/user/login",
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (data.success) {
+        console.log(data);
+        localStorage.setItem("token", JSON.stringify(data.data.token));
+        toast.success(data.message);
+        form.reset();
+        navigate("/");
+      } else {
+        toast.error(data.message);
       }
-    );
-    console.log(data.message);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -93,32 +119,39 @@ function App() {
               <Components.Input
                 type="text"
                 placeholder="Full Name"
-                name="fullname"
+                name="name"
+                required
               />
               <Components.Input
                 type="email"
                 placeholder="Email(KNIT)"
                 name="email"
+                required
               />
               <Components.Input
                 type="text"
                 name="contact"
                 placeholder="Contact No."
+                required
               />
-              <div className="flex w-full">
-                <div className="w-full">
-                  <Components.Input
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="Password"
-                  />
-                </div>
-                <div onClick={toggleShowPassword} className="grid place-items-center">
-                  {
-                    (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
-                  }
-                </div>
+              <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative">
+                <Components.Input
+                  className="outline-none flex-grow  px-4"
+                  name="password"
+                  type={`${showPassword ? "text" : "password"}`}
+                  placeholder="Password"
+                  aria-label="Password input"
+                  required
+                />
+                <button
+                  type="button"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 focus:outline-none"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <GoEye /> : <GoEyeClosed />}
+                </button>
               </div>
+
               <Components.Button type="submit">Sign Up</Components.Button>
             </Components.Form>
           </Components.SignUpContainer>
@@ -132,19 +165,22 @@ function App() {
                 placeholder="Email(KNIT)"
                 name="email"
               />
-              <div className="flex w-full">
-                <div className="w-full">
-                  <Components.Input
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="Password"
-                  />
-                </div>
-                <div onClick={toggleShowPassword} className="grid place-items-center">
-                  {
-                    (showPassword) ? <IoIosEye className="text-2xl cursor-pointer" /> : <IoIosEyeOff className="text-2xl cursor-pointer" />
-                  }
-                </div>
+              <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative">
+                <Components.Input
+                  className="outline-none flex-grow  px-4"
+                  name="password"
+                  type={`${showPassword ? "text" : "password"}`}
+                  placeholder="Password"
+                  aria-label="Password input"
+                  required
+                />
+                <button
+                  type="button"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 focus:outline-none"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <GoEye /> : <GoEyeClosed />}
+                </button>
               </div>
               <Components.Anchor href="#">
                 Forgot your password?
