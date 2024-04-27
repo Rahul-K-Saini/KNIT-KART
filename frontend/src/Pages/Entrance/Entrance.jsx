@@ -4,12 +4,14 @@ import { useState } from "react";
 import * as Components from "./Components";
 import axios from "axios";
 import "./styles.css";
+import { useEffect } from "react";
 import style from "./Entrance.module.css";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
 
-function App() {
-  const navigate = useNavigate();
+function Entrance() {
+ 
 
   const [showPassword, setShowPassword] = useState(false);
   const [signIn, setSignIn] = useState(true);
@@ -299,4 +301,4 @@ function App() {
   );
 }
 
-export default App;
+export default Entrance;

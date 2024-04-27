@@ -9,7 +9,7 @@ export default createSlice({
     initialState: initialUserState,
     reducers: {
         setUser(state, action) {
-            return state.user = action.payload;
+            state.user = action.payload;
         },
     },
 })

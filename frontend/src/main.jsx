@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
-        element: <Homepage />
+       
       },
       {
         path: "entrance",
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: <ProtectedRoute><Profile /></ProtectedRoute>,
       },
       {
         path: "*",
