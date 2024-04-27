@@ -4,19 +4,12 @@ import { useState } from "react";
 import * as Components from "./Components";
 import axios from "axios";
 import "./styles.css";
-import { useDispatch } from "react-redux";
 import style from "./Entrance.module.css";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { userActions } from "@/store";
-import { useSelector } from "react-redux";
 
 function App() {
   const navigate = useNavigate();
-
-  const dispatch = useDispatch();
-
-  const user = useSelector(state => state.user.user);
 
   const [showPassword, setShowPassword] = useState(false);
   const [signIn, setSignIn] = useState(true);
@@ -98,25 +91,15 @@ function App() {
       );
       if (data.success) {
         console.log(data);
-        // const receivedData = data.data.user;
-        // console.log("rece data ", receivedData);
-        // const user = {
-        //   id: receivedData._id,
-        //   name: receivedData.name,
-        //   gender: "M", // bhai gender bhijwa do backend se
-        //   email: receivedData.email,
-        //   contact: receivedData.contact,
-        //   hostelName: "Aryab", // bhai hostel name bhijwa do backend se
-        //   roomNo: "GI3" // bhai room no. bhijwa do backend se
-        // };
-        // console.log("prev user", storeUser);
-        // console.log("now ready to populate ", user)
-        // dispatch(userActions.setUser(user));
-        // console.log("after population ", user)
         localStorage.setItem("token", JSON.stringify(data.data.token));
+        const user = {
+          name: data.data.user.name,
+          profileImage: data.data.user.profile_pic,
+        };
+        localStorage.setItem("user", JSON.stringify(user));
         toast.success(data.message);
-        // navigate("/");
-         form.reset();
+        navigate("/");
+        form.reset();
       } else {
         toast.error(data.message);
       }
@@ -152,9 +135,8 @@ function App() {
                 placeholder="Contact No."
                 required
               />
-              <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit" >
+              <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit">
                 <Components.Input
-
                   className="outline-none flex-grow px-4 border-black"
                   name="password"
                   type={`${showPassword ? "text" : "password"}`}

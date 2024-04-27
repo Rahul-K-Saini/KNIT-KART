@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ThemeToggle from "./theme-toggle";
 import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
@@ -7,6 +7,9 @@ import logoDark from "../../assets/images/logo-dark.png";
 import { useSelector } from "react-redux";
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  const user = localStorage.getItem("user");
   const theme = useSelector((state) => state.theme.theme);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -16,6 +19,11 @@ function Navbar() {
 
   const handleBlur = () => {
     setIsFocused(false);
+  };
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    setIsLoggedIn(false);
   };
 
   return (
@@ -48,12 +56,42 @@ function Navbar() {
           <button className="dark:text-gray-50 bg-secondary data:bg-secondary px-4 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105">
             <a href="#products">Products</a>
           </button>
-          <Link
-            to="/entrance"
-            className="dark:text-gray-50 bg-accent data:bg-accent px-4 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105"
-          >
-            Login
-          </Link>
+          {user ? (
+            <>
+              <div className="dropdown dropdown-end">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img alt="Profile image" src={user?.profileImage} />
+                    </div>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52"
+                  >
+                    <li>
+                      <Link to="/profile" className="justify-between">
+                        Profile
+                      </Link>
+                    </li>
+                    <li className="cursor-pointer" onClick={handleLogOut}>
+                      Logout
+                    </li>
+                    </ul>
+                    </div>
+
+            </>
+          ) : (
+            <Link
+              to="/entrance"
+              className="dark:text-gray-50 bg-accent data:bg-accent px-4 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105"
+            >
+              Login
+            </Link>
+          )}
           <ThemeToggle />
         </div>
       </div>

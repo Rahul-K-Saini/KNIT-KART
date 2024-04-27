@@ -22,18 +22,17 @@ export default function ProtectedRoute({ children }) {
           },
         }
       );
-      console.log("res se upr");
       if (res.data.success) {
-        console.log(res.data.data.user)
+        console.log(res.data.data.user);
         dispatch(userActions.setUser(res.data.data.user));
       } else {
-        console.log("else m aagya");
+        <Navigate to="/entrance" />;
         localStorage.clear();
       }
     } catch (error) {
+      localStorage.clear();
       console.log(error);
     } finally {
-
       setLoading(false);
     }
   };
@@ -48,9 +47,9 @@ export default function ProtectedRoute({ children }) {
     return <div>Loading...</div>;
   }
 
-  if (!localStorage.getItem("token")) {
+  if (localStorage.getItem("token")) {
+    return children;
+  } else {
     return <Navigate to="/entrance" />;
   }
-
-  return children;
 }

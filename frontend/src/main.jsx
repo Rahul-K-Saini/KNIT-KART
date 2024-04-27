@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "postad",
-        element: <PostAd />,
+        element: <ProtectedRoute><PostAd /></ProtectedRoute>,
       },
       {
         path: "profile",
