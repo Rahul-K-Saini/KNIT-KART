@@ -22,6 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
+       
       },
       {
         path: "entrance",
@@ -33,11 +34,11 @@ const router = createBrowserRouter([
       },
       {
         path: "postad",
-        element: <PostAd />,
+        element: <ProtectedRoute><PostAd /></ProtectedRoute>,
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: <ProtectedRoute><Profile /></ProtectedRoute>,
       },
       {
         path: "*",

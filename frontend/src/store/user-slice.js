@@ -8,9 +8,9 @@ export default createSlice({
     name: 'user',
     initialState: initialUserState,
     reducers: {
-        setUser: (state, action) => void(state.user = action.payload),
-        // setUser(state, action) {
-        //     return state.user = action.payload;
-        // },
-    },
+        setUser: (state, action) => {
+            state.user = action.payload
+        }
+    }
 })
+

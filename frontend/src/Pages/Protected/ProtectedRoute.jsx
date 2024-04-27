@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,13 +7,14 @@ import { userActions } from "../../store/index";
 export default function ProtectedRoute({ children }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-
+  const [loading, setLoading] = useState(true);
+  console.log(user);
   const getUser = async () => {
     try {
       const res = await axios.post(
         "http://localhost:8000/user/get-user",
         {
-          token: localStorage.getItem("token"),
+          token: JSON.parse(localStorage.getItem("token")),
         },
         {
           headers: {
@@ -21,16 +22,18 @@ export default function ProtectedRoute({ children }) {
           },
         }
       );
-      console.log(res);
-      // if (res.success) {
-      //   dispatch(res.data.data);
-      // } else {
-      //   <Navigate to="/login" />;
-      //   localStorage.clear();
-      // }
+      if (res.data.success) {
+        console.log(res.data.data.user);
+        dispatch(userActions.setUser(res.data.data.user));
+      } else {
+        <Navigate to="/entrance" />;
+        localStorage.clear();
+      }
     } catch (error) {
       localStorage.clear();
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -39,6 +42,10 @@ export default function ProtectedRoute({ children }) {
       getUser();
     }
   }, [user]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (localStorage.getItem("token")) {
     return children;

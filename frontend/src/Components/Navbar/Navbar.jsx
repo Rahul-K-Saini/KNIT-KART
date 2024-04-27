@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ThemeToggle from "./theme-toggle";
 import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
@@ -10,6 +10,9 @@ import { HiOutlineBuildingStorefront } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  const user = localStorage.getItem("user");
   const theme = useSelector((state) => state.theme.theme);
   const [isFocused, setIsFocused] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
@@ -22,6 +25,7 @@ function Navbar() {
     setIsFocused(false);
   };
 
+<<<<<<< HEAD
   const handleSearchVisible = () => {
     setIsSearchVisible(true);
   }
@@ -29,6 +33,12 @@ function Navbar() {
   const handleCloseSearch = () => {
     setIsSearchVisible(false);
   }
+=======
+  const handleLogOut = () => {
+    localStorage.clear();
+    setIsLoggedIn(false);
+  };
+>>>>>>> 970c425bf897d8373b3122946e42fc7e89e21898
 
   return (
     <nav className="w-full px-4 py-1 top-0 sticky z-50 border-b-2 border-gray-300  bg-background">
@@ -84,6 +94,7 @@ function Navbar() {
             </a>
             <HiOutlineBuildingStorefront className="text-xl" />
           </button>
+<<<<<<< HEAD
           <Link
             to="/entrance"
             className="flex item-center justify-center dark:text-gray-50 bg-accent data:bg-accent md:px-4 px-2 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105"
@@ -91,6 +102,44 @@ function Navbar() {
             <span className="md:block mr-2 hidden">Login</span>
             <FaRegUserCircle className="text-xl" />
           </Link>
+=======
+          {user ? (
+            <>
+              <div className="dropdown dropdown-end">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img alt="Profile image" src={user?.profileImage} />
+                    </div>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52"
+                  >
+                    <li>
+                      <Link to="/profile" className="justify-between">
+                        Profile
+                      </Link>
+                    </li>
+                    <li className="cursor-pointer" onClick={handleLogOut}>
+                      Logout
+                    </li>
+                    </ul>
+                    </div>
+
+            </>
+          ) : (
+            <Link
+              to="/entrance"
+              className="dark:text-gray-50 bg-accent data:bg-accent px-4 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105"
+            >
+              Login
+            </Link>
+          )}
+>>>>>>> 970c425bf897d8373b3122946e42fc7e89e21898
           <ThemeToggle />
         </div>
       </div>
