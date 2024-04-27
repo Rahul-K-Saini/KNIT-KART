@@ -45,12 +45,12 @@ function Navbar() {
             />
             <Search className="absolute right-3 top-1/2 transform -translate-y-1/2" />
           </div>
-          <button className="dark:text-gray-50 bg-secondary data:bg-secondary px-4 py-2 rounded hover:opacity-85">
+          <button className="dark:text-gray-50 bg-secondary data:bg-secondary px-4 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105">
             <a href="#products">Products</a>
           </button>
           <Link
             to="/entrance"
-            className="dark:text-gray-50 bg-accent data:bg-accent px-4 py-2 rounded hover:opacity-85"
+            className="dark:text-gray-50 bg-accent data:bg-accent px-4 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105"
           >
             Login
           </Link>

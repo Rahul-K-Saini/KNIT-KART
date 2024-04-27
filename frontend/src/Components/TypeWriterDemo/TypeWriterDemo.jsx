@@ -12,10 +12,7 @@ export function TypewriterEffectDemo() {
       text: "for",
     },
     {
-      text: "Recycled",
-    },
-    {
-      text: "Treasures",
+      text: `Recycled Treasures`,
       className: "text-secondary dark:text-secondary",
     },
   ];

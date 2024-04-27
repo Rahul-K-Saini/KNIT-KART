@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ads from "./ads.json";
+import Aos from "aos";
 
 function AdDisplay({ selectedCategory }) {
   const [adsArr, setAdsArr] = useState([]);
@@ -17,6 +18,10 @@ function AdDisplay({ selectedCategory }) {
       setAdsArr(filteredAds.slice(0, displayCount));
     }
   }, [selectedCategory, displayCount]);
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, [])
 
   if (adsArr.length <= 0) {
     return (
@@ -37,13 +42,15 @@ function AdDisplay({ selectedCategory }) {
               <li
                 key={index}
                 className="inline-block w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-4 lg:mb-0 lg:px-2"
+                data-aos="fade-up"
               >
-                <div className="border rounded  p-4 mb-4 hover:scale-105 hover:shadow">
+                <div className="border rounded p-4 mb-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
                   <img src={ad.imageURL} alt="ad_img" className="mb-2" />
                   <h5 className="text-lg font-bold mb-1">₹ {ad.price}</h5>
                   <p className="text-sm mb-1">Ex. {ad.exchange}</p>
                   <p className="text-sm">{ad.description}</p>
                 </div>
+
               </li>
             ))}
           </ul>
@@ -51,7 +58,7 @@ function AdDisplay({ selectedCategory }) {
             <>
               <div className="text-center mt-4">
                 <button
-                  className="bg-primary  text-text font-bold py-2 px-4 rounded"
+                  className="bg-primary  text-text font-bold py-2 px-4 rounded transform transition-all duration-300 hover:scale-105"
                   onClick={handleViewMore}
                 >
                   View More

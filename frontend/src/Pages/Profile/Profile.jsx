@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import user from "../../assets/images/user.jpeg";
+import userImg from "../../assets/images/user.jpeg";
 import AdCard from "@/Components/AdCard/AdCard";
 import { FaRegEdit } from "react-icons/fa";
 import { MdModeEditOutline, MdOutlineManageAccounts, MdDashboard } from "react-icons/md";
@@ -163,7 +163,7 @@ const Profile = () => {
                             <><h1 className='md:text-3xl text-2xl'>Dashboard</h1></>
                         )}
                     </h1>
-                    <img src={user} alt="img" className='md:h-32 h-16 md:w-32 w-16 rounded-full' />
+                    <img src={userImg} alt="img" className='md:h-32 h-16 md:w-32 w-16 rounded-full' />
                 </div>
                 {/* Heading and pofile picture end */}
 
@@ -203,8 +203,8 @@ const Profile = () => {
 
                 {/* Save and cancel btn */}
                 <div className='flex items-start space-x-8 md:w-9/12 w-10/12 mx-auto'>
-                    <button className='border-2 border-accent text-accent text-lg py-1 px-6'>Cancel</button>
-                    <button className='border-2 border-accent bg-accent text-white text-lg py-1 px-6' onClick={handleSave}>Save</button>
+                    <button className='border-2 border-accent text-accent text-lg py-1 px-6 transform transition-all duration-300 hover:scale-105'>Cancel</button>
+                    <button className='border-2 border-accent bg-accent text-white text-lg py-1 px-6 transform transition-all duration-300 hover:scale-105' onClick={handleSave}>Save</button>
                 </div>
                 {/* Save and cancel btn */}
             </div>
