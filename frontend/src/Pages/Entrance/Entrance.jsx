@@ -137,11 +137,7 @@ function App() {
               />
               <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit">
                 <Components.Input
-<<<<<<< HEAD
-                  className="outline-none flex-grow border-black"
-=======
                   className="outline-none flex-grow px-4 border-black"
->>>>>>> 970c425bf897d8373b3122946e42fc7e89e21898
                   name="password"
                   type={`${showPassword ? "text" : "password"}`}
                   placeholder="Password"

@@ -25,20 +25,10 @@ function Navbar() {
     setIsFocused(false);
   };
 
-<<<<<<< HEAD
-  const handleSearchVisible = () => {
-    setIsSearchVisible(true);
-  }
-
-  const handleCloseSearch = () => {
-    setIsSearchVisible(false);
-  }
-=======
   const handleLogOut = () => {
     localStorage.clear();
     setIsLoggedIn(false);
   };
->>>>>>> 970c425bf897d8373b3122946e42fc7e89e21898
 
   return (
     <nav className="w-full px-4 py-1 top-0 sticky z-50 border-b-2 border-gray-300  bg-background">
@@ -94,15 +84,6 @@ function Navbar() {
             </a>
             <HiOutlineBuildingStorefront className="text-xl" />
           </button>
-<<<<<<< HEAD
-          <Link
-            to="/entrance"
-            className="flex item-center justify-center dark:text-gray-50 bg-accent data:bg-accent md:px-4 px-2 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105"
-          >
-            <span className="md:block mr-2 hidden">Login</span>
-            <FaRegUserCircle className="text-xl" />
-          </Link>
-=======
           {user ? (
             <>
               <div className="dropdown dropdown-end">
@@ -139,7 +120,6 @@ function Navbar() {
               Login
             </Link>
           )}
->>>>>>> 970c425bf897d8373b3122946e42fc7e89e21898
           <ThemeToggle />
         </div>
       </div>
