@@ -45,7 +45,7 @@ function Navbar() {
             <img
               src={theme === "light" ? logo : logoDark}
               alt="logo"
-              className="w-auto h-20"
+              className="w-auto h-20 object-contain"
             />
           </Link>
         </div>
