@@ -3,13 +3,12 @@ import { IoSunnyOutline } from "react-icons/io5";
 import { FiMoon } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { themeActions } from "../../store/index";
-
+import { useTheme } from "../../context/themeContext";
 function ThemeToggle() {
-  const theme = useSelector(state => state.theme.theme);
-  const dispatch = useDispatch();
+  const { theme, setTheme } = useTheme();
 
   const handleTheme = () => {
-    dispatch(themeActions.toggle());
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (

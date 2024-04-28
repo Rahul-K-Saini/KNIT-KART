@@ -96,7 +96,6 @@ function App() {
           name: data.data.user.name,
           profileImage: data.data.user.profile_pic,
         };
-        localStorage.setItem("user", JSON.stringify(user));
         toast.success(data.message);
         form.reset();
         navigate("/");

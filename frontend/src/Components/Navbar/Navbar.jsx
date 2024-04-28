@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import logoDark from "../../assets/images/logo-dark.png";
-import { useSelector } from "react-redux";
+import { useTheme } from "../../context/themeContext";
+import { useUserContext } from "@/context/userContext";
+
 
 function Navbar() {
-  
-  const user = JSON.parse(localStorage.getItem("user"));
-  const theme = useSelector((state) => state.theme.theme);
+
+  const {theme, setTheme} = useTheme();
+  const {user} = useUserContext(); 
+ 
   const [isFocused, setIsFocused] = useState(false);
   const token = localStorage.getItem("token");
   console.log(token);
