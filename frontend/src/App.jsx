@@ -13,6 +13,7 @@ import ProtectedRoute from "./Pages/Protected/ProtectedRoute";
 const App = () => {
   return (
     <>
+    {/* <h1>Hello</h1> */}
       <Navbar />
       <Routes>
         <Route

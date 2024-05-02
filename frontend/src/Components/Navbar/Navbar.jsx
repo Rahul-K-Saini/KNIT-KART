@@ -6,14 +6,19 @@ import logo from "../../assets/images/logo.png";
 import logoDark from "../../assets/images/logo-dark.png";
 import { useTheme } from "../../context/themeContext";
 import { useUserContext } from "@/context/userContext";
+import { FaRegUserCircle } from "react-icons/fa";
+import { HiOutlineBuildingStorefront } from "react-icons/hi2";
+import { RxCross1 } from "react-icons/rx";
 
 
 function Navbar() {
 
-  const {theme, setTheme} = useTheme();
-  const {user} = useUserContext(); 
- 
+  const { theme, setTheme } = useTheme();
+  const { user } = useUserContext();
   const [isFocused, setIsFocused] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [userMenu, setUserMenu] = useState(false);
+
   const token = localStorage.getItem("token");
   console.log(token);
   console.log("******2nd*****");
@@ -30,8 +35,19 @@ function Navbar() {
     location.reload();
   };
 
+  const handleSearchVisible = () => {
+    setIsSearchVisible(false)
+  }
+  const handleCloseSearch = () => {
+    setIsSearchVisible(false)
+  }
+
+  const avatarClickHandler = ()=>{
+    setUserMenu(!userMenu);
+  }
+
   return (
-    <nav className="w-full px-4 py-1 top-0 sticky z-50 border-b-2 border-gray-300  bg-background">
+    <nav className="w-full px-4 py-1 top-0 sticky z-50 border-gray-300  bg-background">
       <div className="flex justify-between items-center">
         <div className="min-w-fit">
           <Link to="/">
@@ -92,13 +108,14 @@ function Navbar() {
                   role="button"
                   className="btn btn-ghost btn-circle avatar"
                 >
-                  <div className="w-10 rounded-full">
+                  <div onClick={avatarClickHandler} className="w-10 rounded-full">
                     <img alt="Profile image" src={user.profileImage} />
                   </div>
                 </div>
                 <ul
+                  style={{display:userMenu?"block":"none"}}
                   tabIndex={0}
-                  className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52"
+                  className="absolute mt-3 z-[1] py-2 px-4 shadow menu menu-sm dropdown-content bg-white rounded-lg"
                 >
                   <li>
                     <Link to="/profile" className="justify-between">
