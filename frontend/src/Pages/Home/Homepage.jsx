@@ -16,7 +16,7 @@ function Homepage() {
       navigate("/entrance");
     }
   };
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const categories = [
     { id: 1, name: "Electronics" },
