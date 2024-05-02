@@ -16,7 +16,7 @@ function Homepage() {
       navigate("/entrance");
     }
   };
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const categories = [
     { id: 1, name: "Electronics" },
@@ -33,7 +33,7 @@ function Homepage() {
   };
   return (
     <>
-      <div className="flex justify-between items-center bg-background sticky top-20 z-50">
+      <div className="flex justify-between items-center bg-footer sticky top-20 z-10">
         <Categories
           categories={categories}
           selectedCategory={selectedCategory}

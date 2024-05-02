@@ -5,10 +5,12 @@ import { Search } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import logoDark from "../../assets/images/logo-dark.png";
 import { useSelector } from "react-redux";
+import { document } from "postcss";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+  const [userMenu, setUserMenu] = useState(false);
+
   const user = localStorage.getItem("user");
   const theme = useSelector((state) => state.theme.theme);
   const [isFocused, setIsFocused] = useState(false);
@@ -26,8 +28,12 @@ function Navbar() {
     setIsLoggedIn(false);
   };
 
+  const avatarClickHandler = ()=>{
+    setUserMenu(!userMenu);
+  }
+
   return (
-    <nav className="w-full px-4 py-1 top-0 sticky z-50 border-b-2 border-gray-300  bg-background">
+    <nav className="w-full px-4 py-1 top-0 sticky z-50 border-gray-300  bg-background">
       <div className="flex justify-between items-center">
         <div>
           <Link to="/">
@@ -40,9 +46,8 @@ function Navbar() {
         </div>
         <div className="flex items-center space-x-8">
           <div
-            className={`relative ${
-              isFocused ? "w-60" : "w-40"
-            } transition-width duration-300 ease-in-out`}
+            className={`relative ${isFocused ? "w-60" : "w-40"
+              } transition-width duration-300 ease-in-out`}
           >
             <input
               type="search"
@@ -59,29 +64,30 @@ function Navbar() {
           {user ? (
             <>
               <div className="dropdown dropdown-end">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn btn-ghost btn-circle avatar"
-                  >
-                    <div className="w-10 rounded-full">
-                      <img alt="Profile image" src={user?.profileImage} />
-                    </div>
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div onClick={avatarClickHandler} className="w-10 rounded-full">
+                    <img alt="Profile image" src={user?.profileImage} />
                   </div>
-                  <ul
-                    tabIndex={0}
-                    className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52"
-                  >
-                    <li>
-                      <Link to="/profile" className="justify-between">
-                        Profile
-                      </Link>
-                    </li>
-                    <li className="cursor-pointer" onClick={handleLogOut}>
-                      Logout
-                    </li>
-                    </ul>
-                    </div>
+                </div>
+                <ul
+                  style={{display: userMenu?"block":"none"}}
+                  tabIndex={0}
+                  className={`absolute mt-3 z-[1] py-2 px-4 shadow menu menu-sm dropdown-content bg-white rounded-lg`}
+                >
+                  <li>
+                    <Link to="/profile" className="justify-between">
+                      Profile
+                    </Link>
+                  </li>
+                  <li className="cursor-pointer" onClick={handleLogOut}>
+                    Logout
+                  </li>
+                </ul>
+              </div>
 
             </>
           ) : (

@@ -19,7 +19,7 @@ function Hero() {
   return (
     <section className="w-full bg-background text-text h-fit">
       <div className="flex md:flex-row flex-col justify-between py-8">
-        <div className="flex-1 flex flex-col justify-center md:items-start items-center px-5" data-aos="fade-right">
+        <div className="flex-1 flex flex-col justify-center md:items-start items-center px-5 mb-1" data-aos="fade-right">
           <TypewriterEffectDemo />
           <p className="mt-5 mb-3 md:text-xl md:text-start text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
