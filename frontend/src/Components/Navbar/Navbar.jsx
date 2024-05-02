@@ -4,19 +4,19 @@ import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import logoDark from "../../assets/images/logo-dark.png";
-import { useSelector } from "react-redux";
-import { FaRegUserCircle } from "react-icons/fa";
-import { HiOutlineBuildingStorefront } from "react-icons/hi2";
-import { RxCross1 } from "react-icons/rx";
+import { useTheme } from "../../context/themeContext";
+import { useUserContext } from "@/context/userContext";
+
 
 function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const user = localStorage.getItem("user");
-  const theme = useSelector((state) => state.theme.theme);
+  const {theme, setTheme} = useTheme();
+  const {user} = useUserContext(); 
+ 
   const [isFocused, setIsFocused] = useState(false);
-  const [isSearchVisible, setIsSearchVisible] = useState(false);
-
+  const token = localStorage.getItem("token");
+  console.log(token);
+  console.log("******2nd*****");
   const handleFocus = () => {
     setIsFocused(true);
   };
@@ -27,15 +27,8 @@ function Navbar() {
 
   const handleLogOut = () => {
     localStorage.clear();
-    setIsLoggedIn(false);
+    location.reload();
   };
-
-  const handleSearchVisible = () => {
-    setIsSearchVisible(true)
-  }
-  const handleCloseSearch = () => {
-    setIsSearchVisible(false)
-  }
 
   return (
     <nav className="w-full px-4 py-1 top-0 sticky z-50 border-b-2 border-gray-300  bg-background">
@@ -91,7 +84,7 @@ function Navbar() {
             </a>
             <HiOutlineBuildingStorefront className="text-xl" />
           </button>
-          {user ? (
+          {user && (
             <>
               <div className="dropdown dropdown-end">
                 <div
@@ -100,7 +93,7 @@ function Navbar() {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="w-10 rounded-full">
-                    <img alt="Profile image" src={user?.profileImage} />
+                    <img alt="Profile image" src={user.profileImage} />
                   </div>
                 </div>
                 <ul
@@ -117,9 +110,9 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
-
             </>
-          ) : (
+          )}
+          {!user && (
             <Link
               to="/entrance"
               className="flex item-center justify-center dark:text-gray-50 bg-accent data:bg-accent md:px-4 px-2 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105"

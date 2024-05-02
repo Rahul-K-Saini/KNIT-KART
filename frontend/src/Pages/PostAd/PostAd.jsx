@@ -26,13 +26,16 @@ function PostAd() {
               id="categories"
               className="border-2 border-gray-200 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
             >
-              <option value="">Study Material</option>
-              <option value="">Electronics</option>
-              <option value="">Household</option>
-              <option value="">Sports item</option>
-              <option value="">Kitchen Ware</option>
-              <option value="">Stationaries </option>
-              <option value="">Furniture</option>
+
+              <option value="">Select</option>
+              <option value="studyMaterial">Study Material</option>
+              <option value="electronics">Electronics</option>
+              <option value="household">Household</option>
+              <option value="sportsItems">Sports item</option>
+              <option value="kitchenware">Kitchen Ware</option>
+              <option value="stationeries">Stationeries </option>
+              <option value="furniture">Furniture</option>
+              <option value="others">Other</option>
             </select>
           </div>
           <div className="mb-4">
