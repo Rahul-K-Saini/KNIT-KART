@@ -7,15 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AdDisplay from "./AdDisplay";
 
 function Homepage() {
-  const navigate = useNavigate();
-  const [isLoggedin, setisLoggedin] = useState(true);
-  const postAdHandler = () => {
-    if (isLoggedin) {
-      navigate("/postAd");
-    } else {
-      navigate("/entrance");
-    }
-  };
+
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const categories = [
@@ -40,7 +32,7 @@ function Homepage() {
           onSelectCategory={handleSelectCategory}
         />
         <Link
-          onClick={postAdHandler}
+          to="/postad"
           className="dark:text-gray-50 bg-accent data:bg-accent mx-6 px-4 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105 animate-wiggle animate-infinite animate-duration-[2500ms]"
         >
           Post Ad

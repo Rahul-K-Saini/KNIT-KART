@@ -23,7 +23,7 @@ const adSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ["Electronics and gadgets", "Household", "Sports Items", "Kitchenware", "Stationaries", "Furniture", "Others"],
+        enum: ["electronics", "household", "sportsItems", "kitchenware", "stationeries", "furniture", "other","studyMaterial"],
         required: true
     }
 },{timestamps:true});
