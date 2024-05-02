@@ -32,7 +32,7 @@ function Hero() {
           </button>
         </div>
         <div className="flex-1 justify-center px-3">
-          <img src={heroImage} alt="Hero" className="h-full" data-aos="fade-left"/>
+          <img src={heroImage} alt="Hero" className="h-full object-cover" data-aos="fade-left"/>
         </div>
       </div>
     </section>

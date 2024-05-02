@@ -166,7 +166,7 @@ function App() {
               />
               <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative">
                 <Components.Input
-                  className="outline-none flex-grow  px-4"
+                  className="outline-none flex-grow"
                   name="password"
                   type={`${showPassword ? "text" : "password"}`}
                   placeholder="Password"
