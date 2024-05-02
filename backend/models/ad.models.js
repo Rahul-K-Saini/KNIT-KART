@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
 
 const adSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true,
     },
-    image: {
+    images: {
         type: [String],
         required: true,
     },
-    exchange_item: {
+    exchange: {
         type: String,
         required: true
     },
@@ -23,9 +23,16 @@ const adSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ["electronics", "household", "sportsItems", "kitchenware", "stationeries", "furniture", "other","studyMaterial"],
+        enum: ["electronics", "household", "sportsItems", "kitchenware", "stationeries", "furniture", "other", "studyMaterial"],
+        required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user", 
         required: true
     }
-},{timestamps:true});
+}, { timestamps: true });
 
-export default Ad = mongoose.model("ad", adSchema);
+const Ad = mongoose.model("Ad", adSchema); 
+
+export default Ad; 
