@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-function ImageUpload() {
+
+
+function ImageUpload(props) {
+
   const [images, setImages] = useState(new Array(5).fill(null));
+  
+  useEffect(() => {
+    props.handleImage(images);
+  }, [images])
 
   const handleImageUpload = (event, index) => {
+    console.log("prev images : " + images)
     const file = event.target.files[0];
     const reader = new FileReader();
 
@@ -21,6 +29,7 @@ function ImageUpload() {
       updatedImages[index] = null;
       setImages(updatedImages);
     }
+    console.log(images);
   };
 
   const handleImageClick = (index) => {
@@ -28,15 +37,14 @@ function ImageUpload() {
   };
 
   const handleRemoveImage = (image) => {
-    console.log(images);
     for (let i = 0; i < images.length; i++) {
       if (images[i] === image) {
         images[i] = null;
-        break; // Once we nullify the target image, we can exit the loop
+        break;
       }
     }
     console.log(images);
-    setImages([...images]); // Ensure state update by creating a new reference
+    setImages([...images]);
   };
 
   return (

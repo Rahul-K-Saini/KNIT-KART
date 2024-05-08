@@ -96,10 +96,9 @@ function App() {
           name: data.data.user.name,
           profileImage: data.data.user.profile_pic,
         };
-        localStorage.setItem("user", JSON.stringify(user));
         toast.success(data.message);
-        navigate("/");
         form.reset();
+        navigate("/");
       } else {
         toast.error(data.message);
       }
@@ -167,7 +166,7 @@ function App() {
               />
               <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative">
                 <Components.Input
-                  className="outline-none flex-grow  px-4"
+                  className="outline-none flex-grow"
                   name="password"
                   type={`${showPassword ? "text" : "password"}`}
                   placeholder="Password"

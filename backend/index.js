@@ -1,7 +1,8 @@
 import express from "express";
 import connectToDB from "./db/connection.js";
 import dotenv from "dotenv";
-import userRouter from "./routes/user.routes.js";
+import userRouter from "./routes/user.route.js";
+import adRouter from "./routes/ad.route.js";
 import cors from "cors";
 
 const app = express();
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
+app.use("/ad",adRouter);
 
 connectToDB(process.env.MONGODB_URL || "mongodb://localhost:27017/knit-kart");
 
