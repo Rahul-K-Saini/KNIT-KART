@@ -25,7 +25,7 @@ function Homepage() {
   };
   return (
     <>
-      <div className="flex justify-between items-center bg-footer sticky top-20">
+      <div className="flex justify-between items-center bg-footer sticky top-20 z-[1]">
         <Categories
           categories={categories}
           selectedCategory={selectedCategory}
