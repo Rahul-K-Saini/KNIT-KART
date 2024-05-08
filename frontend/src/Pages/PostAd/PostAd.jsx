@@ -1,5 +1,6 @@
 import React from "react";
 import ImageUpload from "../../Components/ImageUpload/ImageUpload";
+
 function PostAd() {
   return (
     <div className="w-full bg-background">
@@ -26,7 +27,6 @@ function PostAd() {
               id="categories"
               className="border-2 border-gray-200 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
             >
-
               <option value="">Select</option>
               <option value="studyMaterial">Study Material</option>
               <option value="electronics">Electronics</option>

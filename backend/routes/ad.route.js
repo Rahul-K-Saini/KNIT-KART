@@ -12,7 +12,7 @@ adRouter.post('/postad', upload.array('images'), async (req, res) => {
 
     try {
         const uploadedImages = [];
-        
+
         for (const file of req.files) {
             const result = await cloudinary.uploader.upload(file.path);
             uploadedImages.push(result.secure_url);
@@ -38,5 +38,11 @@ adRouter.post('/postad', upload.array('images'), async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+
+adRouter.post('/getAllAds', async (req, res) => {
+    const ads = await Ad.find({});
+    return res.json(ads);
+})
 
 export default adRouter;

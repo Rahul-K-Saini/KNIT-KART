@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from "react";
-import ads from "./ads.json";
 import Aos from "aos";
 
 function AdDisplay({ selectedCategory }) {
+  const [ads,setAds] = useState([]);
   const [adsArr, setAdsArr] = useState([]);
   const [displayCount, setDisplayCount] = useState(4);
+
+  useEffect(() => {
+    getAds();
+  }, []);
+  
+  const getAds = async () => {
+    const res = await fetch("http://localhost:8000/ad/getAllAds");
+    console.log(res);
+    const data = await res.json();
+    setAds(data);
+  };
+
 
   const handleViewMore = () => {
     setDisplayCount(displayCount + 4);
@@ -21,7 +33,7 @@ function AdDisplay({ selectedCategory }) {
 
   useEffect(() => {
     Aos.init({ duration: 1000 });
-  }, [])
+  }, []);
 
   if (adsArr.length <= 0) {
     return (
@@ -50,7 +62,6 @@ function AdDisplay({ selectedCategory }) {
                   <p className="text-sm mb-1">Ex. {ad.exchange}</p>
                   <p className="text-sm">{ad.description}</p>
                 </div>
-
               </li>
             ))}
           </ul>

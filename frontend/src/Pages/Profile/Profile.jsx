@@ -15,7 +15,8 @@ const Profile = () => {
     const [disabled, setDisabled] = useState(true);
     const [activeSection, setActiveSection] = useState('profile');
 
-    let user = useUserContext();
+    let {user} = useUserContext();
+    
 
     if (!user) {
         user = {
