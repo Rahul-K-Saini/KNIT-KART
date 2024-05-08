@@ -36,7 +36,7 @@ function Navbar() {
   };
 
   const handleSearchVisible = () => {
-    setIsSearchVisible(false)
+    setIsSearchVisible(true)
   }
   const handleCloseSearch = () => {
     setIsSearchVisible(false)
