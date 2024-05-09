@@ -3,37 +3,48 @@ import ImageUpload from "../../Components/ImageUpload/ImageUpload";
 import axios from "axios";
 import { useUserContext } from "@/context/userContext";
 import toast, { Toaster } from "react-hot-toast";
+import './Loader.css'
 
 function PostAd() {
-  
+
   const { user } = useUserContext();
   const [imagesArr, setImagesArr] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   const imageArrHandler = (prop) => {
     setImagesArr(prop);
     // console.log("prop : "+prop)
   };
 
-  const [adData, setAdData] = useState({
-    id: "blah",
+  const cleanAdData = {
+    id: "",
     title: "",
     description: "",
     price: "",
     category: "",
-    e2change: "",
-  });
+    exchange: "",
+  }
 
-  
+  const [adData, setAdData] = useState(cleanAdData);
+
+  const clearAdData = () => {
+    setAdData(cleanAdData);
+  }
+
   const postAdHandler = async () => {
-    const formData = new FormData();
+
+    setLoader(true);
+    document.body.style.overflow='hidden';
     
+    const formData = new FormData();
+
     formData.append('id', user.user._id);
     formData.append('title', adData.title);
     formData.append('description', adData.description);
     formData.append('price', adData.price);
     formData.append('category', adData.category);
     formData.append('exchange', adData.exchange);
-    
+
     imagesArr.forEach((image) => {
       formData.append('images', image);
     });
@@ -42,12 +53,16 @@ function PostAd() {
     try {
       const res = await axios.post("http://localhost:8000/ad/postad", formData);
       console.log(res);
+      clearAdData();
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoader(false);
+      document.body.style.overflow='auto';
     }
   };
   
-
+  
   return (
     <div className="w-full bg-background">
       <Toaster />
@@ -144,6 +159,10 @@ function PostAd() {
           >
             Post Ad
           </button>
+
+          {
+            loader && <div className="backdrop"><div className="loader"></div></div>
+          }
         </div>
       </div>
     </div>
