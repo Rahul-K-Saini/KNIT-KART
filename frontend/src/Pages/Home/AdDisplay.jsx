@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Aos from "aos";
 import axios from "axios";
+import Ad from './Ad';
 
 function AdDisplay({ selectedCategory }) {
   const [ads,setAds] = useState([]);
@@ -56,12 +57,8 @@ function AdDisplay({ selectedCategory }) {
                 className="inline-block w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-4 lg:mb-0 lg:px-2"
                 data-aos="fade-up"
               >
-                <div className="border rounded p-4 mb-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                  <img src={ad.images[0]} alt="ad_img" className="mb-2" />
-                  <h5 className="text-lg font-bold mb-1">₹ {ad.price}</h5>
-                  <p className="text-sm mb-1">Ex. {ad.exchange}</p>
-                  <p className="text-sm">{ad.description}</p>
-                </div>
+                <Ad ad={ad}/>
+
               </li>
             ))}
           </ul>
