@@ -67,7 +67,6 @@ const Profile = () => {
     };
 
     const handleSave = () => {
-        console.log("Updated Profile Data: is", formData);
     };
 
     const DUMMY_DATA = [

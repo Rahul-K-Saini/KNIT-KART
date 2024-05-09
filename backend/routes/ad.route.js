@@ -18,7 +18,7 @@ adRouter.post('/postad', upload.array('images'), async (req, res) => {
             uploadedImages.push(result.secure_url);
             await fs.unlink(file.path);
         }
-
+        console.log(uploadedImages);
         const { id, title, description, price, category, exchange } = req.body;
 
         const newAd = {

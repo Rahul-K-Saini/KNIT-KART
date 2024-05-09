@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Aos from "aos";
+import axios from "axios";
 
 function AdDisplay({ selectedCategory }) {
-  const [ads,setAds] = useState([]);
+  const [ads, setAds] = useState([]);
   const [adsArr, setAdsArr] = useState([]);
   const [displayCount, setDisplayCount] = useState(4);
 
   useEffect(() => {
     getAds();
   }, []);
-  
-  const getAds = async () => {
-    const res = await fetch("http://localhost:8000/ad/getAllAds");
-    console.log(res);
-    const data = await res.json();
-    setAds(data);
-  };
 
+  const getAds = async () => {
+    try {
+      const res = await axios.post("http://localhost:8000/ad/getAllAds");
+      setAds(res.data);
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const handleViewMore = () => {
     setDisplayCount(displayCount + 4);

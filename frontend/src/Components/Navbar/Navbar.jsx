@@ -20,8 +20,6 @@ function Navbar() {
   const [userMenu, setUserMenu] = useState(false);
 
   const token = localStorage.getItem("token");
-  console.log(token);
-  console.log("******2nd*****");
   const handleFocus = () => {
     setIsFocused(true);
   };
@@ -42,7 +40,7 @@ function Navbar() {
     setIsSearchVisible(false)
   }
 
-  const avatarClickHandler = ()=>{
+  const avatarClickHandler = () => {
     setUserMenu(!userMenu);
   }
 
@@ -113,16 +111,17 @@ function Navbar() {
                   </div>
                 </div>
                 <ul
-                  style={{display:userMenu?"block":"none"}}
+                  onClick={avatarClickHandler}
+                  style={{ display: userMenu ? "block" : "none" }}
                   tabIndex={0}
-                  className="absolute mt-3 z-[1] py-2 px-4 shadow menu menu-sm dropdown-content bg-white rounded-lg"
+                  className="absolute mt-3 z-[1] shadow menu menu-sm dropdown-content bg-white rounded-lg"
                 >
-                  <li>
-                    <Link to="/profile" className="justify-between">
+                  <Link to="/profile" className="justify-between">
+                    <li className="px-4 py-2 cursor-pointer">
                       Profile
-                    </Link>
-                  </li>
-                  <li className="cursor-pointer" onClick={handleLogOut}>
+                    </li>
+                  </Link>
+                  <li className="px-4 py-2 cursor-pointer" onClick={handleLogOut}>
                     Logout
                   </li>
                 </ul>
