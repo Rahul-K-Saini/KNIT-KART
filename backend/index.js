@@ -11,8 +11,6 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8000;
 
-// Now you can safely access the environment variables
-console.log(process.env.MONGO_URL);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
