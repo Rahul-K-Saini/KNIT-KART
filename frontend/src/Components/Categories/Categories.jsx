@@ -7,11 +7,12 @@ const Categories = ({ categories, selectedCategory, onSelectCategory }) => {
         <h3 className="text-base text-text font-semibold">Categories:</h3>
         {/* For larger screen */}
         <div className="hidden md:flex gap-2 items-center">
+          {/* console.log("catagories: "+categories); */}
           {categories.map((category) => (
             <li
               key={category.id}
               onClick={() => onSelectCategory(category.name)}
-              className={`cursor-pointer py-1 px-3 rounded transform transition-all duration-300 hover:scale-105 ${selectedCategory === category.name
+              className={`cursor-pointer py-1 px-3 rounded transform transition-all duration-300 hover:scale-105 ${(selectedCategory === category.name)
                 ? "bg-secondary text-white"
                 : "bg-white"
                 }`}
@@ -39,8 +40,8 @@ const Categories = ({ categories, selectedCategory, onSelectCategory }) => {
         </select>
 
 
-      </ul>
-    </div>
+      </ul >
+    </div >
   );
 };
 
