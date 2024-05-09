@@ -54,7 +54,6 @@ function App() {
       if (data.success) {
         toast.success(data.message);
         setSignIn(true);
-        console.log(data);
         form.reset();
       } else {
         let message = data.message.message;
@@ -90,7 +89,6 @@ function App() {
         }
       );
       if (data.success) {
-        console.log(data);
         localStorage.setItem("token", JSON.stringify(data.data.token));
         const user = {
           name: data.data.user.name,

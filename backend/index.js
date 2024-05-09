@@ -4,13 +4,15 @@ import dotenv from "dotenv";
 import userRouter from "./routes/user.route.js";
 import adRouter from "./routes/ad.route.js";
 import cors from "cors";
-
+import bodyParser from 'body-parser';
 const app = express();
 
 const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({origin:"http://localhost:5173", }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 dotenv.config();
 

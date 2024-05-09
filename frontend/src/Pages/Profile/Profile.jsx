@@ -15,7 +15,8 @@ const Profile = () => {
     const [disabled, setDisabled] = useState(true);
     const [activeSection, setActiveSection] = useState('profile');
 
-    let user = useUserContext();
+    let {user} = useUserContext();
+    
 
     if (!user) {
         user = {
@@ -66,7 +67,6 @@ const Profile = () => {
     };
 
     const handleSave = () => {
-        console.log("Updated Profile Data: is", formData);
     };
 
     const DUMMY_DATA = [

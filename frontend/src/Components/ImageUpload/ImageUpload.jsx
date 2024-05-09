@@ -1,50 +1,39 @@
 import React, { useEffect, useState } from "react";
 
-
-
-function ImageUpload(props) {
-
+function ImageUpload({ handleImage }) {
   const [images, setImages] = useState(new Array(5).fill(null));
-  
+
   useEffect(() => {
-    props.handleImage(images);
-  }, [images])
+    handleImage(images.filter((image) => image !== null));
+  }, [images]);
 
   const handleImageUpload = (event, index) => {
-    console.log("prev images : " + images)
     const file = event.target.files[0];
     const reader = new FileReader();
 
     reader.onloadend = () => {
       const updatedImages = [...images];
-      updatedImages[index] = reader.result;
+      updatedImages[index] = file; // Storing the file object in the array
       setImages(updatedImages);
     };
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      // If no file is selected, set the entry to null
       const updatedImages = [...images];
       updatedImages[index] = null;
       setImages(updatedImages);
     }
-    console.log(images);
   };
 
   const handleImageClick = (index) => {
     document.getElementById(`imageInput-${index}`).click();
   };
 
-  const handleRemoveImage = (image) => {
-    for (let i = 0; i < images.length; i++) {
-      if (images[i] === image) {
-        images[i] = null;
-        break;
-      }
-    }
-    console.log(images);
-    setImages([...images]);
+  const handleRemoveImage = (index) => {
+    const updatedImages = [...images];
+    updatedImages[index] = null;
+    setImages(updatedImages);
   };
 
   return (
@@ -62,13 +51,13 @@ function ImageUpload(props) {
               {image ? (
                 <>
                   <img
-                    src={image}
+                    src={URL.createObjectURL(image)}
                     alt={`Uploaded ${index + 1}`}
                     className="size-16 object-cover rounded cursor-pointer relative"
                     onClick={() => handleImageClick(index)}
                   />
                   <button
-                    onClick={() => handleRemoveImage(image)}
+                    onClick={() => handleRemoveImage(index)}
                     className="absolute top-[-10px] right-[-12px] px-1 text-sm "
                   >
                     ❌

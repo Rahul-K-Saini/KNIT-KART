@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from "react";
-import ads from "./ads.json";
 import Aos from "aos";
+import axios from "axios";
 
 function AdDisplay({ selectedCategory }) {
+  const [ads,setAds] = useState([]);
   const [adsArr, setAdsArr] = useState([]);
   const [displayCount, setDisplayCount] = useState(4);
+
+  useEffect(() => {
+    getAds();
+  }, []);
+  
+  const getAds = async () => {
+    const res = await axios.post("http://localhost:8000/ad/getAllAds");
+    setAds(res.data);
+    setAdsArr(res.data.slice(0, displayCount));
+  };
+
 
   const handleViewMore = () => {
     setDisplayCount(displayCount + 4);
@@ -21,7 +33,7 @@ function AdDisplay({ selectedCategory }) {
 
   useEffect(() => {
     Aos.init({ duration: 1000 });
-  }, [])
+  }, []);
 
   if (adsArr.length <= 0) {
     return (
@@ -45,12 +57,11 @@ function AdDisplay({ selectedCategory }) {
                 data-aos="fade-up"
               >
                 <div className="border rounded p-4 mb-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                  <img src={ad.imageURL} alt="ad_img" className="mb-2" />
+                  <img src={ad.images[0]} alt="ad_img" className="mb-2" />
                   <h5 className="text-lg font-bold mb-1">₹ {ad.price}</h5>
                   <p className="text-sm mb-1">Ex. {ad.exchange}</p>
                   <p className="text-sm">{ad.description}</p>
                 </div>
-
               </li>
             ))}
           </ul>

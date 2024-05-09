@@ -23,7 +23,6 @@ export default function ProtectedRoute({ children }) {
                 localStorage.clear()
             }
         } catch (error) {
-          console.log("yahan error hai ");
             localStorage.clear()
             console.log(error)
         }

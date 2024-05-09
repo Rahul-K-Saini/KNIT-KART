@@ -20,8 +20,6 @@ function Navbar() {
   const [userMenu, setUserMenu] = useState(false);
 
   const token = localStorage.getItem("token");
-  console.log(token);
-  console.log("******2nd*****");
   const handleFocus = () => {
     setIsFocused(true);
   };
