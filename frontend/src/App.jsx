@@ -9,13 +9,20 @@ import Profile from "./Pages/Profile/Profile";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./Pages/Home/Homepage";
 import ProtectedRoute from "./Pages/Protected/ProtectedRoute";
+import Landing from "./Pages/Landing/Landing";
 
 const App = () => {
   return (
     <>
-    {/* <h1>Hello</h1> */}
+      {/* <h1>Hello</h1> */}
       <Navbar />
       <Routes>
+        <Route
+          path="/landing"
+          element={
+            <Landing />
+          }
+        />
         <Route
           path="/"
           element={
