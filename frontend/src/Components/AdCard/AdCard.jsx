@@ -6,12 +6,12 @@ const AdCard = ({ ad }) => {
             <div className="relative place-self-center flex w-80 flex-col mt-16 mb-16 rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                 <div
                     className={`relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-cover bg-center text-white shadow-lg shadow-blue-gray-500/40`}
-                    style={{ backgroundImage: `url(${ad.imageURL})` }}
+                    style={{ backgroundImage: `url(${ad.images[0]})` }}
                 ></div>
 
                 <div className="p-6">
                     <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        {ad.productName}
+                        {ad.title}
                     </h5>
                     <p className="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
                         {ad.description}

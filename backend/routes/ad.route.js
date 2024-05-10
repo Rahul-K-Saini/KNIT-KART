@@ -45,4 +45,12 @@ adRouter.post('/getAllAds', async (req, res) => {
     return res.json(ads);
 })
 
+
+adRouter.post('/getUserAds',async(req,res)=>{
+    const {id} = req.body;
+    const ads = await Ad.find({user:id});
+    return res.json(ads);
+    return res.json({message:"success"});
+})
+
 export default adRouter;
