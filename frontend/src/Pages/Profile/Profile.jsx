@@ -5,19 +5,18 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdModeEditOutline, MdOutlineManageAccounts, MdDashboard } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
 import { FaGear } from 'react-icons/fa6';
-import { useDispatch, useSelector } from "react-redux";
-import { userActions } from "../../store/index";
+import { useUserContext } from "@/context/userContext";
 
 
 const Profile = () => {
 
-    const dispatch = useDispatch();
 
     const [isEditable, setIsEditable] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [activeSection, setActiveSection] = useState('profile');
 
-    let user = useSelector(state => state.user.user);
+    let {user} = useUserContext();
+    
 
     if (!user) {
         user = {
@@ -68,8 +67,6 @@ const Profile = () => {
     };
 
     const handleSave = () => {
-        console.log("Updated Profile Data: is", formData);
-        dispatch(userActions.setUser(formData))
     };
 
     const DUMMY_DATA = [
@@ -204,8 +201,8 @@ const Profile = () => {
 
                 {/* Save and cancel btn */}
                 <div className='flex items-start space-x-8 md:w-9/12 w-10/12 mx-auto'>
-                    <button className='border-2 border-accent text-accent text-lg py-1 px-6'>Cancel</button>
-                    <button className='border-2 border-accent bg-accent text-white text-lg py-1 px-6' onClick={handleSave}>Save</button>
+                    <button className='border-2 border-accent text-accent text-lg py-1 px-6 transform transition-all duration-300 hover:scale-105'>Cancel</button>
+                    <button className='border-2 border-accent bg-accent text-white text-lg py-1 px-6 transform transition-all duration-300 hover:scale-105' onClick={handleSave}>Save</button>
                 </div>
                 {/* Save and cancel btn */}
             </div>

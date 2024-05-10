@@ -1,7 +1,6 @@
 import React from 'react'
 
 const AdCard = ({ ad }) => {
-    console.log(ad.imageURL)
     return (
         <>
             <div className="relative place-self-center flex w-80 flex-col mt-16 mb-16 rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">

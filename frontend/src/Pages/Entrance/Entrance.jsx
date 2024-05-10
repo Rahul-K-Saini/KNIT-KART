@@ -54,7 +54,6 @@ function App() {
       if (data.success) {
         toast.success(data.message);
         setSignIn(true);
-        console.log(data);
         form.reset();
       } else {
         let message = data.message.message;
@@ -90,8 +89,11 @@ function App() {
         }
       );
       if (data.success) {
-        console.log(data);
         localStorage.setItem("token", JSON.stringify(data.data.token));
+        const user = {
+          name: data.data.user.name,
+          profileImage: data.data.user.profile_pic,
+        };
         toast.success(data.message);
         form.reset();
         navigate("/");
@@ -130,9 +132,8 @@ function App() {
                 placeholder="Contact No."
                 required
               />
-              <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit" >
+              <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit">
                 <Components.Input
-
                   className="outline-none flex-grow px-4 border-black"
                   name="password"
                   type={`${showPassword ? "text" : "password"}`}
@@ -163,7 +164,7 @@ function App() {
               />
               <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative">
                 <Components.Input
-                  className="outline-none flex-grow  px-4"
+                  className="outline-none flex-grow"
                   name="password"
                   type={`${showPassword ? "text" : "password"}`}
                   placeholder="Password"
