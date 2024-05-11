@@ -15,6 +15,8 @@ function Navbar() {
 
   const { theme, setTheme } = useTheme();
   const { user } = useUserContext();
+  console.log(user);
+  console.log(user.user.profile_pic);
   const [isFocused, setIsFocused] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [userMenu, setUserMenu] = useState(false);
@@ -107,7 +109,7 @@ function Navbar() {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div onClick={avatarClickHandler} className="w-10 rounded-full">
-                    <img alt="Profile image" src={user.profileImage} />
+                    <img alt="Profile image" src={user.user.profile_pic} />
                   </div>
                 </div>
                 <ul
