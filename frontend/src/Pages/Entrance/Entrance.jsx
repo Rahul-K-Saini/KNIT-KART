@@ -96,7 +96,7 @@ function App() {
         };
         toast.success(data.message);
         form.reset();
-        navigate("/");
+        navigate("/home");
       } else {
         toast.error(data.message);
       }
