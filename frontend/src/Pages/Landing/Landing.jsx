@@ -9,19 +9,22 @@ import landingHeroImg from '../../assets/images/landingHeroImg.jpg';
 const Landing = () => {
     return (
         <>
-            <div className=" bg-cover bg-center" style={{ backgroundImage: `url(${landingHeroImg})` }}>
+            <div className="bg-cover bg-center" style={{ backgroundImage: `url(${landingHeroImg})` }}>
                 {/* Hero Section */}
                 <CustomNavbar />
 
                 {/* Hero Section */}
                 <HeroLanding />
+            </div>
 
+            <div className="bg-cover bg-center" style={{ backgroundImage: `url(${landingHeroImg})` }}>
                 {/* FAQ */}
                 <FAQs />
 
                 {/* Our team */}
                 <OurTeam />
             </div>
+
         </>
     )
 }
