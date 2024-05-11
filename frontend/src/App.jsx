@@ -6,16 +6,21 @@ import Entrance from "./Pages/Entrance/Entrance";
 import AdPage from "./Pages/AdPage/AdPage";
 import PostAd from "./Pages/PostAd/PostAd";
 import Profile from "./Pages/Profile/Profile";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Homepage from "./Pages/Home/Homepage";
 import ProtectedRoute from "./Pages/Protected/ProtectedRoute";
 import Landing from "./Pages/Landing/Landing";
 
 const App = () => {
+  const location = useLocation();
+
+  // Check if the current location is the landing page
+  const isLandingPage = location.pathname === '/';
+
   return (
     <>
-      {/* <h1>Hello</h1> */}
-      <Navbar />
+      {/* Conditionally render the navbar based on the current route */}
+      {!isLandingPage && <Navbar />}
       <Routes>
         <Route
           path="/"
