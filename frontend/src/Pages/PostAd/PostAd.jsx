@@ -124,7 +124,7 @@ function PostAd() {
                 type="text"
                 placeholder="Price"
                 id="price"
-                className=" border-l-[1px] border-text px-2 w-[97%] rounded py-2  focus:outline-none"
+                className=" border-l-[1px] border-text px-2 w-[97%] rounded py-2  focus:outline-none text-black"
               />
             </div>
           </div>
