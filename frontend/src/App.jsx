@@ -18,13 +18,13 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route
-          path="/landing"
+          path="/"
           element={
             <Landing />
           }
         />
         <Route
-          path="/"
+          path="/home"
           element={
             <ProtectedRoute>
               <Homepage />
@@ -42,7 +42,7 @@ const App = () => {
         />
         <Route path="*" element={<Page404 />} />
         <Route
-          path="/adpage"
+          path="/ad/:id"
           element={
             <ProtectedRoute>
               <AdPage />
