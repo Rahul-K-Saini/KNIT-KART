@@ -290,10 +290,10 @@ main {
 		background-size: cover;
 	}
 
-	.img-1 {
+	/* .img-1 {
 		background-image: url(../../assets/images/product-1.jpg);
-	}
-
+	} */
+/* 
 	.img-2 {
 		background-image: url(../../assets/images/product-2.jpg);
 	}
@@ -304,7 +304,7 @@ main {
 
 	.img-4 {
 		background-image: url(../../assets/images/product-4.jpg);
-	}
+	} */
 
 	.images-modal {
 		position: absolute;
