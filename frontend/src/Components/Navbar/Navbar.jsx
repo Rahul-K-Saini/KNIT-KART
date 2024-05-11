@@ -15,8 +15,6 @@ function Navbar() {
 
   const { theme, setTheme } = useTheme();
   const { user } = useUserContext();
-  console.log(user);
-  console.log(user.user.profile_pic);
   const [isFocused, setIsFocused] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [userMenu, setUserMenu] = useState(false);
