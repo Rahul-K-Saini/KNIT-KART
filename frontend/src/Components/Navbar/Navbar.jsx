@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ThemeToggle from "./theme-toggle";
 import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
