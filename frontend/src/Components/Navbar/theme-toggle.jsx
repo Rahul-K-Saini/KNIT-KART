@@ -1,14 +1,12 @@
 import React from "react";
 import { IoSunnyOutline } from "react-icons/io5";
 import { FiMoon } from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
-import { themeActions } from "../../store/index";
 import { useTheme } from "../../context/themeContext";
 function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   const handleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    toggleTheme();
   };
 
   return (
