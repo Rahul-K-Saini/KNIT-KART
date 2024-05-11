@@ -4,25 +4,50 @@ import OurTeam from '@/Components/OurTeam/OurTeam'
 import HeroLanding from './HeroLanding'
 import CustomNavbar from './CustomNavbar'
 import landingHeroImg from '../../assets/images/landingHeroImg.jpg';
+import bgVid from '../../assets/bgvid.mp4';
 
 
 const Landing = () => {
     return (
         <>
-            <div className="bg-cover bg-center" style={{ backgroundImage: `url(${landingHeroImg})` }}>
+            <div className="bg-cover bg-center">
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    className="absolute inset-0 w-full z-[-1] h-full object-cover"
+                >
+                    <source src={bgVid} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
                 {/* Hero Section */}
                 <CustomNavbar />
 
                 {/* Hero Section */}
                 <HeroLanding />
             </div>
+            <div className='relative'>
 
-            <div className="bg-cover bg-center" style={{ backgroundImage: `url(${landingHeroImg})` }}>
                 {/* FAQ */}
                 <FAQs />
+            </div>
+
+            <div className="relative bg-cover bg-center">
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    className="absolute inset-0 w-full z-[-1] h-full object-cover"
+                >
+                    <source src={bgVid} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
 
                 {/* Our team */}
-                <OurTeam />
+                <div className='relative'>
+
+                    <OurTeam />
+                </div>
             </div>
 
         </>
