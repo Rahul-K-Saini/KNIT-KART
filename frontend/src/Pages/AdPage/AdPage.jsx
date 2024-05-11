@@ -218,7 +218,7 @@ const AdPage = () => {
             {/* cart button */}
             {/* <button className="add-to-cart" onClick={() => addItem()}> */}
             <button className="add-to-cart transform transition-all duration-300 hover:scale-105">
-              <span>Contact: +91{adDetails?.user.contact}</span>
+              <span>Contact: +91{adDetails?.user?.contact}</span>
             </button>
           </div>
         </div>
