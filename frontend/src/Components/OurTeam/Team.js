@@ -1,13 +1,13 @@
 import shantanu from '../../assets/teamImages/shantanu.png'
+import arshil from '../../assets/teamImages/arshil.jpg'
 
 const team = [
     {
         name: "Arshil Amaan Ansari",
         title: "Developer",
-        linkedin: "",
-        imageUrl: shantanu,
-        linkdeIn: "",
-        github: ""
+        imageUrl: arshil,
+        linkdeIn: "https://www.linkedin.com/in/arshil-amaan/",
+        github: "https://github.com/arshil-amaan/"
     },
     {
         name: "Rahul Saini",
