@@ -56,10 +56,13 @@ function PostAd() {
       console.log(res);
       clearAdData();
       childRef.current.clearImages()
+      toast.success("Ad Posted Successfully");
     } catch (error) {
       console.log(error);
+      toast.error("Couldn't Post Ad ! Try Again Later");
     } finally {
       setLoader(false);
+      
       document.body.style.overflow='auto';
     }
   };
