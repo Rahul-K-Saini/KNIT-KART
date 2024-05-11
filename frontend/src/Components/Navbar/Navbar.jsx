@@ -107,8 +107,7 @@ function Navbar() {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div onClick={avatarClickHandler} className="w-10 rounded-full">
-                    {/* <img alt="Profile image" src={user.profileImage} /> */}
-                    <img alt="Profile image" src={'https://res.cloudinary.com/dkevdedjr/image/upload/v1715405517/profile/user_vep4im.png'} />
+                    <img alt="Profile image" src={user.user.profile_pic} />
                   </div>
                 </div>
                 <ul

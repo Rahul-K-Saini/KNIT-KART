@@ -51,14 +51,14 @@ function AdDisplay({ selectedCategory }) {
   if (ads.length > 0) {
     return (
       <section className="bg-background py-6 px-2">
-        <h2 className="mb-4">~Products~</h2>
+        <h2 className="mb-4 text-text">~Products~</h2>
 
         <div>
           <ul className="text-text">
             {ads.map((ad, index) => (
               <li
                 key={index}
-                className="inline-block w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-4 lg:mb-0 lg:px-2"
+                className="inline-block w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-4 lg:mb-0 lg:px-2 my-8"
                 data-aos="fade-up"
               >
                 <Ad ad={ad}/>
@@ -66,6 +66,7 @@ function AdDisplay({ selectedCategory }) {
               </li>
             ))}
           </ul>
+          
           {/* {ads.length > ads.length && adsArr.length >= 4 ? (
             <>
               <div className="text-center mt-4">
