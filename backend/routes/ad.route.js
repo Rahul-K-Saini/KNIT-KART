@@ -50,7 +50,41 @@ adRouter.post('/getUserAds',async(req,res)=>{
     const {id} = req.body;
     const ads = await Ad.find({user:id});
     return res.json(ads);
-    return res.json({message:"success"});
 })
+
+
+adRouter.put('/updateAd', async (req, res) => {
+    const {id} = req.body;
+    try{
+        await Ad.updateOne({_id:id},{
+            $set:{
+                title:req.body.title,
+                description:req.body.description,
+                price:req.body.price,
+                category:req.body.category,
+                exchange:req.body.exchange,
+            }
+        })
+    }
+    catch(e){
+        console.log(e);
+        return res.status(500).json({error:e});
+    }
+    return res.json({message:"Ad Updated Successfully"});
+    
+})
+
+adRouter.delete('/deleteAd/:id', async (req, res) => {
+    const id = req.params.id; 
+    try {
+        const result = await Ad.deleteOne({ _id: id });
+        console.log(result);
+        return res.json({ message: "Ad Deleted Successfully" });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ error: e });
+    }
+});
+
 
 export default adRouter;

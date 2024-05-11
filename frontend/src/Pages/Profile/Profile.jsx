@@ -7,6 +7,7 @@ import { TbReload } from "react-icons/tb";
 import { FaGear } from 'react-icons/fa6';
 import { useUserContext } from "@/context/userContext";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const Profile = () => {
 
@@ -72,6 +73,16 @@ const Profile = () => {
     const handleSave = () => {
     };
 
+    const deleteAd = async (id) => {
+        try {
+            const res = await axios.delete(`http://localhost:8000/ad/deleteAd/${id}`);
+            toast.success("Ad Deleted Successfully");
+            console.log(res);
+            getUserAds();
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
 
     const getUserAds = async()=>{
@@ -88,6 +99,8 @@ const Profile = () => {
     }
 
     return (
+        <>
+        <Toaster/>
         <div className='w-screen h-fit flex bg-background text-text'>
             {/* left side bar start */}
             <div className='flex flex-col md:w-1/5 w-2/12 py-7 pl-5 border-r'>
@@ -171,7 +184,7 @@ const Profile = () => {
                 ) : (
                     <div>
                         <div className='grid md:grid-cols-3 grid-cols-1 bg-background'>
-                            {userAds.map((ad) => <AdCard key={ad.id} ad={ad} />)}
+                            {userAds.map((ad) => <AdCard key={ad.id} ad={ad} deleteAd={deleteAd} />)}
                         </div>
                     </div>
                 )}
@@ -186,6 +199,7 @@ const Profile = () => {
             {/* right side section end */}
 
         </div>
+        </>
     );
 };
 
