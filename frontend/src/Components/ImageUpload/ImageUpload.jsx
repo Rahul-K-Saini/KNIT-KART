@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState,useImperativeHandle } from "react";
 
-function ImageUpload({ handleImage }) {
+const ImageUpload = forwardRef((props,ref) => {
   const [images, setImages] = useState(new Array(5).fill(null));
 
   useEffect(() => {
-    handleImage(images.filter((image) => image !== null));
+    props.handleImage(images.filter((image) => image !== null));
   }, [images]);
 
   const handleImageUpload = (event, index) => {
@@ -25,6 +25,14 @@ function ImageUpload({ handleImage }) {
       setImages(updatedImages);
     }
   };
+
+  const clearImages = () => {
+    setImages(new Array(5).fill(null));
+  };
+
+  useImperativeHandle(ref, () => ({
+    clearImages: clearImages
+  }));
 
   const handleImageClick = (index) => {
     document.getElementById(`imageInput-${index}`).click();
@@ -94,6 +102,6 @@ function ImageUpload({ handleImage }) {
       </div>
     </div>
   );
-}
+})
 
 export default ImageUpload;

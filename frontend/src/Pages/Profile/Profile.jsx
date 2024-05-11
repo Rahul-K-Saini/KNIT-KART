@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import userImg from "../../assets/images/user.jpeg";
 import AdCard from "@/Components/AdCard/AdCard";
 import { FaRegEdit } from "react-icons/fa";
@@ -6,17 +6,21 @@ import { MdModeEditOutline, MdOutlineManageAccounts, MdDashboard } from "react-i
 import { TbReload } from "react-icons/tb";
 import { FaGear } from 'react-icons/fa6';
 import { useUserContext } from "@/context/userContext";
-
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const Profile = () => {
 
-
+    const [userAds, setUserAds] = useState([]);
     const [isEditable, setIsEditable] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [activeSection, setActiveSection] = useState('profile');
 
     let {user} = useUserContext();
-    
+
+    useEffect(()=>{
+        getUserAds();
+    },[user])
 
     if (!user) {
         user = {
@@ -69,48 +73,34 @@ const Profile = () => {
     const handleSave = () => {
     };
 
-    const DUMMY_DATA = [
-        {
-            id: 1,
-            productName: "MSD ka Cricket Bat",
-            category: "Sports",
-            description: "DSC Wooden Bat with white grip. easy to hit Six with my bat",
-            imageURL: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/A_Modern_Cricket_Bat.jpg'
-        },
-        {
-            id: 2,
-            productName: "JBL Headphone",
-            category: "Wearable",
-            description: "Amazing Sound Quality, Brand New Product with bluetooth support",
-            imageURL: 'https://rukminim1.flixcart.com/blobio/1160/1160/imr-201907/blobio-imr-201907_cf6670eb0079426fab6ef9c538290065.jpg'
-
-        },
-        {
-            id: 3,
-            productName: "JBL Headphone",
-            category: "Wearable",
-            description: "Amazing Sound Quality, Brand New Product with bluetooth support",
-            imageURL: 'https://rukminim1.flixcart.com/blobio/1160/1160/imr-201907/blobio-imr-201907_cf6670eb0079426fab6ef9c538290065.jpg'
-
-        },
-        {
-            id: 4,
-            productName: "JBL Headphone",
-            category: "Wearable",
-            description: "Amazing Sound Quality, Brand New Product with bluetooth support",
-            imageURL: 'https://rukminim1.flixcart.com/blobio/1160/1160/imr-201907/blobio-imr-201907_cf6670eb0079426fab6ef9c538290065.jpg'
-
-        },
-        {
-            id: 5,
-            productName: "Mechanical Keyboard",
-            category: "Gaming",
-            description: "A very nice and fully working Gaming keyboard. Must have for pro gamers.",
-            imageURL: 'https://hips.hearstapps.com/hmg-prod/images/pop-mechanical-keyboards-64e4ce5645fe9.jpg'
+    const deleteAd = async (id) => {
+        try {
+            const res = await axios.delete(`http://localhost:8000/ad/deleteAd/${id}`);
+            toast.success("Ad Deleted Successfully");
+            console.log(res);
+            getUserAds();
+        } catch (e) {
+            console.log(e);
         }
-    ]
+    };
+
+
+    const getUserAds = async()=>{
+        const payload = {
+            id:user.user._id
+        }
+        try{
+            const res  = await axios.post("http://localhost:8000/ad/getUserAds",payload);
+            console.log(res);
+            setUserAds(res.data);
+        }catch(e){
+            console.log(e);
+        }
+    }
 
     return (
+        <>
+        <Toaster/>
         <div className='w-screen h-fit flex bg-background text-text'>
             {/* left side bar start */}
             <div className='flex flex-col md:w-1/5 w-2/12 py-7 pl-5 border-r'>
@@ -168,7 +158,7 @@ const Profile = () => {
                 {/* profile section start */}
                 {activeSection === 'profile' ? (
                     <div className="grid md:grid-cols-2 grid-cols-1 gap-4 md:w-9/12 w-10/12 mx-auto">
-                        {Object.entries(formData).map(([key, value]) => (
+                        {Object.entries(user.user).map(([key, value]) => (
                             <div key={key}>
                                 <label htmlFor={key} className="block mb-1">{key.charAt(0).toUpperCase() + key.slice(1)}</label>
                                 <input type="text" id={key} name={key} placeholder={key.charAt(0).toUpperCase() + key.slice(1)} className="border p-2 w-full focus:outline-none text-black" value={value} onChange={handleInputChange} disabled={disabled} />
@@ -194,7 +184,7 @@ const Profile = () => {
                 ) : (
                     <div>
                         <div className='grid md:grid-cols-3 grid-cols-1 bg-background'>
-                            {DUMMY_DATA.map((ad) => <AdCard key={ad.id} ad={ad} />)}
+                            {userAds.map((ad) => <AdCard key={ad.id} ad={ad} deleteAd={deleteAd} />)}
                         </div>
                     </div>
                 )}
@@ -209,6 +199,7 @@ const Profile = () => {
             {/* right side section end */}
 
         </div>
+        </>
     );
 };
 

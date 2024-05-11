@@ -4,16 +4,17 @@ import axios from "axios";
 import { useUserContext } from "@/context/userContext";
 import toast, { Toaster } from "react-hot-toast";
 import './Loader.css'
-
+import { useRef } from "react";
 function PostAd() {
 
   const { user } = useUserContext();
   const [imagesArr, setImagesArr] = useState([]);
   const [loader, setLoader] = useState(false);
 
+  const childRef = useRef();
+
   const imageArrHandler = (prop) => {
     setImagesArr(prop);
-    // console.log("prop : "+prop)
   };
 
   const cleanAdData = {
@@ -54,10 +55,14 @@ function PostAd() {
       const res = await axios.post("http://localhost:8000/ad/postad", formData);
       console.log(res);
       clearAdData();
+      childRef.current.clearImages()
+      toast.success("Ad Posted Successfully");
     } catch (error) {
       console.log(error);
+      toast.error("Couldn't Post Ad ! Try Again Later");
     } finally {
       setLoader(false);
+      
       document.body.style.overflow='auto';
     }
   };
@@ -138,7 +143,7 @@ function PostAd() {
               className="border-2 border-gray-200 bg:input_box rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
             />
           </div>
-          <ImageUpload handleImage={imageArrHandler} />
+          <ImageUpload handleImage={imageArrHandler}  ref={childRef}/>
           <div className="mb-4">
             <label htmlFor="description" className="block text-text">
               Description

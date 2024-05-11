@@ -5,8 +5,8 @@ import Ad from './Ad';
 
 function AdDisplay({ selectedCategory }) {
   const [ads,setAds] = useState([]);
-  const [adsArr, setAdsArr] = useState([]);
-  const [displayCount, setDisplayCount] = useState(4);
+  // const [adsArr, setAdsArr] = useState([]);
+  // const [displayCount, setDisplayCount] = useState(4);
 
   useEffect(() => {
     getAds();
@@ -15,28 +15,32 @@ function AdDisplay({ selectedCategory }) {
   const getAds = async () => {
     const res = await axios.post("http://localhost:8000/ad/getAllAds");
     setAds(res.data);
-    setAdsArr(res.data.slice(0, displayCount));
+    // setAdsArr(res.data.slice(0, displayCount));
   };
 
 
-  const handleViewMore = () => {
-    setDisplayCount(displayCount + 4);
-  };
+  // const handleViewMore = () => {
+  //   setDisplayCount((prev)=>prev + 4);
+  //   console.log(displayCount);
+  //   console.log(ads);
+  //   console.log(adsArr);
+  // };
 
-  useEffect(() => {
-    if (selectedCategory === null) {
-      setAdsArr(ads.slice(0, displayCount));
-    } else {
-      const filteredAds = ads.filter((ad) => selectedCategory === ad.category);
-      setAdsArr(filteredAds.slice(0, displayCount));
-    }
-  }, [selectedCategory, displayCount]);
+  // useEffect(() => {
+  //   if (selectedCategory === null) {
+  //     setAdsArr(ads.slice(0, displayCount));
+     
+  //   } else {
+  //     const filteredAds = ads.filter((ad) => selectedCategory === ad.category);
+  //     setAdsArr(filteredAds.slice(0, displayCount));
+  //   }
+  // }, [selectedCategory, displayCount]);
 
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
 
-  if (adsArr.length <= 0) {
+  if (ads.length <= 0) {
     return (
       <section className="bg-background py-6 px-2">
         <h2 className="mb-4">~Products~</h2>
@@ -44,14 +48,14 @@ function AdDisplay({ selectedCategory }) {
       </section>
     );
   }
-  if (adsArr.length > 0) {
+  if (ads.length > 0) {
     return (
       <section className="bg-background py-6 px-2">
         <h2 className="mb-4">~Products~</h2>
 
         <div>
           <ul className="text-text">
-            {adsArr.map((ad, index) => (
+            {ads.map((ad, index) => (
               <li
                 key={index}
                 className="inline-block w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-4 lg:mb-0 lg:px-2"
@@ -62,7 +66,7 @@ function AdDisplay({ selectedCategory }) {
               </li>
             ))}
           </ul>
-          {ads.length > adsArr.length && adsArr.length >= 4 ? (
+          {/* {ads.length > ads.length && adsArr.length >= 4 ? (
             <>
               <div className="text-center mt-4">
                 <button
@@ -75,7 +79,7 @@ function AdDisplay({ selectedCategory }) {
             </>
           ) : (
             ""
-          )}
+          )} */}
         </div>
       </section>
     );
