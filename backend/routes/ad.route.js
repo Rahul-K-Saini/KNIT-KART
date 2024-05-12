@@ -86,5 +86,16 @@ adRouter.delete('/deleteAd/:id', async (req, res) => {
     }
 });
 
+adRouter.get('/getAdById/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const ad = await Ad.findById(id).populate('user');
+        return res.json(ad);
+    }catch(e){
+        console.log(e);
+        return res.status(500).json({error:e});
+    }
+})
+
 
 export default adRouter;

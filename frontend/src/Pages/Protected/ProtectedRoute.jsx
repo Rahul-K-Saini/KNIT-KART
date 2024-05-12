@@ -16,7 +16,9 @@ export default function ProtectedRoute({ children }) {
                 }
             }
             )
+            console.log(res);
             if (res.data.success) {
+                console.log(user);
                 setUser(res.data.data)
             } else {
                 <Navigate to="/entrance" />

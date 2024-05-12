@@ -45,7 +45,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Page404 />} />
+        
         <Route
           path="/ad/:id"
           element={
@@ -62,6 +62,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<Page404 />} />  
       </Routes>
       <Footer />
     </>

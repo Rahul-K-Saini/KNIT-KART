@@ -66,7 +66,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       lowercase: true,
       default:
-        "https://media.istockphoto.com/id/1305665241/vector/anonymous-gender-neutral-face-avatar-incognito-head-silhouette-stock-illustration.jpg",
+        "https://res.cloudinary.com/dkevdedjr/image/upload/v1715405517/profile/user_vep4im.png"
     },
     gender: {
       type: String,

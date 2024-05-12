@@ -1,6 +1,7 @@
 import shantanu from '../../assets/teamImages/shantanu.png'
 import arshil from '../../assets/teamImages/arshil.jpg'
 import rakesh from '../../assets/teamImages/rakesh.jpg'
+import rahul from '../../assets/teamImages/rahul.jpg'
 
 const team = [
     {
@@ -13,9 +14,10 @@ const team = [
     {
         name: "Rahul Saini",
         title: "Developer",
-        imageUrl: shantanu,
-        linkdeIn: "",
-        github: ""
+        linkedin: "",
+        imageUrl: rahul,
+        linkdeIn: "https://www.linkedin.com/in/rahulksaini987/",
+        github: "https://github.com/Rahul-K-Saini"
     },
     {
         name: "Rakesh Kumar",
