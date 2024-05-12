@@ -15,8 +15,8 @@ const team = [
         title: "Developer",
         linkedin: "",
         imageUrl: rahul,
-        linkdeIn: "",
-        github: ""
+        linkdeIn: "https://www.linkedin.com/in/rahulksaini987/",
+        github: "https://github.com/Rahul-K-Saini"
     },
     {
         name: "Rakesh Kumar",
