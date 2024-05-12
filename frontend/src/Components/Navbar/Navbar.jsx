@@ -48,7 +48,7 @@ function Navbar() {
     <nav className="w-full px-4 py-1 top-0 sticky z-50 border-gray-300  bg-background">
       <div className="flex justify-between items-center">
         <div className="min-w-fit">
-          <Link to="/">
+          <Link to="/home">
             <img
               src={theme === "light" ? logo : logoDark}
               alt="logo"
