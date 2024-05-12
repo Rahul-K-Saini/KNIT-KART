@@ -207,7 +207,7 @@ const AdPage = () => {
                  
               </p> */}
             </div>
-            <p className="retail-price">Ex-{adDetails?.exchange}</p>
+            <p className="retail-price">Exchange - {adDetails?.exchange}</p>
           </div>
           <div className="description-btn">
             {/* <div className="quantity-wrapper">

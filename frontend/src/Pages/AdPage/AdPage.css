@@ -85,7 +85,6 @@ main {
 .retail-price {
 	color: hsl(220, 14%, 75%);
 	font-weight: 700;
-	text-decoration: line-through;
 	font-size: 19px;
 }
 
