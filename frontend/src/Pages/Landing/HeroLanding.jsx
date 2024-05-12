@@ -7,7 +7,9 @@ const HeroLanding = () => {
                 <div className="text-center text-white p-4 md:p-8 w-full md:w-2/3">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">KNIT KART</h1>
                     <h3 className='text-lg md:text-xl lg:text-2xl text-secondary'>KNIT's Arcade for Recycled Treasure</h3>
-                    <p className="mt-14 md:mt-5 mb-14 md:text-lg text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sapiente sequi quibusdam. Amet itaque, fugiat, quidem, non architecto consequuntur recusandae ipsam laborum porro doloremque tempore earum ducimus quas nemo.</p>
+                    <p className="mt-14 md:mt-5 mb-14 md:text-lg text-sm">Step into a world of community-driven commerce designed for hostel dwellers and eco-conscious individuals. KNIT KART reimagines the way you exchange treasures, offering a vibrant marketplace that encourages swapping items and embracing a circular economy.
+
+Explore our intuitive platform, where every item tells a story and every exchange fosters connections. Discover unique finds, from books and gadgets to fashion and decor, all waiting for a new home. Join us in reducing waste and building a collaborative living environment – because sharing is caring!</p>
                     <Link to='/home'  className="py-2 md:py-3  md:px-4 bg-accent dark:bg-accent border-2 border-transparent rounded w-[40%] md:w-[30%] dark:text-[#f4f4f4] hover:border-black hover:dark:border-white duration-300 transition-all">
                         Get Started
                     </Link>
