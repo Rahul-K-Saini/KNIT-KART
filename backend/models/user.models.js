@@ -66,7 +66,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       lowercase: true,
       default:
-        "https://res.cloudinary.com/dkevdedjr/image/upload/v1715405517/profile/user_vep4im.png",
+        "https://res.cloudinary.com/dkevdedjr/image/upload/v1715405517/profile/user_vep4im.png"
     },
     gender: {
       type: String,

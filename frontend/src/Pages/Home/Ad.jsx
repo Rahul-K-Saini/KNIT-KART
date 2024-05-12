@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Ad({ ad }) {
 
   return (
-    <div class="w-full max-w-sm bg-[rgb(250,250,250)] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full max-w-sm bg-[rgb(250,250,250)] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <img
           className="rounded-t-lg h-80 object-cover w-full"
@@ -27,12 +28,12 @@ function Ad({ ad }) {
           <span class="text-2xl font-medium text-gray-900 dark:text-white">
             ₹{ad.price}
           </span>
-          <a
-            href="#"
+          <Link
+            to={`/ad/${ad._id}`}
             class="text-white bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  px-5 py-2 shadow-lg text-center dark:focus:ring-blue-800 transition-all duration-300 hover:scale-105"
           >
             View
-          </a>
+          </Link>
         </div>
       </div>
     </div>

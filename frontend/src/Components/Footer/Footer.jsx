@@ -21,7 +21,7 @@ const Footer = () => {
             <ul className="list-none space-y-4">
               <li className="cursor-pointer">
                 <a
-                  href="/"
+                  href="/home"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   Home
@@ -29,7 +29,7 @@ const Footer = () => {
               </li>
               <li className="cursor-pointer">
                 <a
-                  href="/"
+                  href="/home"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   FAQ
@@ -37,7 +37,7 @@ const Footer = () => {
               </li>
               <li className="cursor-pointer">
                 <a
-                  href="/"
+                  href="/home"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   About
@@ -45,7 +45,7 @@ const Footer = () => {
               </li>
               <li className="cursor-pointer">
                 <a
-                  href="/"
+                  href="/home"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   Contact

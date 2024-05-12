@@ -11,8 +11,8 @@ function ThemeToggle() {
 
   return (
     <button onClick={handleTheme} className="dark:text-gray-50">
-      {theme === "dark" && <IoSunnyOutline className="text-2xl" />}
-      {theme === "light" && <FiMoon className="text-2xl" />}
+      {theme === "dark" && <FiMoon className="text-2xl" />}
+      {theme === "light" && <IoSunnyOutline className="text-2xl" />}
     </button>
   );
 }
