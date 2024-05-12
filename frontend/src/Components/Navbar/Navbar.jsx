@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ThemeToggle from "./theme-toggle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import logoDark from "../../assets/images/logo-dark.png";
@@ -12,7 +12,7 @@ import { RxCross1 } from "react-icons/rx";
 
 
 function Navbar() {
-
+  const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
   const { user } = useUserContext();
   const [isFocused, setIsFocused] = useState(false);
@@ -30,7 +30,7 @@ function Navbar() {
 
   const handleLogOut = () => {
     localStorage.clear();
-    location.reload();
+    navigate("/");
   };
 
   const handleSearchVisible = () => {

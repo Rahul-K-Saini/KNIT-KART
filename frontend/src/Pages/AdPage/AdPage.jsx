@@ -192,7 +192,10 @@ const AdPage = () => {
         data-aos-offset="0"
       >
         <div className="info">
-          <p className="catagory">{adDetails?.category}</p>
+          <div className="flex justify-between items-center">
+            <p className="catagory">{adDetails?.category}</p>
+            <p className="font-semibold">Owner: {adDetails?.user.name.charAt(0).toUpperCase()+adDetails?.user.name.substr(1)}</p>
+          </div>
           <h1 className="text-xl md:text-3xl mb-6">
            {adDetails?.title}
           </h1>

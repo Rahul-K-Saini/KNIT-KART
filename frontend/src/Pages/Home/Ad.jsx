@@ -13,24 +13,24 @@ function Ad({ ad }) {
         />
       </a>
 
-      <div class="px-6 py-5">
+      <div className="px-6 py-5">
         <a href="#">
-          <h5 class="text-xl font-medium text-text">
+          <h5 className="text-xl font-medium text-text">
             {ad.title}
           </h5>
         </a>
         
-        <div className="w-full py-2 my-3">
+        <div className="w-full py-2 my-3 h-10">
           Exchange it with : {ad.exchange}
         </div>
 
-        <div class="flex items-center justify-between">
-          <span class="text-2xl font-medium text-gray-900 dark:text-white">
+        <div className="flex items-center justify-between">
+          <span className="text-2xl font-medium text-gray-900 dark:text-white">
             ₹{ad.price}
           </span>
           <Link
             to={`/ad/${ad._id}`}
-            class="text-white bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  px-5 py-2 shadow-lg text-center dark:focus:ring-blue-800 transition-all duration-300 hover:scale-105"
+            className="text-white bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  px-5 py-2 shadow-lg text-center dark:focus:ring-blue-800 transition-all duration-300 hover:scale-105"
           >
             View
           </Link>

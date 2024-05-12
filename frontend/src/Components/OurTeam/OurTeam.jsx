@@ -15,10 +15,12 @@ const OurTeam = () => {
                                 <div className='flex flex-col items-center space-y-1'>
                                     <img src={member.imageUrl} className='h-24 w-auto transition-all hover:scale-105 duration-300 rounded-full' />
                                     <h5>{member.name}</h5>
-                                    <p className='font-semibold'>{member.title}</p>
+                                    <div className='flex items-center justify-center h-10'>
+                                        <pre className='text-center'>{member.title}</pre>
+                                    </div>
                                 </div>
                                 {/* social media links */}
-                                <div className='flex items-center justify-around mt-8 py-4 w-full border-t border-black'>
+                                <div className='flex items-center justify-around mt-6 py-4 w-full border-t border-black'>
                                     <a href={member.linkdeIn}><FaLinkedinIn className='hover:cursor-pointer hover:text-[#0a66c2] duration-300 text-xl' /></a>
                                     <a href={member.github}><FaGithub className='hover:cursor-pointer hover:text-[#3c3c3c] duration-300 text-xl' /></a>
                                 </div>
