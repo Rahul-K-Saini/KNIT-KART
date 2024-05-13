@@ -155,7 +155,7 @@ function App() {
               >
                 Send OTP
               </button>
-              <div>
+              <div className="w-full">
                 <Components.Input type="text" name="otp" placeholder="OTP" />
               </div>
               <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit">
