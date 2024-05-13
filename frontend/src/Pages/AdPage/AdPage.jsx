@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Image1 from "../../assets/images/product-1.jpg";
-import Image2 from "../../assets/images/product-2.jpg";
-import Image3 from "../../assets/images/product-3.jpg";
-import Image4 from "../../assets/images/product-4.jpg";
 import ClosePrev from "../../assets/images/icon-close.svg";
 import PrevBtn from "../../assets/images/icon-previous.svg";
 import NextBtn from "../../assets/images/icon-next.svg";
@@ -70,7 +66,7 @@ const AdPage = () => {
 
 
   // set active image
-  const [activeImage, setActiveImage] = useState(firstImg);
+  const [activeImage, setActiveImage] = useState(adDetails?.images[0]);
   const adjustActiveImage = (index) => {
     setActiveImage(index);
     // what ever the user's image was before opening modal will display as active modal image
@@ -103,8 +99,8 @@ const AdPage = () => {
     // set the variable show to equal the sum which is the position in the array
     let show = mobileImgNav + n;
     if (show < 0) {
-      show = adDetails?.images.length;
-    } else if (show > adDetails?.images.length) {
+      show = adDetails?.images.length-1;
+    } else if (show > adDetails?.images.length-1) {
       show = 0;
     }
     // when user clicks on the images, the position from the array will update
@@ -122,14 +118,18 @@ const AdPage = () => {
     let imageNav = mapImg.indexOf(true);
     let show = imageNav + n;
     if (show < 0) {
-      show = adDetails?.images.length;
-    } else if (show > adDetails?.images.length) {
+      show = adDetails?.images.length-1;
+    } else if (show > adDetails?.images.length-1) {
       show = 0;
     }
     setImgNav(show);
     setActiveModalImage(adDetails?.images[show]);
   };
-  console.log(adDetails?.images.length)
+  
+  useEffect(() => {
+    setActiveImage(adDetails?.images[0]);
+  }, [adDetails])
+  
 
   return (
     <main className="mb-24">
