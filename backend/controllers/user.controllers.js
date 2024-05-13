@@ -1,11 +1,17 @@
 import User from "../models/user.models.js";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
+import OTP from "../models/otp.models.js";
+import nodemailer from 'nodemailer';
+import dotenv from "dotenv";
+
+
+dotenv.config();
 
 export const handleUserRegistration = async (req, res) => {
 
     try {
-        const { name, email, password, contact } = req.body;
+        const { name, email, password, otp } = req.body;
 
         const existingUser = await User.findOne({ email });
 
@@ -32,10 +38,26 @@ export const handleUserRegistration = async (req, res) => {
             )
         }
 
+        if (!otp) {
+            return res.status(200).send({
+                success: false,
+                message: "OTP is required"
+            })
+        }
+
+        const existingOTP = await OTP.findOne({ email: email });
+
+        if (existingOTP != otp) {
+            return res.status(200).json({
+                success: false,
+                message: "Invalid OTP"
+            })
+        }
+
+
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        const opt = Math.random()*9000+1000;
 
         const newUser = await User.create({
             name,
@@ -43,6 +65,8 @@ export const handleUserRegistration = async (req, res) => {
             contact,
             password: hashedPassword,
         });
+
+        await OTP.deleteMany({ email: email });
 
         return res.status(201).send({
             success: true,
@@ -63,7 +87,7 @@ export const handleUserRegistration = async (req, res) => {
 export const handleUserLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(email,password);
+        console.log(email, password);
 
         const user = await User.findOne({ email });
 
@@ -130,3 +154,84 @@ export const authController = async (req, res) => {
         });
     }
 };
+
+
+export const handleOtp = async (req, res) => {
+    const { email } = req.body;
+    console.log(email);
+    try {
+        
+        if (!email) {
+            return res.json({
+                success: false,
+                message: "Email is required"
+            });
+        }
+
+        if (email.split("@")[1] != "knit.ac.in") {
+            return res.json({
+                success: false,
+                message: "Enter Knit Domain Email Address"
+            })
+        }
+
+
+
+        const otp = Math.floor(Math.random() * 9000 + 1000);
+
+
+        const data = await OTP.create({
+            email,
+            otp
+        });
+
+        // Send OTP via email
+        const success = await sendOTPByEmail(email, otp);
+
+        if (success) {
+            return res.json({
+                success: true,
+                message: "OTP sent successfully"
+            });
+        } else {
+            throw new Error("Error sending OTP");
+        }
+    } catch (error) {
+        console.error(error);
+        return res.json({
+            success: false,
+            message: "Something went wrong"
+        });
+    }
+};
+
+async function sendOTPByEmail(email, otp) {
+    try {
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            }
+        });
+
+        const mailOptions = {
+            from: {
+                name: 'KNIT KART',
+                address: process.env.EMAIL_USER
+            },
+            to: email,
+            subject: "OTP for email verification",
+            text: `Your verification OTP is ${otp}`,
+        };
+
+        const sendMail = await transporter.sendMail(mailOptions);
+        return true;
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
