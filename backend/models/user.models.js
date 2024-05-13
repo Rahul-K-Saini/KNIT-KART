@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       lowercase: true,
     },
+
     email: {
       type: String,
       required: true,
@@ -20,25 +21,6 @@ const userSchema = new mongoose.Schema(
         },
         message: "Please enter a KNIT domain email address",
       },
-    },
-    contact: {
-      type: String,
-      required: true,
-      lowercase: true,
-      validate: [
-        {
-          validator: function (num) {
-            return num.length === 10;
-          },
-          message: "Contact number should be of 10 digits",
-        },
-        {
-          validator: function (num) {
-            return validator.isNumeric(num);
-          },
-          message: "Contact number should contain only numeric digits",
-        },
-      ],
     },
     branch: {
       type: String,
@@ -59,7 +41,7 @@ const userSchema = new mongoose.Schema(
     },
     hostel: {
       type: String,
-      enum: ["aryabhatt", "ramanujan", "khosla", "gargi", "new maitreyee", "old maitreyee", "vikram sarabhai", "raman", "kalam", "meghnath shah", "old vs", "new vs"],
+      enum: ["aryabhatt", "ramanujan", "khosla","gargi","new maitreyee","old maitreyee","vikram sarabhai","raman","kalam","meghnath shah","old vs","new vs"],
     },
     profile_pic: {
       type: String,
@@ -81,13 +63,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    otp: {
-      type: Number
-    },
-    isVerified: {
-      type: Boolean,
-      default: false
-    }
   },
   { timestamps: true }
 );
