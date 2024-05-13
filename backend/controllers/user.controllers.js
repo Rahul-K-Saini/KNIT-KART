@@ -35,6 +35,8 @@ export const handleUserRegistration = async (req, res) => {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
+        const opt = Math.random()*9000+1000;
+
         const newUser = await User.create({
             name,
             email,
