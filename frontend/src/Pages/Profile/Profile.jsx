@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import userImg from "../../assets/images/user.jpeg";
 import { FaRegEdit } from "react-icons/fa";
 import { MdModeEditOutline, MdOutlineManageAccounts, MdDashboard } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
@@ -70,9 +69,6 @@ const Profile = () => {
             ...prevState,
             [name]: value
         }));
-    };
-
-    const handleSave = () => {
     };
 
     const deleteAd = async (id) => {
@@ -152,7 +148,7 @@ const Profile = () => {
                                 <><h1 className='md:text-3xl text-2xl'>Dashboard</h1></>
                             )}
                         </h1>
-                        <img src={userImg} alt="img" className='md:h-32 h-16 md:w-32 w-16 rounded-full' />
+                        <img src={user.profile_pic} alt="img" className='md:h-32 h-16 md:w-32 w-16 rounded-full' />
                     </div>
                     {/* Heading and profile picture end */}
 
@@ -172,12 +168,6 @@ const Profile = () => {
                         <DashboardSection userAds={userAds} deleteAd={deleteAd} />
                     )}
 
-                    {/* Save and cancel btn */}
-                    <div className='flex items-start space-x-8 md:w-9/12 w-10/12 mx-auto'>
-                        <button className='border-2 border-accent text-accent text-lg py-1 px-6 transform transition-all duration-300 hover:scale-105'>Cancel</button>
-                        <button className='border-2 border-accent bg-accent text-white text-lg py-1 px-6 transform transition-all duration-300 hover:scale-105' onClick={handleSave}>Save</button>
-                    </div>
-                    {/* Save and cancel btn */}
                 </div>
                 {/* right side section end */}
             </div>

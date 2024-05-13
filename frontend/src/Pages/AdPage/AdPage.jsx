@@ -61,7 +61,7 @@ const AdPage = () => {
 
 
   // set active image
-  const [activeImage, setActiveImage] = useState(firstImg);
+  const [activeImage, setActiveImage] = useState(adDetails?.images[0]);
   const adjustActiveImage = (index) => {
     setActiveImage(index);
     // what ever the user's image was before opening modal will display as active modal image
