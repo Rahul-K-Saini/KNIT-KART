@@ -54,7 +54,7 @@ export const Form = styled.form`
 export const Title = styled.h1`
  font-weight: bold;
  margin: 0;
-
+line-height: 5rem;
  `;
 
 export const Input = styled.input`
@@ -70,6 +70,7 @@ export const Button = styled.button`
     border-radius: 20px;
     border: 1px solid #ff4b2b;
     background-color: #7215f4;
+    margin-top: 10px;
     color: #ffffff;
     font-size: 12px;
     font-weight: bold;
