@@ -130,7 +130,7 @@ function App() {
     <>
       <Toaster />
       <div className={`${style["desktop-form"]} bg-background`}>
-        <Components.Container>
+        <Components.Container className="h-[37rem]">
           {/* desktop -form for signUp */}
           <Components.SignUpContainer $signin={signIn}>
             <Components.Form onSubmit={handleSignUp}>
@@ -148,16 +148,6 @@ function App() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <button
-                type="button"
-                onClick={handleSendOTP}
-                className="text-blue-700 underline"
-              >
-                Send OTP
-              </button>
-              <div className="w-full">
-                <Components.Input type="text" name="otp" placeholder="OTP" />
-              </div>
               <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit">
                 <Components.Input
                   className="outline-none flex-grow px-4 border-black"
@@ -172,6 +162,16 @@ function App() {
                 >
                   {showPassword ? <GoEye className="" /> : <GoEyeClosed />}
                 </button>
+              </div>  
+              <button
+                type="button"
+                onClick={handleSendOTP}
+                className="text-blue-700 underline"
+              >
+                Send OTP
+              </button>
+              <div className="w-full">
+                <Components.Input type="text" name="otp" placeholder="OTP" />
               </div>
 
               <Components.Button type="submit">Sign Up</Components.Button>
