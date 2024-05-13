@@ -229,7 +229,7 @@ function App() {
               <h2>Sign Up</h2>
               <div className={style["input-group"]}>
                 <input name="fullname" type="text" required />
-                <label htmlFor="">Fullname</label>{" "}
+                <label htmlFor="">Full Name</label>{" "}
                 <i className="bx bxs-user"></i>
               </div>
               <div className={style["input-group"]}>
@@ -237,9 +237,15 @@ function App() {
                 <label htmlFor="">Email(KNIT)</label>{" "}
                 <i className="bx bxs-user"></i>
               </div>
-              <div className={style["input-group"]}>
+              <div className={style["input-group"]} style={{display:"flex"}}>
                 <input type="text" name="contact" required />
                 <label htmlFor="">Contact No.</label>{" "}
+                <i className="bx bxs-envelope"></i>
+                <i className="bx bxs-user"></i>
+              </div>
+              <div className={style["input-group"]} style={{display:"flex"}}>
+                <input type="text" name="otp" required />
+                <label htmlFor="">OTP</label>{" "}
                 <i className="bx bxs-envelope"></i>
                 <i className="bx bxs-user"></i>
               </div>
@@ -251,6 +257,7 @@ function App() {
               <button type="submit" className={style["btn"]}>
                 Sign Up
               </button>
+              <a href="" className="text-blue-700 underline">Send OTP</a>
 
               <div className={style["Sign-link"]}>
                 <p>
