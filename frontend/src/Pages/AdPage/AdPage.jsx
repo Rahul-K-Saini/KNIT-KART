@@ -6,6 +6,7 @@ import Image4 from "../../assets/images/product-4.jpg";
 import ClosePrev from "../../assets/images/icon-close.svg";
 import PrevBtn from "../../assets/images/icon-previous.svg";
 import NextBtn from "../../assets/images/icon-next.svg";
+import randImg from '../../assets/teamImages/rakesh.jpg'
 import "./AdPage.css";
 // import shortid from "shortid";
 // import { useDispatch } from "react-redux";
@@ -60,19 +61,6 @@ const AdPage = () => {
     }
   };
 
-  // add item to cart if quantity is more than 0
-  // const addItem = () => {
-  // 	if (itemQuantity === 0) {
-  // 		alert("Please select a quantity");
-  // 		return;
-  // 	}
-  // 	//update array id and reset item quantity
-  // 	setItems({ ...items, id: shortid.generate() });
-  // 	setItemQuantity(0);
-  // 	// execute add item function to redux STORE
-  // 	dispatch(add_items(items));
-  // };
-
   //cart item object
   const [items, setItems] = useState({
     id: Math.random() + 1,
@@ -80,22 +68,20 @@ const AdPage = () => {
     total_price: 0,
   });
 
+
+  // set active image
+  const [activeImage, setActiveImage] = useState(firstImg);
+  const adjustActiveImage = (index) => {
+    setActiveImage(index);
+    // what ever the user's image was before opening modal will display as active modal image
+    setActiveModalImage(index);
+  };
+
   // desktop gallery modal
   const [photoModal, setPhotoModal] = useState(false);
   const togglePhotoModal = () => {
     setPhotoModal(!photoModal);
     setActiveModalImage(activeImage);
-  };
-
-  // set active images in modal and preview view
-  const galleryArray = [Image1, Image2, Image3, Image4];
-
-  // set active image
-  const [activeImage, setActiveImage] = useState(galleryArray[0]);
-  const adjustActiveImage = (index) => {
-    setActiveImage(index);
-    // what ever the user's image was before opening modal will display as active modal image
-    setActiveModalImage(index);
   };
 
   // set active modal image
@@ -109,7 +95,7 @@ const AdPage = () => {
   const [mobileImgNav, setMobileImgNav] = useState(0);
   const mobileNextImg = (n) => {
     // map through the image to define the similar image in the array
-    let mapImg = galleryArray.map((img) => {
+    let mapImg = adDetails?.images.map((img, key) => {
       return activeImage === img ? (img = true) : null;
     });
     // let the number for the mobile image equal the index number in the array
@@ -117,32 +103,33 @@ const AdPage = () => {
     // set the variable show to equal the sum which is the position in the array
     let show = mobileImgNav + n;
     if (show < 0) {
-      show = 3;
-    } else if (show > 3) {
+      show = adDetails?.images.length;
+    } else if (show > adDetails?.images.length) {
       show = 0;
     }
     // when user clicks on the images, the position from the array will update
     setMobileImgNav(show);
     // display as active image
-    setActiveImage(galleryArray[show]);
+    setActiveImage(adDetails?.images[show]);
   };
 
   // desktop image modal
   const [imageNav, setImgNav] = useState(0);
   const nextImg = (n) => {
-    let mapImg = galleryArray.map((img) => {
+    let mapImg = adDetails?.images.map((img, key) => {
       return activeModalImage === img ? (img = true) : null;
     });
     let imageNav = mapImg.indexOf(true);
     let show = imageNav + n;
     if (show < 0) {
-      show = 3;
-    } else if (show > 3) {
+      show = adDetails?.images.length;
+    } else if (show > adDetails?.images.length) {
       show = 0;
     }
     setImgNav(show);
-    setActiveModalImage(galleryArray[show]);
+    setActiveModalImage(adDetails?.images[show]);
   };
+  console.log(adDetails?.images.length)
 
   return (
     <main className="mb-24">
@@ -150,7 +137,7 @@ const AdPage = () => {
       <div className="gallery" data-aos="zoom-in">
         <div className="main-image ">
           <button onClick={togglePhotoModal}>
-            <img className="previewed-img" src={adDetails?.images[0]} alt="item image" />
+            <img className="previewed-img" src={activeImage} alt="item image" />
           </button>
           <div className="navigation-btns">
             <button className="prev" onClick={() => mobileNextImg(-1)}>
@@ -162,26 +149,16 @@ const AdPage = () => {
           </div>
         </div>
         <div className="photo-options">
-          <button
-            style={{backgroundImage: `url(${adDetails?.images[0]})`}}
-            className={`img ${activeImage === adDetails?.images[1] ? "selected" : ""}`}
-            onClick={() => adjustActiveImage(galleryArray[0])}
-          ></button>
-          <button
-            style={{backgroundImage: `url(${adDetails?.images[1]})`}}
-            className={`img ${activeImage === Image2 ? "selected" : ""}`}
-            onClick={() => adjustActiveImage(galleryArray[1])}
-          ></button>
-          <button
-            style={{backgroundImage: `url(${adDetails?.images[2]})`}}
-            className={`img ${activeImage === Image3 ? "selected" : ""}`}
-            onClick={() => adjustActiveImage(galleryArray[2])}
-          ></button>
-          <button
-            style={{backgroundImage: `url(${adDetails?.images[3]})`}}
-            className={`img ${activeImage === Image4 ? "selected" : ""}`}
-            onClick={() => adjustActiveImage(galleryArray[3])}
-          ></button>
+          {
+            adDetails?.images.map((img, key) => (
+              <button
+                key={key}
+                style={{ backgroundImage: `url(${img})` }}
+                className={`img ${activeImage === img ? "selected" : ""}`}
+                onClick={() => adjustActiveImage(img)}
+              ></button>
+            ))
+          }
         </div>
       </div>
       <div
@@ -194,10 +171,10 @@ const AdPage = () => {
         <div className="info">
           <div className="flex justify-between items-center">
             <p className="catagory">{adDetails?.category}</p>
-            <p className="font-semibold">Owner: {adDetails?.user.name.charAt(0).toUpperCase()+adDetails?.user.name.substr(1)}</p>
+            <p className="font-semibold">Owner: {adDetails?.user.name.charAt(0).toUpperCase() + adDetails?.user.name.substr(1)}</p>
           </div>
           <h1 className="text-xl md:text-3xl mb-6">
-           {adDetails?.title}
+            {adDetails?.title}
           </h1>
           <p className="item-info">
             {" "}
@@ -206,22 +183,15 @@ const AdPage = () => {
           <div className="price-tag">
             <div className="flex flex-row">
               <p className="price">₹{adDetails?.price}</p>
-             {/* <p className="font-semibold text-orange-500 bg-orange-100 rounded-xl px-2 m-2 ">
+              {/* <p className="font-semibold text-orange-500 bg-orange-100 rounded-xl px-2 m-2 ">
                  
               </p> */}
             </div>
             <p className="retail-price">Exchange - {adDetails?.exchange}</p>
           </div>
           <div className="description-btn">
-            {/* <div className="quantity-wrapper">
-                                <button className="min" onClick={decNum}></button>
-                                <p className="quantity">{itemQuantity}</p>
-                                <button className="add" onClick={incNum}></button>
-                            </div> */}
-            {/* cart button */}
-            {/* <button className="add-to-cart" onClick={() => addItem()}> */}
             <button className="add-to-cart transform transition-all duration-300 hover:scale-105">
-              <span>Contact: +91{adDetails?.user?.contact}</span>
+              <span>Contact: {adDetails?.user?.email}</span>
             </button>
           </div>
         </div>
@@ -253,30 +223,17 @@ const AdPage = () => {
               </div>
             </div>
             <div className="photo-options">
-              <button
-                className={`img ${
-                  activeModalImage === adDetails?.images[1] ? "selected" : ""
-                }`}
-                onClick={() => adjustActiveModalImage(adDetails?.images[1])}
-              ></button>
-              <button
-                className={`img ${
-                  activeModalImage === adDetails?.images[2] ? "selected" : ""
-                }`}
-                onClick={() => adjustActiveModalImage(adDetails?.images[2])}
-              ></button>
-              <button
-                className={`img ${
-                  activeModalImage === adDetails?.images[3] ? "selected" : ""
-                }`}
-                onClick={() => adjustActiveModalImage(adDetails?.images[3])}
-              ></button>
-              <button
-                className={`img ${
-                  activeModalImage === adDetails?.images[4] ? "selected" : ""
-                }`}
-                onClick={() => adjustActiveModalImage(adDetails?.images[4])}
-              ></button>
+              {
+                adDetails?.images.map((img, key) => (
+                  <button
+                    key={key}
+                    style={{ backgroundImage: `url(${img})` }}
+                    className={`img ${activeModalImage === img ? "selected" : ""
+                      }`}
+                    onClick={() => adjustActiveModalImage(img)}
+                  ></button>
+                ))
+              }
             </div>
           </div>
         </div>
