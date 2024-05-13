@@ -6,6 +6,7 @@ const CustomNavbar = () => {
         <>
             <div className='flex align-middle justify-center'>
                 <img src={logo} alt='logo' width='110px'></img>
+               
             </div>
         </>
     )
