@@ -13,6 +13,8 @@ export const handleUserRegistration = async (req, res) => {
     try {
         const { name, email, password, otp } = req.body;
 
+        console.log(name, email, password, otp);
+
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
@@ -46,8 +48,8 @@ export const handleUserRegistration = async (req, res) => {
         }
 
         const existingOTP = await OTP.findOne({ email: email });
-
-        if (existingOTP != otp) {
+        console.log("existing otp", existingOTP.otp);   
+        if (existingOTP.otp != otp) {
             return res.status(200).json({
                 success: false,
                 message: "Invalid OTP"
@@ -62,7 +64,6 @@ export const handleUserRegistration = async (req, res) => {
         const newUser = await User.create({
             name,
             email,
-            contact,
             password: hashedPassword,
         });
 
@@ -157,8 +158,11 @@ export const authController = async (req, res) => {
 
 
 export const handleOtp = async (req, res) => {
+    console.log(req.body);
     const { email } = req.body;
-    console.log(email);
+   
+    console.log("email",email);
+   
     try {
         
         if (!email) {
@@ -229,6 +233,7 @@ async function sendOTPByEmail(email, otp) {
         };
 
         const sendMail = await transporter.sendMail(mailOptions);
+        console.log("sendMail",sendMail);
         return true;
     } catch (error) {
         console.error(error);
