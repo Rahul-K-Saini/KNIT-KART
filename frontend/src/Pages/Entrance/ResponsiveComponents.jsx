@@ -80,7 +80,6 @@ export const Button = styled.button`
 `;
 
 export const GhostButton = styled(Button)`
-    background-color: transparent;
     border-color: #ffffff;
 `;
 
