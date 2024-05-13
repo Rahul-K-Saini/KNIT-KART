@@ -126,12 +126,20 @@ function App() {
                 name="email"
                 required
               />
-              <Components.Input
-                type="text"
-                name="contact"
-                placeholder="Contact No."
-                required
-              />
+              <div className="flex space-x-2">
+                <Components.Input
+                  type="text"
+                  name="contact"
+                  placeholder="Contact No."
+                  required
+                />
+                <Components.Input
+                  type="text"
+                  name="OTP"
+                  placeholder="OTP"
+                  required
+                />
+              </div>
               <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit">
                 <Components.Input
                   className="outline-none flex-grow px-4 border-black"
@@ -150,6 +158,7 @@ function App() {
               </div>
 
               <Components.Button type="submit">Sign Up</Components.Button>
+              <a href="" className="text-blue-700 underline">Send OTP</a>
             </Components.Form>
           </Components.SignUpContainer>
 
