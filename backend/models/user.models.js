@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema(
         message: "Please enter a KNIT domain email address",
       },
     },
+
     branch: {
       type: String,
       lowercase: true,
