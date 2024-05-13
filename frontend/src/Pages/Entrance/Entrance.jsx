@@ -42,7 +42,7 @@ function App() {
       password,
       otp
     };
-
+    let ermsg = "";
     try {
       const { data } = await axios.post(
         "http://localhost:8000/user/register",
@@ -59,6 +59,7 @@ function App() {
         form.reset();
       } else {
         console.log(data);
+        ermsg = data.message;
         let message = data.message.message;
         console.log(message);
         let error = message
@@ -68,7 +69,8 @@ function App() {
       }
     } catch (e) {
       console.log(e);
-      toast.error(e.message);
+      toast.error(e);
+      ermsg.length!==0?toast.error(ermsg):null;
     }
   };
 
@@ -130,7 +132,7 @@ function App() {
     <>
       <Toaster />
       <div className={`${style["desktop-form"]} bg-background`}>
-        <Components.Container className="h-[37rem]">
+        <Components.Container>
           {/* desktop -form for signUp */}
           <Components.SignUpContainer $signin={signIn}>
             <Components.Form onSubmit={handleSignUp}>
