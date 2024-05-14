@@ -2,12 +2,7 @@ import React, { useState, useEffect } from "react";
 import ClosePrev from "../../assets/images/icon-close.svg";
 import PrevBtn from "../../assets/images/icon-previous.svg";
 import NextBtn from "../../assets/images/icon-next.svg";
-import randImg from '../../assets/teamImages/rakesh.jpg'
 import "./AdPage.css";
-// import shortid from "shortid";
-// import { useDispatch } from "react-redux";
-// call the action I will use
-// import { add_items } from "../actions";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";

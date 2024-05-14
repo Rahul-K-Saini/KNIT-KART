@@ -9,6 +9,7 @@ import { useUserContext } from "@/context/userContext";
 import { FaRegUserCircle } from "react-icons/fa";
 import { HiOutlineBuildingStorefront } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
+import { FaRegCircleUser } from "react-icons/fa6";
 
 
 function Navbar() {
@@ -107,7 +108,8 @@ function Navbar() {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div onClick={avatarClickHandler} className="w-10 rounded-full">
-                    <img alt="Profile image" src={user.user.profile_pic} />
+                    {/* <img alt="Profile image" src={user.user.profile_pic} /> */}
+                    <FaRegCircleUser className="text-text text-2xl"/>
                   </div>
                 </div>
                 <ul
