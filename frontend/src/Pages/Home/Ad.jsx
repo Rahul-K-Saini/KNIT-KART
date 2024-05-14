@@ -1,0 +1,43 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+function Ad({ ad }) {
+
+  return (
+    <div className="w-full max-w-sm bg-[rgb(250,250,250)] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <a href="#">
+        <img
+          className="rounded-t-lg h-80 object-cover w-full"
+          src={ad.images[0]}
+          alt="product image"
+        />
+      </a>
+
+      <div className="px-6 py-5">
+        <a href="#">
+          <h5 className="text-xl font-medium text-text">
+            {ad.title}
+          </h5>
+        </a>
+        
+        <div className="w-full py-2 my-3 h-10">
+          Exchange it with : {ad.exchange}
+        </div>
+
+        <div className="flex items-center justify-between">
+          <span className="text-2xl font-medium text-gray-900 dark:text-white">
+            ₹{ad.price}
+          </span>
+          <Link
+            to={`/ad/${ad._id}`}
+            className="text-white bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  px-5 py-2 shadow-lg text-center dark:focus:ring-blue-800 transition-all duration-300 hover:scale-105"
+          >
+            View
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Ad;

@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className="px-4 md:px-11 py-12 bg-footer text-text">
+    <div className="px-4 md:px-20 py-12 bg-footer text-text">
       <div className="flex flex-col md:flex-row justify-between">
         <div className="flex flex-col mb-8 md:mb-0">
           <h1 className="text-lg md:text-2xl mb-4">Contact Us</h1>
@@ -21,7 +21,7 @@ const Footer = () => {
             <ul className="list-none space-y-4">
               <li className="cursor-pointer">
                 <a
-                  href="/"
+                  href="/home"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   Home
@@ -29,7 +29,7 @@ const Footer = () => {
               </li>
               <li className="cursor-pointer">
                 <a
-                  href="/"
+                  href="/home"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   FAQ
@@ -37,7 +37,7 @@ const Footer = () => {
               </li>
               <li className="cursor-pointer">
                 <a
-                  href="/"
+                  href="/home"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   About
@@ -45,7 +45,7 @@ const Footer = () => {
               </li>
               <li className="cursor-pointer">
                 <a
-                  href="/"
+                  href="/home"
                   className="relative after:w-0 after:left-0 after:bottom-0 after:border-b-2 after:rounded after:absolute after:duration-300 after:hover:w-full after:border-text"
                 >
                   Contact
@@ -72,14 +72,14 @@ const Footer = () => {
           <div className="flex flex-col space-y-2">
             <h1 className="text-lg md:text-2xl mb-2">Newsletter</h1>
             <p>No signup required for exploring the products</p>
-            <div className="flex space-x-2">
+            <div className="flex md:flex-row flex-col md:space-x-2 space-y-2 md:space-y-0">
               <input
                 type="email"
                 name="email"
                 placeholder="Enter Your Email"
                 className="h-10 px-2 text-black flex-grow focus:outline-none rounded"
               />
-              <button className="px-4 py-1 font-medium text-lg bg-accent text-white transition duration-300 hover:bg-teal-500 hover:text-white rounded">
+              <button className="px-4 py-1 font-medium text-lg bg-accent text-white hover:bg-teal-500 hover:text-white rounded transform transition-all duration-300 hover:scale-105">
                 Subscribe
               </button>
             </div>

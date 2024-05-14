@@ -54,7 +54,7 @@ export const Form = styled.form`
 export const Title = styled.h1`
  font-weight: bold;
  margin: 0;
-
+line-height: 5rem;
  `;
 
 export const Input = styled.input`
@@ -76,6 +76,7 @@ export const Button = styled.button`
     padding: 12px 45px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-top: 20px;
     transition: transform 80ms ease-in;
     &:active{
         transform: scale(0.95);
@@ -85,7 +86,6 @@ export const Button = styled.button`
     }
  `;
 export const GhostButton = styled(Button)`
- background-color: transparent;
  border-color: #ffffff;
  `;
 
