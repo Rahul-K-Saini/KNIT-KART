@@ -173,7 +173,7 @@ function App() {
                 Send OTP
               </button>
               <div className="w-full">
-                <Components.Input type="text" name="otp" placeholder="OTP" />
+                <Components.Input type="text" name="otp" placeholder="OTP"  required/>
               </div>
 
               <Components.Button type="submit">Sign Up</Components.Button>

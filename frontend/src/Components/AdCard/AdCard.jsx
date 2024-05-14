@@ -34,6 +34,7 @@ const AdCard = (props) => {
       );
       toast.success("Ad Updated Successfully");
       closeModal();
+      window.location.reload();
     } catch (e) {
       console.log(e);
     }
