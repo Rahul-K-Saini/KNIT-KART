@@ -4,6 +4,7 @@ import axios from "axios";
 import Ad from './Ad';
 
 function AdDisplay({ selectedCategory }) {
+  const [loading,setLoading] = useState(false);
   const [ads,setAds] = useState([]);
   // const [adsArr, setAdsArr] = useState([]);
   // const [displayCount, setDisplayCount] = useState(4);
@@ -13,8 +14,10 @@ function AdDisplay({ selectedCategory }) {
   }, []);
   
   const getAds = async () => {
+    setLoading(true);
     const res = await axios.post("http://localhost:8000/ad/getAllAds");
     setAds(res.data);
+    setLoading(false);
     // setAdsArr(res.data.slice(0, displayCount));
   };
 
@@ -39,6 +42,10 @@ function AdDisplay({ selectedCategory }) {
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
+
+  if(loading){
+    return <h3>Loading...</h3>
+  }
 
   if (ads.length <= 0) {
     return (

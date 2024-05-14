@@ -14,6 +14,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [signIn, setSignIn] = useState(true);
+  const [OTPLoading,setOTPLoading] = useState(false);
 
   const [isLoginPage, setIsLoginPage] = useState({
     loginPage: true,
@@ -75,6 +76,7 @@ function App() {
   };
 
   const handleSendOTP = async () => {
+    setOTPLoading(true);
     const formData = new FormData();
     formData.append("email", email);
     try {
@@ -88,6 +90,8 @@ function App() {
       }
     } catch (e) {
       console.log(e);
+    }finally{
+      setOTPLoading(false);
     }
   };
 
@@ -170,7 +174,7 @@ function App() {
                 onClick={handleSendOTP}
                 className="text-blue-700 underline"
               >
-                Send OTP
+                {OTPLoading ? "Sending OTP..." : "Send OTP"}
               </button>
               <div className="w-full">
                 <Components.Input type="text" name="otp" placeholder="OTP"  required/>
