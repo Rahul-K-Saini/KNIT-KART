@@ -22,25 +22,6 @@ const userSchema = new mongoose.Schema(
         message: "Please enter a KNIT domain email address",
       },
     },
-    contact: {
-      type: String,
-      required: true,
-      lowercase: true,
-      validate: [
-        {
-          validator: function (num) {
-            return num.length === 10;
-          },
-          message: "Contact number should be of 10 digits",
-        },
-        {
-          validator: function (num) {
-            return validator.isNumeric(num);
-          },
-          message: "Contact number should contain only numeric digits",
-        },
-      ],
-    },
     branch: {
       type: String,
       lowercase: true,
