@@ -39,7 +39,7 @@ function Homepage() {
           Post Ad
         </Link>
       </div>
-      {/* <Hero /> */}
+      <Hero />
       <AdDisplay selectedCategory={selectedCategory} />
       <Faq />
     </>
