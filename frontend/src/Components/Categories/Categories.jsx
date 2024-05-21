@@ -1,5 +1,9 @@
 import React from "react";
 
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 const Categories = ({ categories, selectedCategory, onSelectCategory }) => {
   return (
     <div className="p-4 py-5 bg-footer dark:text-[#9583ac]">
@@ -7,17 +11,16 @@ const Categories = ({ categories, selectedCategory, onSelectCategory }) => {
         <h3 className="text-base text-text font-semibold">Categories:</h3>
         {/* For larger screen */}
         <div className="hidden md:flex gap-2 items-center">
-          {/* console.log("catagories: "+categories); */}
           {categories.map((category) => (
             <li
               key={category.id}
               onClick={() => onSelectCategory(category.name)}
-              className={`cursor-pointer py-1 px-3 rounded transform transition-all duration-300 hover:scale-105 ${(selectedCategory === category.name)
-                ? "bg-secondary text-white"
-                : "bg-white"
+              className={`cursor-pointer py-1 px-3 rounded transform transition-all duration-300 hover:scale-105 ${selectedCategory === category.name
+                  ? "bg-secondary text-white"
+                  : "bg-white"
                 }`}
             >
-              {category.name}
+              {capitalizeFirstLetter(category.name)}
             </li>
           ))}
         </div>
@@ -32,16 +35,14 @@ const Categories = ({ categories, selectedCategory, onSelectCategory }) => {
             <option
               key={category.id}
               value={category.name}
-              className="text-sm" // Adjust the width as needed
+              className="text-sm"
             >
-              {category.name}
+              {capitalizeFirstLetter(category.name)}
             </option>
           ))}
         </select>
-
-
-      </ul >
-    </div >
+      </ul>
+    </div>
   );
 };
 
