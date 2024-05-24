@@ -53,12 +53,11 @@ adRouter.post('/getUserAds',async(req,res)=>{
 })
 
 
-adRouter.put('/updateAd', async (req, res) => {
-    const {id} = req.body;
+adRouter.put('/updateAd/:id', async (req, res) => {
+    const id = req.params.id;
     try{
         await Ad.updateOne({_id:id},{
             $set:{
-                title:req.body.title,
                 description:req.body.description,
                 price:req.body.price,
                 category:req.body.category,

@@ -2,9 +2,10 @@ import React from "react";
 
 const ProfileSection = ({ user }) => {
 
-    const { name, email, contact, hostel, year, gender } = user;
+    if(!user) return <div>Loading..</div>
 
-    const selectedKeys = ['name', 'email', 'contact', 'hostel', 'year', 'gender'];
+    const selectedKeys = ['name', 'email', 'hostel', 'year', 'gender'];
+
 
     return (
         <>

@@ -11,8 +11,10 @@ import toast, { Toaster } from "react-hot-toast";
 function App() {
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [signIn, setSignIn] = useState(true);
+  const [OTPLoading,setOTPLoading] = useState(false);
 
   const [isLoginPage, setIsLoginPage] = useState({
     loginPage: true,
@@ -33,14 +35,15 @@ function App() {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const contact = form.contact.value;
+    const otp = form.otp.value;
 
     const userData = {
       name,
       email,
       password,
-      contact,
+      otp
     };
+    let ermsg = "";
     try {
       const { data } = await axios.post(
         "http://localhost:8000/user/register",
@@ -56,7 +59,10 @@ function App() {
         setSignIn(true);
         form.reset();
       } else {
+        console.log(data);
+        ermsg = data.message;
         let message = data.message.message;
+        console.log(message);
         let error = message
           .substring(message.indexOf(":") + 1)
           .replaceAll(",", "\n");
@@ -64,7 +70,28 @@ function App() {
       }
     } catch (e) {
       console.log(e);
-      toast.error(e.message);
+      toast.error(e);
+      ermsg.length!==0?toast.error(ermsg):null;
+    }
+  };
+
+  const handleSendOTP = async () => {
+    setOTPLoading(true);
+    const formData = new FormData();
+    formData.append("email", email);
+    try {
+      const res = await axios.post("http://localhost:8000/user/send-otp", {
+        email,
+      });
+      if (res.data.success) {
+        toast.success(res.data.message);
+      } else {
+        toast.error(res.data.message);
+      }
+    } catch (e) {
+      console.log(e);
+    }finally{
+      setOTPLoading(false);
     }
   };
 
@@ -124,29 +151,15 @@ function App() {
                 type="email"
                 placeholder="Email(KNIT)"
                 name="email"
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <div className="flex space-x-2">
-                <Components.Input
-                  type="text"
-                  name="contact"
-                  placeholder="Contact No."
-                  required
-                />
-                <Components.Input
-                  type="text"
-                  name="OTP"
-                  placeholder="OTP"
-                  required
-                />
-              </div>
               <div className="flex bg-[rgb(238,238,238)] rounded w-full items-center relative h-fit">
                 <Components.Input
                   className="outline-none flex-grow px-4 border-black"
                   name="password"
                   type={`${showPassword ? "text" : "password"}`}
                   placeholder="Password"
-                  required
                 />
                 <button
                   type="button"
@@ -155,10 +168,19 @@ function App() {
                 >
                   {showPassword ? <GoEye className="" /> : <GoEyeClosed />}
                 </button>
+              </div>  
+              <button
+                type="button"
+                onClick={handleSendOTP}
+                className="text-blue-700 underline"
+              >
+                {OTPLoading ? "Sending OTP..." : "Send OTP"}
+              </button>
+              <div className="w-full">
+                <Components.Input type="text" name="otp" placeholder="OTP"  required/>
               </div>
 
               <Components.Button type="submit">Sign Up</Components.Button>
-              <a href="" className="text-blue-700 underline">Send OTP</a>
             </Components.Form>
           </Components.SignUpContainer>
 
@@ -233,17 +255,20 @@ function App() {
                 <i className="bx bxs-user"></i>
               </div>
               <div className={style["input-group"]}>
-                <input name="email" type="email" required />
+                <input
+                  name="email"
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
                 <label htmlFor="">Email(KNIT)</label>{" "}
                 <i className="bx bxs-user"></i>
               </div>
-              <div className={style["input-group"]} style={{display:"flex"}}>
-                <input type="text" name="contact" required />
-                <label htmlFor="">Contact No.</label>{" "}
+              <div className={style["input-group"]} style={{ display: "flex" }}>
                 <i className="bx bxs-envelope"></i>
                 <i className="bx bxs-user"></i>
               </div>
-              <div className={style["input-group"]} style={{display:"flex"}}>
+              <div className={style["input-group"]} style={{ display: "flex" }}>
                 <input type="text" name="otp" required />
                 <label htmlFor="">OTP</label>{" "}
                 <i className="bx bxs-envelope"></i>
@@ -257,7 +282,9 @@ function App() {
               <button type="submit" className={style["btn"]}>
                 Sign Up
               </button>
-              <a href="" className="text-blue-700 underline">Send OTP</a>
+              <button type="button" onClick={handleSendOTP} className="text-blue-700 underline">
+                Send OTP
+              </button>
 
               <div className={style["Sign-link"]}>
                 <p>

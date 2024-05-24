@@ -13,6 +13,15 @@ const AdPage = () => {
   const { id } = useParams();
   const [adDetails, setAdDetails] = useState(null);
 
+
+  const handleSendMail = (email,title) => {
+    const subject = `Inquiry regarding your ad: ${title}`;;
+    const body = "Hi, i want to know more about this ad on KNIT-KART. Please reply to this email. Thanks";
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+  };
+
   const getAdDetails = async () => {
     try {
       const res = await axios.get(`http://localhost:8000/ad/getAdById/${id}`);
@@ -94,8 +103,8 @@ const AdPage = () => {
     // set the variable show to equal the sum which is the position in the array
     let show = mobileImgNav + n;
     if (show < 0) {
-      show = adDetails?.images.length;
-    } else if (show > adDetails?.images.length) {
+      show = adDetails?.images.length-1;
+    } else if (show > adDetails?.images.length-1) {
       show = 0;
     }
     // when user clicks on the images, the position from the array will update
@@ -113,14 +122,18 @@ const AdPage = () => {
     let imageNav = mapImg.indexOf(true);
     let show = imageNav + n;
     if (show < 0) {
-      show = adDetails?.images.length;
-    } else if (show > adDetails?.images.length) {
+      show = adDetails?.images.length-1;
+    } else if (show > adDetails?.images.length-1) {
       show = 0;
     }
     setImgNav(show);
     setActiveModalImage(adDetails?.images[show]);
   };
-  console.log(adDetails?.images.length)
+  
+  useEffect(() => {
+    setActiveImage(adDetails?.images[0]);
+  }, [adDetails])
+  
 
   return (
     <main className="mb-24">
@@ -181,7 +194,7 @@ const AdPage = () => {
             <p className="retail-price">Exchange - {adDetails?.exchange}</p>
           </div>
           <div className="description-btn">
-            <button className="add-to-cart transform transition-all duration-300 hover:scale-105">
+            <button onClick={()=>handleSendMail(adDetails?.user?.email,adDetails?.title)} className="add-to-cart transform transition-all duration-300 hover:scale-105">
               <span>Contact: {adDetails?.user?.email}</span>
             </button>
           </div>

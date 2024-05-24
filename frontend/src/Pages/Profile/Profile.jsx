@@ -94,6 +94,9 @@ const Profile = () => {
             console.log(e);
         }
     };
+    if(!user){
+        return <div>Loading...</div>
+    }
 
     return (
         <>
@@ -110,10 +113,10 @@ const Profile = () => {
                             <MdModeEditOutline className='md:text-lg text-2xl' />
                             <button className='text-lg transition-colors duration-300 md:block hidden'>Edit Profile</button>
                         </div>
-                        <div onClick={() => handleSectionChange('password')} className='flex items-center space-x-3 hover:text-primary'>
+                        {/* <div onClick={() => handleSectionChange('password')} className='flex items-center space-x-3 hover:text-primary'>
                             <MdOutlineManageAccounts className='md:text-lg text-2xl' />
                             <button className='text-lg transition-colors duration-300 md:block hidden'>Manage Password</button>
-                        </div>
+                        </div> */}
                         <div onClick={() => handleSectionChange('dashboard')} className='flex items-center space-x-3 hover:text-primary'>
                             <MdDashboard className='md:text-lg text-2xl' />
                             <button className='text-lg transition-colors duration-300 md:block hidden'>Dashboard</button>

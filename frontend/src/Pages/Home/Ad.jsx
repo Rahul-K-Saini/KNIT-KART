@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Ad({ ad }) {
-
   return (
     <div className="w-full max-w-sm bg-[rgb(250,250,250)] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
