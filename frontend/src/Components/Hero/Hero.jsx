@@ -1,37 +1,37 @@
-import React, { useEffect } from "react";
-import heroImage from "../../assets/images/hero.jpeg";
-import { TypewriterEffectDemo } from "../TypeWriterDemo/TypeWriterDemo";
-import Aos from "aos";
-import "aos/dist/aos.css";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 function Hero() {
-
-  const navigate = useNavigate();
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, [])
-
-  const temporary = ()=>{
-    navigate("/profile");
-  }
-
   return (
-    <section className="w-full bg-background text-text h-fit">
-      <div className="flex md:flex-row flex-col justify-between py-8">
-        <div className="flex-1 flex flex-col justify-center md:items-start items-center px-5 mb-1" data-aos="fade-right">
-          <TypewriterEffectDemo />
-          <p className="mt-5 mb-3 md:text-xl md:text-start text-center">
-          Empowering Hostellers. Swap, sell, or shop. Join a sustainable hostel community. Reduce waste, share treasures. Your one-stop for eco-friendly living. Discover, exchange, thrive.
-          </p>
-          <button onClick={temporary} className="py-3 px-2 bg-accent dark:bg-accent border-2 border-transparent rounded w-[30%] dark:text-[#f4f4f4] hover:border-black hover:dark:border-white">
-            Get Started
-          </button>
+    <section className="w-full bg-background text-text h-fit py-8">
+      <Carousel
+        showArrows={false}
+        showThumbs={false}
+        showStatus={false}
+        infiniteLoop={true}
+        autoPlay={true}
+        interval={2500}
+        transitionTime={500}
+        className="text-center"
+      >
+        <div className="bg-blue-900 p-6 py-16 rounded-lg cursor-pointer">
+          <h5 className='text-white font-bold text-lg md:text-2xl transition-all duration-300 hover:text-yellow-300'>Create Account</h5>
+          <p className="text-sm md:text-base text-gray-200">Sign up and create your profile to get started.</p>
         </div>
-        <div className="flex-1 justify-center px-3">
-          <img src={heroImage} alt="Hero" className="h-full object-cover" data-aos="fade-left"/>
+        <div className="bg-green-900 p-6 py-16 rounded-lg cursor-pointer">
+          <h5 className='text-white font-bold text-lg md:text-2xl transition-all duration-300 hover:text-yellow-300'>Post Ad</h5>
+          <p className="text-sm md:text-base text-gray-200">Upload details of the item you want to exchange.</p>
         </div>
-      </div>
+        <div className="bg-purple-900 p-6 py-16 rounded-lg cursor-pointer">
+          <h5 className='text-white font-bold text-lg md:text-2xl transition-all duration-300 hover:text-yellow-300'>Find Your Exchange</h5>
+          <p className="text-sm md:text-base text-gray-200">Browse listings and find the perfect match for exchange.</p>
+        </div>
+        <div className="bg-red-900 p-6 py-16 rounded-lg cursor-pointer">
+          <h5 className='text-white font-bold text-lg md:text-2xl transition-all duration-300 hover:text-yellow-300'>Get Your Item</h5>
+          <p className="text-sm md:text-base text-gray-200">Coordinate with the other party and complete the exchange.</p>
+        </div>
+      </Carousel>
     </section>
   );
 }

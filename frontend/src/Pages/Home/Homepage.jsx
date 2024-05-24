@@ -11,16 +11,17 @@ function Homepage() {
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const categories = [
-    { id: 1, name: "Electronics" },
-    { id: 2, name: "Household" },
-    { id: 3, name: "Sports Items" },
-    { id: 4, name: "Kitchen Ware" },
-    { id: 5, name: "Stationaries" },
-    { id: 6, name: "Furniture" },
+    { id: 1, name: "electronics" },
+    { id: 2, name: "household" },
+    { id: 3, name: "sportsItems" },
+    { id: 4, name: "kitchenware" },
+    { id: 5, name: "stationeries" },
+    { id: 6, name: "furniture" },
+    { id: 7, name: "studyMaterial" },
   ];
 
-  const handleSelectCategory = (categoryId) => {
-    setSelectedCategory(categoryId);
+  const handleSelectCategory = (category) => {
+    setSelectedCategory(category);
     // other server side fetching logic
   };
   return (
@@ -38,7 +39,7 @@ function Homepage() {
           Post Ad
         </Link>
       </div>
-      {/* <Hero /> */}
+      <Hero />
       <AdDisplay selectedCategory={selectedCategory} />
       <Faq />
     </>
