@@ -14,7 +14,10 @@ function App() {
   const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [signIn, setSignIn] = useState(true);
-  const [OTPLoading,setOTPLoading] = useState(false);
+  const [OTPLoading, setOTPLoading] = useState(false);
+
+  const [showModalFP, setShowModalFP] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
 
   const [isLoginPage, setIsLoginPage] = useState({
     loginPage: true,
@@ -41,7 +44,7 @@ function App() {
       name,
       email,
       password,
-      otp
+      otp,
     };
     let ermsg = "";
     try {
@@ -71,11 +74,12 @@ function App() {
     } catch (e) {
       console.log(e);
       toast.error(e);
-      ermsg.length!==0?toast.error(ermsg):null;
+      ermsg.length !== 0 ? toast.error(ermsg) : null;
     }
   };
 
-  const handleSendOTP = async () => {
+  const handleSendOTP = async (e) => {
+    e.preventDefault();
     setOTPLoading(true);
     const formData = new FormData();
     formData.append("email", email);
@@ -85,12 +89,13 @@ function App() {
       });
       if (res.data.success) {
         toast.success(res.data.message);
+        setOtpSent(true);
       } else {
         toast.error(res.data.message);
       }
     } catch (e) {
       console.log(e);
-    }finally{
+    } finally {
       setOTPLoading(false);
     }
   };
@@ -132,6 +137,43 @@ function App() {
     }
   };
 
+  const handleResetPassword = async(e) => {
+    e.preventDefault();
+    const form = e.target;
+    const otp = form.otp.value;
+    const password = form.newPassword.value;
+    const confirmPassword = form.confirmPassword.value;
+
+    if (password!== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    const userData = {
+      email,
+      otp,
+      password,
+    };
+
+    const res = await axios.post(
+      "http://localhost:8000/user/forget-password",
+      userData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if(res.data.success){
+      toast.success(res.data.message);
+      form.reset();
+      setShowModalFP(false);
+    }else{
+      toast.error(res.data.message);
+    }
+
+  };
+
   return (
     <>
       <Toaster />
@@ -168,7 +210,7 @@ function App() {
                 >
                   {showPassword ? <GoEye className="" /> : <GoEyeClosed />}
                 </button>
-              </div>  
+              </div>
               <button
                 type="button"
                 onClick={handleSendOTP}
@@ -177,7 +219,12 @@ function App() {
                 {OTPLoading ? "Sending OTP..." : "Send OTP"}
               </button>
               <div className="w-full">
-                <Components.Input type="text" name="otp" placeholder="OTP"  required/>
+                <Components.Input
+                  type="text"
+                  name="otp"
+                  placeholder="OTP"
+                  required
+                />
               </div>
 
               <Components.Button type="submit">Sign Up</Components.Button>
@@ -210,7 +257,10 @@ function App() {
                   {showPassword ? <GoEye /> : <GoEyeClosed />}
                 </button>
               </div>
-              <Components.Anchor href="#">
+              <Components.Anchor
+                className="hover:cursor-pointer"
+                onClick={() => setShowModalFP(true)}
+              >
                 Forgot your password?
               </Components.Anchor>
               <Components.Button type="submit">Sign In</Components.Button>
@@ -282,7 +332,11 @@ function App() {
               <button type="submit" className={style["btn"]}>
                 Sign Up
               </button>
-              <button type="button" onClick={handleSendOTP} className="text-blue-700 underline">
+              <button
+                type="button"
+                onClick={handleSendOTP}
+                className="text-blue-700 underline"
+              >
                 Send OTP
               </button>
 
@@ -338,6 +392,94 @@ function App() {
           </div>
         </div>
       </div>
+
+      {showModalFP && ( // forgot password modal
+        <>
+          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+            <div className="bg-white p-6 rounded shadow-lg w-full max-w-sm">
+              <div className="flex justify-between items-center">
+                <h3 className="text-2xl font-bold">Forgot Password</h3>
+                <button onClick={() => setShowModalFP(false)}>❌</button>
+              </div>
+              <div className="mt-4 flex flex-col gap-1">
+                {!otpSent ? (
+                  <form onSubmit={(e) => handleSendOTP(e)}>
+                    <p className="text-sm text-gray-500">
+                      Enter your email address and we’ll send you an OTP to
+                      reset your password.
+                    </p>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <div>
+                        <label htmlFor="">
+                          Email <span className="text-red-500">*</span>
+                        </label>
+                        <br />
+                        <input
+                          className="w-full p-2 bg-gray-100 outline-none"
+                          type="email"
+                          name="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="Enter your email"
+                          required
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        className="bg-primary py-2 text-white rounded"
+                      >
+                        Send OTP
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  <form className="flex flex-col gap-2" onSubmit={(e) => handleResetPassword(e)}>
+                    <div>
+                      <label htmlFor="otp">Enter OTP</label>
+                      <br></br>
+                      <input
+                        type="text"
+                        className="w-full p-2 bg-gray-100 outline-none"
+                        placeholder="Enter OTP"
+                        name="otp"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="newPassword">Enter New Password</label>
+                      <br></br>
+                      <input
+                        type="text"
+                        className="w-full p-2 bg-gray-100 outline-none"
+                        placeholder="Enter Password"
+                        name="newPassword"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="confirmPassword">Confirm New Password</label>
+                      <br></br> 
+                      <input
+                        type="text"
+                        className="w-full p-2 bg-gray-100 outline-none"
+                        placeholder="Confirm Password"
+                        name="confirmPassword"
+                        required
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="bg-primary py-2 text-white rounded mt-2"
+                    >
+                      Reset Password
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }

@@ -184,15 +184,16 @@ export const handleOtp = async (req, res) => {
         const otp = Math.floor(Math.random() * 9000 + 1000);
 
 
-        const data = await OTP.create({
-            email,
-            otp
-        });
+       
 
         // Send OTP via email
         const success = await sendOTPByEmail(email, otp);
 
         if (success) {
+            const data = await OTP.create({
+                email,
+                otp
+            });
             return res.json({
                 success: true,
                 message: "OTP sent successfully"
@@ -239,4 +240,36 @@ async function sendOTPByEmail(email, otp) {
         console.error(error);
         return false;
     }
+}
+
+
+export async function handleForgetPassword(req,res){
+    const {email,otp, password} = req.body;
+    const existingOTP = await OTP.findOne({ email: email });
+    if(!existingOTP){
+        return res.json({
+            success: false,
+            message: "OTP not found"
+        });
+    }
+
+    if(existingOTP.otp!= otp){
+        return res.json({
+            success: false,
+            message: "Wrong OTP Entered"
+        });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const updatePassword = await User.updateOne({email: email}, {password: hashedPassword});
+    console.log(updatePassword);
+
+    await OTP.deleteMany({ email: email });
+    
+    return res.json({
+        success: true,
+        message: "Password Updated Successfully"
+    });
+
+
 }
