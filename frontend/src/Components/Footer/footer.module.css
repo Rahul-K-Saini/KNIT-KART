@@ -1,0 +1,14 @@
+.flash {
+    border-radius: 10px;
+    animation: flash-animation 1s;
+}
+
+@keyframes flash-animation {
+    0% {
+        background-color: var(--primary);
+    }
+
+    100% {
+        background-color: var(--secondary);
+    }
+}

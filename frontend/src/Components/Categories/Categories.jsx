@@ -16,8 +16,8 @@ const Categories = ({ categories, selectedCategory, onSelectCategory }) => {
               key={category.id}
               onClick={() => onSelectCategory(category.name)}
               className={`cursor-pointer py-1 px-3 rounded transform transition-all duration-300 hover:scale-105 ${selectedCategory === category.name
-                  ? "bg-secondary text-white"
-                  : "bg-white"
+                ? "bg-secondary text-white"
+                : "bg-white"
                 }`}
             >
               {capitalizeFirstLetter(category.name)}

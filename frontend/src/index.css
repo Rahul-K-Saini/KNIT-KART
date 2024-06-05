@@ -28,6 +28,10 @@
   }
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 /* WebKit (Chrome, Safari) */
 ::-webkit-scrollbar {
   width: 8px;

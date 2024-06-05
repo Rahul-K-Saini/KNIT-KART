@@ -50,16 +50,16 @@ const Profile = () => {
         setActiveSection(section);
     };
 
-    const clearInput = () => {
-        setFormData({
-            name: '',
-            gender: '',
-            email: '',
-            contact: '',
-            hostel: '',
-            roomNo: ''
-        });
-    };
+    // const clearInput = () => {
+    //     setFormData({
+    //         name: '',
+    //         gender: '',
+    //         email: '',
+    //         contact: '',
+    //         hostel: '',
+    //         roomNo: ''
+    //     });
+    // };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -139,10 +139,10 @@ const Profile = () => {
                                             Enable Editing
                                             <FaRegEdit className={`${isEditable ? 'text-secondary' : 'text-text'} md:ml-1 cursor-pointer`} />
                                         </span>
-                                        <span className='md:text-xl text-base flex items-center font-light cursor-pointer' onClick={clearInput}>
+                                        {/* <span className='md:text-xl text-base flex items-center font-light cursor-pointer' onClick={clearInput}>
                                             Clear All
                                             <TbReload className='ml-1' />
-                                        </span>
+                                        </span> */}
                                     </div>
                                 </div>
                             ) : activeSection === 'password' ? (

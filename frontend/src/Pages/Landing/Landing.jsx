@@ -21,7 +21,7 @@ const Landing = () => {
                     <source src={bgVid} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-                {/* Hero Section */}
+                {/* Navbar */}
                 <CustomNavbar />
 
                 {/* Hero Section */}

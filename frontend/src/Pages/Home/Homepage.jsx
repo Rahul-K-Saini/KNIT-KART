@@ -11,6 +11,7 @@ function Homepage() {
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const categories = [
+    { id: 0, name: "all" },
     { id: 1, name: "electronics" },
     { id: 2, name: "household" },
     { id: 3, name: "sportsItems" },
@@ -21,6 +22,10 @@ function Homepage() {
   ];
 
   const handleSelectCategory = (category) => {
+    if(category==='all'){
+      setSelectedCategory('');
+      return;
+    }
     setSelectedCategory(category);
     // other server side fetching logic
   };

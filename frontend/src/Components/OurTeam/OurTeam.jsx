@@ -6,7 +6,7 @@ import { FaLinkedinIn } from "react-icons/fa6";
 const OurTeam = () => {
     return (
         <>
-            <div className='flex items-center justify-center px-6 py-12 md:p-12 min-w-[300px]'>
+            <div id='team' className='flex items-center justify-center px-6 py-12 md:p-12 min-w-[300px]'>
                 <div className="flex flex-col justify-center items-center container mx-auto py-8 px-4 w-full bg-background rounded-2xl text-text">
                     <h1 className="text-3xl font-bold mb-4">Meet Our Team</h1>
                     <div className="grid md:grid-cols-4 grid-col-1 gap-16 md:my-7 my-4">
@@ -21,8 +21,8 @@ const OurTeam = () => {
                                 </div>
                                 {/* social media links */}
                                 <div className='flex items-center justify-around mt-6 py-4 w-full border-t border-black'>
-                                    <a href={member.linkdeIn}><FaLinkedinIn className='hover:cursor-pointer hover:text-[#0a66c2] duration-300 text-xl' /></a>
-                                    <a href={member.github}><FaGithub className='hover:cursor-pointer hover:text-[#3c3c3c] duration-300 text-xl' /></a>
+                                    <a target='_blank' href={member.linkdeIn}><FaLinkedinIn className='hover:cursor-pointer hover:text-[#0a66c2] duration-300 text-xl' /></a>
+                                    <a target='_blank' href={member.github}><FaGithub className='hover:cursor-pointer hover:text-[#3c3c3c] duration-300 text-xl' /></a>
                                 </div>
                             </div>
                         ))}
