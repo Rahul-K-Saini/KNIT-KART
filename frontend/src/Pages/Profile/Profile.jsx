@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
-import { MdModeEditOutline, MdOutlineManageAccounts, MdDashboard } from "react-icons/md";
+import { MdModeEditOutline, MdDashboard } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
 import { FaGear } from 'react-icons/fa6';
 import { useUserContext } from "@/context/userContext";
@@ -16,32 +16,30 @@ const Profile = () => {
     const [disabled, setDisabled] = useState(true);
     const [activeSection, setActiveSection] = useState('profile');
 
-    let {user} = useUserContext();
-    console.log(user);
-
-    useEffect(() => {
-        getUserAds();
-    }, [user]);
-
-    if (!user) {
-        user = {
-            name: '',
-            gender: '',
-            email: '',
-            contact: '',
-            hostel: '',
-            roomNo: ''
-        };
-    }
+    const { user } = useUserContext();
 
     const [formData, setFormData] = useState({
-        name: user.name,
-        gender: user.gender,
-        email: user.email,
-        contact: user.contact,
-        hostel: user.hostel,
-        roomNo: user.roomNo
+        name: '',
+        gender: '',
+        email: '',
+        contact: '',
+        hostel: '',
+        roomNo: ''
     });
+
+    useEffect(() => {
+        if (user) {
+            setFormData({
+                name: user.user.name || '',
+                gender: user.user.gender || '',
+                email: user.user.email || '',
+                contact: user.user.contact || '',
+                hostel: user.user.hostel || '',
+                roomNo: user.user.roomNo || ''
+            });
+            getUserAds();
+        }
+    }, [user]);
 
     const handleEditable = () => {
         setIsEditable((prev) => !prev);
@@ -58,7 +56,7 @@ const Profile = () => {
             gender: '',
             email: '',
             contact: '',
-            hostelName: '',
+            hostel: '',
             roomNo: ''
         });
     };
@@ -69,6 +67,11 @@ const Profile = () => {
             ...prevState,
             [name]: value
         }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formData);
     };
 
     const deleteAd = async (id) => {
@@ -94,7 +97,8 @@ const Profile = () => {
             console.log(e);
         }
     };
-    if(!user){
+
+    if (!user) {
         return <div>Loading...</div>
     }
 
@@ -113,10 +117,6 @@ const Profile = () => {
                             <MdModeEditOutline className='md:text-lg text-2xl' />
                             <button className='text-lg transition-colors duration-300 md:block hidden'>Edit Profile</button>
                         </div>
-                        {/* <div onClick={() => handleSectionChange('password')} className='flex items-center space-x-3 hover:text-primary'>
-                            <MdOutlineManageAccounts className='md:text-lg text-2xl' />
-                            <button className='text-lg transition-colors duration-300 md:block hidden'>Manage Password</button>
-                        </div> */}
                         <div onClick={() => handleSectionChange('dashboard')} className='flex items-center space-x-3 hover:text-primary'>
                             <MdDashboard className='md:text-lg text-2xl' />
                             <button className='text-lg transition-colors duration-300 md:block hidden'>Dashboard</button>
@@ -151,21 +151,21 @@ const Profile = () => {
                                 <><h1 className='md:text-3xl text-2xl'>Dashboard</h1></>
                             )}
                         </h1>
-                        <img src={user.profile_pic} alt="img" className='md:h-32 h-16 md:w-32 w-16 rounded-full' />
+                        <img src={user.user.profile_pic} alt="img" className='md:h-32 h-16 md:w-32 w-16 rounded-full' />
                     </div>
                     {/* Heading and profile picture end */}
 
                     {/* Render respective section based on activeSection */}
                     {activeSection === 'profile' && (
                         <ProfileSection
-                            user={user.user}
+                            user={user}
                             isEditable={isEditable}
-                            disabled={disabled}
-                            handleEditable={handleEditable}
-                            clearInput={clearInput}
                             handleInputChange={handleInputChange}
+                            formData={formData}
+                            handleSubmit={handleSubmit} // Pass the handleSubmit function
                         />
                     )}
+
                     {activeSection === 'password' && <PasswordSection />}
                     {activeSection === 'dashboard' && (
                         <DashboardSection userAds={userAds} deleteAd={deleteAd} />
