@@ -19,23 +19,24 @@ const Profile = () => {
     const { user } = useUserContext();
 
     const [formData, setFormData] = useState({
-        name: '',
-        gender: '',
         email: '',
-        contact: '',
+        name: '',
         hostel: '',
-        roomNo: ''
+        year: '',
+        branch: '',
+        gender: '',
     });
 
     useEffect(() => {
         if (user) {
+            console.log(user);
             setFormData({
-                name: user.user.name || '',
-                gender: user.user.gender || '',
                 email: user.user.email || '',
-                contact: user.user.contact || '',
+                name: user.user.name || '',
                 hostel: user.user.hostel || '',
-                roomNo: user.user.roomNo || ''
+                year: user.user.year || '',
+                branch: user.user.branch || '',
+                gender: user.user.gender || '',
             });
             getUserAds();
         }
@@ -69,9 +70,18 @@ const Profile = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formData);
+        const { data } = await axios.post(
+            "http://localhost:8000/user/update-user",
+            formData,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        );
     };
 
     const deleteAd = async (id) => {
