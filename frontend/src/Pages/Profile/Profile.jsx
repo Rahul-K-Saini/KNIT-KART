@@ -17,6 +17,7 @@ const Profile = () => {
     const [activeSection, setActiveSection] = useState('profile');
 
     const { user } = useUserContext();
+    console.log(user);
 
     const [formData, setFormData] = useState({
         email: '',
@@ -82,6 +83,7 @@ const Profile = () => {
                 },
             }
         );
+        console.log(data);
     };
 
     const deleteAd = async (id) => {

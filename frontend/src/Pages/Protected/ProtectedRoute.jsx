@@ -5,6 +5,13 @@ import {Navigate} from 'react-router-dom'
 
 export default function ProtectedRoute({ children }) {
     const { user, setUser } = useUserContext()
+    
+        useEffect(() => {
+           
+                getUser()
+            
+        }, [])
+    console.log("get user ke bahar",user);
     const getUser = async () => {
         try {
             const res = await axios.post(
@@ -20,6 +27,7 @@ export default function ProtectedRoute({ children }) {
             if (res.data.success) {
                 console.log(user);
                 setUser(res.data.data)
+                console.log("protected route m",user);
             } else {
                 <Navigate to="/entrance" />
                 localStorage.clear()
@@ -29,12 +37,6 @@ export default function ProtectedRoute({ children }) {
             console.log(error)
         }
     }
-
-    useEffect(() => {
-        if (!user) {
-            getUser()
-        }
-    }, [user])
 
     if (localStorage.getItem("token")) {
         return children
