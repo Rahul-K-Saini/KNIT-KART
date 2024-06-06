@@ -4,10 +4,11 @@ const ProfileSection = ({ user, isEditable, handleInputChange, formData, handleS
 
     if (!user) return <div>Loading..</div>
 
-    const selectedKeys = ['name', 'email', 'hostel', 'year', 'gender'];
-    const genders = ["Male", "Female"];
+    const selectedKeys = ['email', 'name', 'hostel', 'year', 'branch', 'gender'];
+    const genders = ["male", "female"];
     const years = [1, 2, 3, 4];
     const hostels = ["Aryabhatta", "Vikram Sarabhai", "Bhabha", "Ramanujan", "Old VS", "New VS", "Hostel ABC", "Hostel LMT", "Raman", "Gargi", "Maitreyi", "MNS"].sort();
+    const branchs = ["mca", "computer science", "information technology", "electronics", "electrical", "civil", "mechanical" ].sort();
 
     return (
         <form onSubmit={handleSubmit}>
@@ -34,7 +35,7 @@ const ProfileSection = ({ user, isEditable, handleInputChange, formData, handleS
                                 id={key}
                                 name={key}
                                 className="border p-2 w-full focus:outline-none text-black"
-                                value={formData[key] || ''}
+                                value={formData.hostel || ''}
                                 onChange={handleInputChange}
                                 disabled={!isEditable}
                             >
@@ -56,6 +57,20 @@ const ProfileSection = ({ user, isEditable, handleInputChange, formData, handleS
                                 {years.map((year) => (
                                     <option key={year} value={year}>{year}</option>
                                 ))}
+                            </select>
+                        ) : key === 'branch' ? (
+                            <select
+                                id={key}
+                                name={key}
+                                className="border p-2 w-full focus:outline-none text-black"
+                                value={formData[key] || ''}
+                                onChange={handleInputChange}
+                                disabled={!isEditable}
+                            >
+                                <option value="">Select Branch</option>
+                                {branchs.map((branch) => (
+                                    <option key={branch} value={branch}>{branch}</option>
+                                    ))}
                             </select>
                         ) : key === 'email' ? (
                             <input
