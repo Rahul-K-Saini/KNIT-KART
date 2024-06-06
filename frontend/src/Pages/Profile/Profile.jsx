@@ -16,8 +16,7 @@ const Profile = () => {
     const [disabled, setDisabled] = useState(true);
     const [activeSection, setActiveSection] = useState('profile');
 
-    const { user } = useUserContext();
-    console.log(user);
+    const { user, setUser } = useUserContext();
 
     const [formData, setFormData] = useState({
         email: '',
@@ -74,16 +73,23 @@ const Profile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formData);
-        const { data } = await axios.post(
-            "http://localhost:8000/user/update-user",
-            formData,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        );
-        console.log(data);
+        try {
+            const { data } = await axios.post(
+                "http://localhost:8000/user/update-user",
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+        //    location.reload();
+        toast.success("Profile updated Successfully");
+
+        } catch (error) {
+            toast.error("Error occured while profile update");
+        }
+        
     };
 
     const deleteAd = async (id) => {
