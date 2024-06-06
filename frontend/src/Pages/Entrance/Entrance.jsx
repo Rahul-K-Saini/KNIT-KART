@@ -447,9 +447,12 @@ function App() {
                       </div>
                       <button
                         type="submit"
-                        className="bg-primary py-2 text-white rounded"
+                        className={`bg-primary py-2 text-white rounded ${
+                          OTPLoading ? 'opacity-50 cursor-not-allowed' : ''
+                        }`}
+                        disabled = {OTPLoading}
                       >
-                        Send OTP
+                        {OTPLoading ?  "Sending.. " : "Send OTP"}
                       </button>
                     </div>
                   </form>

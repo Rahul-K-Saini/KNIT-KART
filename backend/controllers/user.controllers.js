@@ -273,3 +273,13 @@ export async function handleForgetPassword(req,res){
 
 
 }
+
+export async function handleUpdateUser(req,res){
+    const {email, name, hostel, year, branch, gender } = req.body;
+    const updatedUSer = await User.updateOne({email: email}, {name: name, hostel: hostel, year: year, branch: branch, gender: gender});
+    console.log(updatedUSer);
+    return res.json({
+        success: true,
+        message: "User Updated Successfully"
+    });
+}
