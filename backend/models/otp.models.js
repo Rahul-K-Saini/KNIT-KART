@@ -1,13 +1,19 @@
-import {Schema,model} from 'mongoose'
+import { Schema, model } from 'mongoose';
 
- const otpSchema = new Schema({
-    email: {
+const otpSchema = new Schema({
+  email: {
     type: String,
-    required:true,
+    required: true,
   },
   otp: Number,
-},{timestamps:true})
+  expiresAt: {
+    type: Date,
+    expires: '5m', 
+    default: Date.now
+  }
+}, { timestamps: true });
 
+otpSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 const OTP = model("otp", otpSchema);
 

@@ -1,6 +1,6 @@
 import { GoEyeClosed } from "react-icons/go";
 import { GoEye } from "react-icons/go";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import * as Components from "./Components";
 import axios from "axios";
 import "./styles.css";
@@ -18,6 +18,7 @@ function App() {
 
   const [showModalFP, setShowModalFP] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
+  const [otpTime,setOtpTime] = useState(5*60)
 
   const [isLoginPage, setIsLoginPage] = useState({
     loginPage: true,
@@ -172,6 +173,26 @@ function App() {
       toast.error(res.data.message);
     }
 
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setOtpTime(prevTime => {
+        if (prevTime <= 1) {
+          clearInterval(interval); 
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval); 
+  }, []);
+
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -444,6 +465,7 @@ function App() {
                         name="otp"
                         required
                       />
+                      <small>OTP will expire in </small><small className="text-red-500"> {formatTime(otpTime)}</small>
                     </div>
                     <div>
                       <label htmlFor="newPassword">Enter New Password</label>
