@@ -7,41 +7,39 @@ import { Link, useNavigate } from "react-router-dom";
 import AdDisplay from "./AdDisplay";
 
 function Homepage() {
-  const navigate = useNavigate();
-  const [isLoggedin, setisLoggedin] = useState(true);
-  const postAdHandler = () => {
-    if (isLoggedin) {
-      navigate("/postAd");
-    } else {
-      navigate("/entrance");
-    }
-  };
-  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const categories = [
-    { id: 1, name: "Electronics" },
-    { id: 2, name: "Household" },
-    { id: 3, name: "Sports Items" },
-    { id: 4, name: "Kitchen Ware" },
-    { id: 5, name: "Stationaries" },
-    { id: 6, name: "Furniture" },
+    { id: 0, name: "all" },
+    { id: 1, name: "electronics" },
+    { id: 2, name: "household" },
+    { id: 3, name: "sportsItems" },
+    { id: 4, name: "kitchenware" },
+    { id: 5, name: "stationeries" },
+    { id: 6, name: "furniture" },
+    { id: 7, name: "studyMaterial" },
   ];
 
-  const handleSelectCategory = (categoryId) => {
-    setSelectedCategory(categoryId);
+  const handleSelectCategory = (category) => {
+    if(category==='all'){
+      setSelectedCategory('');
+      return;
+    }
+    setSelectedCategory(category);
     // other server side fetching logic
   };
   return (
     <>
-      <div className="flex justify-between bg-background sticky top-20 z-50">
+      <div className="flex justify-between items-center bg-footer sticky top-20 z-[1]">
         <Categories
           categories={categories}
           selectedCategory={selectedCategory}
           onSelectCategory={handleSelectCategory}
         />
         <Link
-          onClick={postAdHandler}
-          className="dark:text-gray-50 bg-accent data:bg-accent px-4 py-2 rounded hover:opacity-85"
+          to="/postad"
+          className="dark:text-gray-50 bg-accent data:bg-accent mx-6 px-4 py-2 rounded hover:opacity-85 transform transition-all duration-300 hover:scale-105 animate-wiggle animate-infinite animate-duration-[2500ms]"
         >
           Post Ad
         </Link>

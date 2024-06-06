@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import { forwardRef, useEffect, useState,useImperativeHandle } from "react";
 
-function ImageUpload() {
+const ImageUpload = forwardRef((props,ref) => {
   const [images, setImages] = useState(new Array(5).fill(null));
+
+  useEffect(() => {
+    props.handleImage(images.filter((image) => image !== null));
+  }, [images]);
 
   const handleImageUpload = (event, index) => {
     const file = event.target.files[0];
@@ -9,34 +13,35 @@ function ImageUpload() {
 
     reader.onloadend = () => {
       const updatedImages = [...images];
-      updatedImages[index] = reader.result;
+      updatedImages[index] = file; // Storing the file object in the array
       setImages(updatedImages);
     };
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      // If no file is selected, set the entry to null
       const updatedImages = [...images];
       updatedImages[index] = null;
       setImages(updatedImages);
     }
   };
 
+  const clearImages = () => {
+    setImages(new Array(5).fill(null));
+  };
+
+  useImperativeHandle(ref, () => ({
+    clearImages: clearImages
+  }));
+
   const handleImageClick = (index) => {
     document.getElementById(`imageInput-${index}`).click();
   };
 
-  const handleRemoveImage = (image) => {
-    console.log(images);
-    for (let i = 0; i < images.length; i++) {
-      if (images[i] === image) {
-        images[i] = null;
-        break; // Once we nullify the target image, we can exit the loop
-      }
-    }
-    console.log(images);
-    setImages([...images]); // Ensure state update by creating a new reference
+  const handleRemoveImage = (index) => {
+    const updatedImages = [...images];
+    updatedImages[index] = null;
+    setImages(updatedImages);
   };
 
   return (
@@ -54,13 +59,13 @@ function ImageUpload() {
               {image ? (
                 <>
                   <img
-                    src={image}
+                    src={URL.createObjectURL(image)}
                     alt={`Uploaded ${index + 1}`}
                     className="size-16 object-cover rounded cursor-pointer relative"
                     onClick={() => handleImageClick(index)}
                   />
                   <button
-                    onClick={() => handleRemoveImage(image)}
+                    onClick={() => handleRemoveImage(index)}
                     className="absolute top-[-10px] right-[-12px] px-1 text-sm "
                   >
                     ❌
@@ -97,6 +102,6 @@ function ImageUpload() {
       </div>
     </div>
   );
-}
+})
 
 export default ImageUpload;

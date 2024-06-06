@@ -10,6 +10,11 @@ main {
 	cursor: default;
 }
 
+.main-image:first-child{
+	display: grid;
+	place-items: center;
+}
+
 .main-image img {
 	width: 100%;
 	height: auto;
@@ -55,10 +60,6 @@ main {
 	margin-bottom: 1rem;
 }
 
-h1 {
-	margin-bottom: 1.4rem;
-}
-
 .item-info {
 	color: hsl(219, 9%, 45%);
 	font-size: 16px;
@@ -84,7 +85,6 @@ h1 {
 .retail-price {
 	color: hsl(220, 14%, 75%);
 	font-weight: 700;
-	text-decoration: line-through;
 	font-size: 19px;
 }
 
@@ -289,10 +289,10 @@ h1 {
 		background-size: cover;
 	}
 
-	.img-1 {
+	/* .img-1 {
 		background-image: url(../../assets/images/product-1.jpg);
-	}
-
+	} */
+/* 
 	.img-2 {
 		background-image: url(../../assets/images/product-2.jpg);
 	}
@@ -303,7 +303,7 @@ h1 {
 
 	.img-4 {
 		background-image: url(../../assets/images/product-4.jpg);
-	}
+	} */
 
 	.images-modal {
 		position: absolute;
@@ -316,7 +316,8 @@ h1 {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		/* justify-content: center; */
+		height: 70rem;
 	}
 
 	.modal-bg {

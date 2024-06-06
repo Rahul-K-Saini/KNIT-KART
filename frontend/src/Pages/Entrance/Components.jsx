@@ -20,7 +20,7 @@ export const SignUpContainer = styled.div`
   width: 50%;
   opacity: 0;
   z-index: 1;
-  ${props => props.signin !== true ? `
+  ${props => props.$signin !== true ? `
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
@@ -37,7 +37,7 @@ export const SignInContainer = styled.div`
  left: 0;
  width: 50%;
  z-index: 2;
- ${props => (props.signin !== true ? `transform: translateX(100%);` : null)}
+ ${props => (props.$signin !== true ? `transform: translateX(100%);` : null)}
  `;
 
 export const Form = styled.form`
@@ -54,7 +54,7 @@ export const Form = styled.form`
 export const Title = styled.h1`
  font-weight: bold;
  margin: 0;
-
+line-height: 5rem;
  `;
 
 export const Input = styled.input`
@@ -70,12 +70,14 @@ export const Button = styled.button`
     border-radius: 20px;
     border: 1px solid #ff4b2b;
     background-color: #7215f4;
+    margin-top: 10px;
     color: #ffffff;
     font-size: 12px;
     font-weight: bold;
     padding: 12px 45px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-top: 20px;
     transition: transform 80ms ease-in;
     &:active{
         transform: scale(0.95);
@@ -85,7 +87,6 @@ export const Button = styled.button`
     }
  `;
 export const GhostButton = styled(Button)`
- background-color: transparent;
  border-color: #ffffff;
  `;
 
@@ -106,7 +107,7 @@ overflow: hidden;
 transition: transform 0.6s ease-in-out;
 z-index: 10;
 ${props =>
-    props.signin !== true ? `transform: translateX(-100%);` : null}
+    props.$signin !== true ? `transform: translateX(-100%);` : null}
 `;
 
 export const Overlay = styled.div`
@@ -124,7 +125,7 @@ height: 100%;
 width: 200%;
 transform: translateX(0);
 transition: transform 0.6s ease-in-out;
-${props => (props.signin !== true ? `transform: translateX(50%);` : null)}
+${props => (props.$signin !== true ? `transform: translateX(50%);` : null)}
 `;
 
 export const OverlayPanel = styled.div`
@@ -144,13 +145,13 @@ export const OverlayPanel = styled.div`
 
 export const LeftOverlayPanel = styled(OverlayPanel)`
    transform: translateX(-20%);
-   ${props => props.signin !== true ? `transform: translateX(0);` : null}
+   ${props => props.$signin !== true ? `transform: translateX(0);` : null}
  `;
 
 export const RightOverlayPanel = styled(OverlayPanel)`
      right: 0;
      transform: translateX(0);
-     ${props => props.signin !== true ? `transform: translateX(20%);` : null}
+     ${props => props.$signin !== true ? `transform: translateX(20%);` : null}
  `;
 
 export const Paragraph = styled.p`

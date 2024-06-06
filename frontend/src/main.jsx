@@ -1,49 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App.jsx";
 import "./index.css";
-import App from "./App";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Entrance from "./Pages/Entrance/Entrance";
-import AdPage from "./Pages/AdPage/AdPage";
-import PostAd from "./Pages/PostAd/PostAd";
-import Profile from "./Pages/Profile/Profile";
-import Homepage from "./Pages/Home/Homepage";
-import ProtectedRoute from './Pages/ProtectedRoute/ProtectedRoute'
-import { Provider } from 'react-redux';
-import store from './store';
-
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Homepage />,
-      },
-      {
-        path: "entrance",
-        element: <Entrance />,
-      },
-      {
-        path: "ad",
-        element: <AdPage />,
-      },
-      {
-        path: "postad",
-        element: <ProtectedRoute><PostAd/></ProtectedRoute>,
-      },
-      {
-        path: "profile",
-        element: <ProtectedRoute><Profile /></ProtectedRoute>,
-      },
-    ],
-  },
-]);
+import { UserProvider } from "./context/userContext.jsx";
+import { ThemeProvider } from "./context/themeContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
+  <BrowserRouter>
+    <ThemeProvider>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </ThemeProvider>
+  </BrowserRouter>
 );

@@ -1,11 +1,17 @@
 import jwt from "jsonwebtoken";
 const protect = async (req, res, next) => {
   try {
-    const token = req.headers["authorization"].split(" ")[1];
-
+    const token = req.body.token;
+    if (!token) {
+      return res.status(401).send({
+        message: "No token provided",
+        success: false,
+      });
+    }
     jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
       if (err) {
-        return res.status(200).send({
+        console.log(err);
+        return res.send({
           message: "Auth failed",
           success: false,
         });
