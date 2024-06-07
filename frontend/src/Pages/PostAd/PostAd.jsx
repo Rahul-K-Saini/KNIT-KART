@@ -3,10 +3,9 @@ import ImageUpload from "../../Components/ImageUpload/ImageUpload";
 import axios from "axios";
 import { useUserContext } from "@/context/userContext";
 import toast, { Toaster } from "react-hot-toast";
-import './Loader.css'
+import "./Loader.css";
 import { useRef } from "react";
 function PostAd() {
-
   const { user } = useUserContext();
   const [imagesArr, setImagesArr] = useState([]);
   const [loader, setLoader] = useState(false);
@@ -24,50 +23,50 @@ function PostAd() {
     price: "",
     category: "",
     exchange: "",
-  }
+  };
 
   const [adData, setAdData] = useState(cleanAdData);
 
   const clearAdData = () => {
     setAdData(cleanAdData);
-  }
+  };
 
   const postAdHandler = async () => {
-
     setLoader(true);
-    document.body.style.overflow='hidden';
-    
+    document.body.style.overflow = "hidden";
+
     const formData = new FormData();
 
-    formData.append('id', user.user._id);
-    formData.append('title', adData.title);
-    formData.append('description', adData.description);
-    formData.append('price', adData.price);
-    formData.append('category', adData.category);
-    formData.append('exchange', adData.exchange);
+    formData.append("id", user.user._id);
+    formData.append("title", adData.title);
+    formData.append("description", adData.description);
+    formData.append("price", adData.price);
+    formData.append("category", adData.category);
+    formData.append("exchange", adData.exchange);
 
     imagesArr.forEach((image) => {
-      formData.append('images', image);
+      formData.append("images", image);
     });
 
-
     try {
-      const res = await axios.post("http://localhost:8000/ad/postad", formData);
+      const res = await axios.post(
+        "https://knit-kart.onrender.com/ad/postad",
+        formData
+      );
       console.log(res);
       clearAdData();
-      childRef.current.clearImages()
+      childRef.current.clearImages();
       toast.success("Ad Posted Successfully");
     } catch (error) {
       console.log(error);
       toast.error("Couldn't Post Ad ! Try Again Later");
     } finally {
       setLoader(false);
-      
-      document.body.style.overflow='auto';
+
+      document.body.style.overflow = "auto";
     }
   };
-  
-  
+
   return (
     <div className="w-full bg-background">
       <Toaster />
@@ -143,7 +142,7 @@ function PostAd() {
               className="border-2 border-gray-200 bg:input_box rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
             />
           </div>
-          <ImageUpload handleImage={imageArrHandler}  ref={childRef}/>
+          <ImageUpload handleImage={imageArrHandler} ref={childRef} />
           <div className="mb-4">
             <label htmlFor="description" className="block text-text">
               Description
@@ -165,9 +164,11 @@ function PostAd() {
             Post Ad
           </button>
 
-          {
-            loader && <div className="backdrop"><div className="loader"></div></div>
-          }
+          {loader && (
+            <div className="backdrop">
+              <div className="loader"></div>
+            </div>
+          )}
         </div>
       </div>
     </div>

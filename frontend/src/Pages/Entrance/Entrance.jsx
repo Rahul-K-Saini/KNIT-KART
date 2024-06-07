@@ -1,6 +1,6 @@
 import { GoEyeClosed } from "react-icons/go";
 import { GoEye } from "react-icons/go";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import * as Components from "./Components";
 import axios from "axios";
 import "./styles.css";
@@ -18,7 +18,7 @@ function App() {
 
   const [showModalFP, setShowModalFP] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
-  const [otpTime,setOtpTime] = useState(5*60)
+  const [otpTime, setOtpTime] = useState(5 * 60);
 
   const [isLoginPage, setIsLoginPage] = useState({
     loginPage: true,
@@ -50,7 +50,7 @@ function App() {
     let ermsg = "";
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/user/register",
+        "https://knit-kart.onrender.com/user/register",
         userData,
         {
           headers: {
@@ -85,9 +85,12 @@ function App() {
     const formData = new FormData();
     formData.append("email", email);
     try {
-      const res = await axios.post("http://localhost:8000/user/send-otp", {
-        email,
-      });
+      const res = await axios.post(
+        "https://knit-kart.onrender.com/user/send-otp",
+        {
+          email,
+        }
+      );
       if (res.data.success) {
         toast.success(res.data.message);
         setOtpSent(true);
@@ -113,7 +116,7 @@ function App() {
     };
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/user/login",
+        "https://knit-kart.onrender.com/user/login",
         userData,
         {
           headers: {
@@ -138,14 +141,14 @@ function App() {
     }
   };
 
-  const handleResetPassword = async(e) => {
+  const handleResetPassword = async (e) => {
     e.preventDefault();
     const form = e.target;
     const otp = form.otp.value;
     const password = form.newPassword.value;
     const confirmPassword = form.confirmPassword.value;
 
-    if (password!== confirmPassword) {
+    if (password !== confirmPassword) {
       toast.error("Passwords do not match");
       return;
     }
@@ -156,7 +159,7 @@ function App() {
     };
 
     const res = await axios.post(
-      "http://localhost:8000/user/forget-password",
+      "https://knit-kart.onrender.com/user/forget-password",
       userData,
       {
         headers: {
@@ -165,34 +168,35 @@ function App() {
       }
     );
 
-    if(res.data.success){
+    if (res.data.success) {
       toast.success(res.data.message);
       form.reset();
       setShowModalFP(false);
-    }else{
+    } else {
       toast.error(res.data.message);
     }
-
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setOtpTime(prevTime => {
+      setOtpTime((prevTime) => {
         if (prevTime <= 1) {
-          clearInterval(interval); 
+          clearInterval(interval);
           return 0;
         }
         return prevTime - 1;
       });
     }, 1000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    return `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   return (
@@ -448,16 +452,19 @@ function App() {
                       <button
                         type="submit"
                         className={`bg-primary py-2 text-white rounded ${
-                          OTPLoading ? 'opacity-50 cursor-not-allowed' : ''
+                          OTPLoading ? "opacity-50 cursor-not-allowed" : ""
                         }`}
-                        disabled = {OTPLoading}
+                        disabled={OTPLoading}
                       >
-                        {OTPLoading ?  "Sending.. " : "Send OTP"}
+                        {OTPLoading ? "Sending.. " : "Send OTP"}
                       </button>
                     </div>
                   </form>
                 ) : (
-                  <form className="flex flex-col gap-2" onSubmit={(e) => handleResetPassword(e)}>
+                  <form
+                    className="flex flex-col gap-2"
+                    onSubmit={(e) => handleResetPassword(e)}
+                  >
                     <div>
                       <label htmlFor="otp">Enter OTP</label>
                       <br></br>
@@ -468,7 +475,11 @@ function App() {
                         name="otp"
                         required
                       />
-                      <small>OTP will expire in </small><small className="text-red-500"> {formatTime(otpTime)}</small>
+                      <small>OTP will expire in </small>
+                      <small className="text-red-500">
+                        {" "}
+                        {formatTime(otpTime)}
+                      </small>
                     </div>
                     <div>
                       <label htmlFor="newPassword">Enter New Password</label>
@@ -482,8 +493,10 @@ function App() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="confirmPassword">Confirm New Password</label>
-                      <br></br> 
+                      <label htmlFor="confirmPassword">
+                        Confirm New Password
+                      </label>
+                      <br></br>
                       <input
                         type="text"
                         className="w-full p-2 bg-gray-100 outline-none"

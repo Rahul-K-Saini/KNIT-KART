@@ -29,7 +29,7 @@ const AdCard = (props) => {
     };
     try {
       const res = await axios.put(
-        "http://localhost:8000/ad/updateAd/" + id,
+        "https://knit-kart.onrender.com/ad/updateAd/" + id,
         updatedData
       );
       toast.success("Ad Updated Successfully");
@@ -113,7 +113,7 @@ const AdCard = (props) => {
               </div>
               <form
                 className="p-4 md:p-5"
-                onSubmit={(e) => updateAd(e,props.ad._id)}
+                onSubmit={(e) => updateAd(e, props.ad._id)}
               >
                 <div class="grid gap-4 mb-4 grid-cols-2">
                   <div class="col-span-2 sm:col-span-1">
@@ -178,7 +178,7 @@ const AdCard = (props) => {
                       Product Description
                     </label>
                     <textarea
-                    name="description"
+                      name="description"
                       id="description"
                       rows="4"
                       class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Aos from "aos";
 import axios from "axios";
-import Ad from './Ad';
+import Ad from "./Ad";
 
 function AdDisplay({ selectedCategory }) {
   console.log(selectedCategory);
@@ -16,7 +16,9 @@ function AdDisplay({ selectedCategory }) {
   const getAds = async () => {
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:8000/ad/getAllAds");
+      const res = await axios.post(
+        "https://knit-kart.onrender.com/ad/getAllAds"
+      );
       setAds(res.data);
     } catch (error) {
       console.error("Error fetching ads:", error);

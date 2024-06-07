@@ -13,10 +13,10 @@ const AdPage = () => {
   const { id } = useParams();
   const [adDetails, setAdDetails] = useState(null);
 
-
-  const handleSendMail = (email,title) => {
-    const subject = `Inquiry regarding your ad: ${title}`;;
-    const body = "Hi, i want to know more about this ad on KNIT-KART. Please reply to this email. Thanks";
+  const handleSendMail = (email, title) => {
+    const subject = `Inquiry regarding your ad: ${title}`;
+    const body =
+      "Hi, i want to know more about this ad on KNIT-KART. Please reply to this email. Thanks";
     window.location.href = `mailto:${email}?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
@@ -24,7 +24,9 @@ const AdPage = () => {
 
   const getAdDetails = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/ad/getAdById/${id}`);
+      const res = await axios.get(
+        `https://knit-kart.onrender.com/ad/getAdById/${id}`
+      );
       console.log(res.data);
       setAdDetails(res.data);
     } catch (error) {
@@ -68,7 +70,6 @@ const AdPage = () => {
     total_price: 0,
   });
 
-
   // set active image
   const [activeImage, setActiveImage] = useState(adDetails?.images[0]);
   const adjustActiveImage = (index) => {
@@ -103,8 +104,8 @@ const AdPage = () => {
     // set the variable show to equal the sum which is the position in the array
     let show = mobileImgNav + n;
     if (show < 0) {
-      show = adDetails?.images.length-1;
-    } else if (show > adDetails?.images.length-1) {
+      show = adDetails?.images.length - 1;
+    } else if (show > adDetails?.images.length - 1) {
       show = 0;
     }
     // when user clicks on the images, the position from the array will update
@@ -122,18 +123,17 @@ const AdPage = () => {
     let imageNav = mapImg.indexOf(true);
     let show = imageNav + n;
     if (show < 0) {
-      show = adDetails?.images.length-1;
-    } else if (show > adDetails?.images.length-1) {
+      show = adDetails?.images.length - 1;
+    } else if (show > adDetails?.images.length - 1) {
       show = 0;
     }
     setImgNav(show);
     setActiveModalImage(adDetails?.images[show]);
   };
-  
+
   useEffect(() => {
     setActiveImage(adDetails?.images[0]);
-  }, [adDetails])
-  
+  }, [adDetails]);
 
   return (
     <main className="mb-24">
@@ -153,16 +153,14 @@ const AdPage = () => {
           </div>
         </div>
         <div className="photo-options">
-          {
-            adDetails?.images.map((img, key) => (
-              <button
-                key={key}
-                style={{ backgroundImage: `url(${img})` }}
-                className={`img ${activeImage === img ? "selected" : ""}`}
-                onClick={() => adjustActiveImage(img)}
-              ></button>
-            ))
-          }
+          {adDetails?.images.map((img, key) => (
+            <button
+              key={key}
+              style={{ backgroundImage: `url(${img})` }}
+              className={`img ${activeImage === img ? "selected" : ""}`}
+              onClick={() => adjustActiveImage(img)}
+            ></button>
+          ))}
         </div>
       </div>
       <div
@@ -175,15 +173,14 @@ const AdPage = () => {
         <div className="info">
           <div className="flex justify-between items-center">
             <p className="catagory">{adDetails?.category}</p>
-            <p className="font-semibold">Owner: {adDetails?.user.name.charAt(0).toUpperCase() + adDetails?.user.name.substr(1)}</p>
+            <p className="font-semibold">
+              Owner:{" "}
+              {adDetails?.user.name.charAt(0).toUpperCase() +
+                adDetails?.user.name.substr(1)}
+            </p>
           </div>
-          <h1 className="text-xl md:text-3xl mb-6">
-            {adDetails?.title}
-          </h1>
-          <p className="item-info">
-            {" "}
-            {adDetails?.description}
-          </p>
+          <h1 className="text-xl md:text-3xl mb-6">{adDetails?.title}</h1>
+          <p className="item-info"> {adDetails?.description}</p>
           <div className="price-tag">
             <div className="flex flex-row">
               <p className="price">₹{adDetails?.price}</p>
@@ -194,7 +191,12 @@ const AdPage = () => {
             <p className="retail-price">Exchange - {adDetails?.exchange}</p>
           </div>
           <div className="description-btn">
-            <button onClick={()=>handleSendMail(adDetails?.user?.email,adDetails?.title)} className="add-to-cart transform transition-all duration-300 hover:scale-105">
+            <button
+              onClick={() =>
+                handleSendMail(adDetails?.user?.email, adDetails?.title)
+              }
+              className="add-to-cart transform transition-all duration-300 hover:scale-105"
+            >
               <span>Contact: {adDetails?.user?.email}</span>
             </button>
           </div>
@@ -227,17 +229,16 @@ const AdPage = () => {
               </div>
             </div>
             <div className="photo-options">
-              {
-                adDetails?.images.map((img, key) => (
-                  <button
-                    key={key}
-                    style={{ backgroundImage: `url(${img})` }}
-                    className={`img ${activeModalImage === img ? "selected" : ""
-                      }`}
-                    onClick={() => adjustActiveModalImage(img)}
-                  ></button>
-                ))
-              }
+              {adDetails?.images.map((img, key) => (
+                <button
+                  key={key}
+                  style={{ backgroundImage: `url(${img})` }}
+                  className={`img ${
+                    activeModalImage === img ? "selected" : ""
+                  }`}
+                  onClick={() => adjustActiveModalImage(img)}
+                ></button>
+              ))}
             </div>
           </div>
         </div>
