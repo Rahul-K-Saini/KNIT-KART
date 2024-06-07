@@ -8,12 +8,12 @@ function Ad({ ad }) {
     <div
       onClick={() => navigate(`/ad/${ad._id}`)}
       style={{
-        boxShadow: '10px 10px 15px rgba(0, 0, 0, 0.2), -10px -10px 15px rgba(255, 255, 255, 0.9)',
+        boxShadow: '10px 10px 15px rgba(0, 0, 0, 0.2), -10px -10px 15px rgba(255, 255, 255, 0.2)',
         transition: 'all 0.2s ease-in-out'
       }}
       className="w-full max-w-sm bg-[rgb(250,250,250)] border border-gray-200 rounded-lg cursor-pointer shadow dark:bg-gray-800 dark:border-gray-700"
-      onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)', e.currentTarget.style.boxShadow = '10px 10px 25px rgba(0, 0, 0, 0.2), -10px -10px 25px rgba(255, 255, 255, 0.5)' }}
-      onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)', e.currentTarget.style.boxShadow = '10px 10px 15px rgba(0, 0, 0, 0.2), -10px -10px 15px rgba(255, 255, 255, 0.9)' }}
+      onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)', e.currentTarget.style.boxShadow = '10px 10px 25px rgba(0, 0, 0, 0.2), -10px -10px 25px rgba(255, 255, 255, 0.2)' }}
+      onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)', e.currentTarget.style.boxShadow = '10px 10px 15px rgba(0, 0, 0, 0.2), -10px -10px 15px rgba(255, 255, 255, 0.2)' }}
     >
 
       <img
