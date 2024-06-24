@@ -260,6 +260,7 @@ function App() {
           <Components.SignInContainer $signin={signIn}>
             <Components.Form onSubmit={handleSignIn}>
               <Components.Title>Sign in</Components.Title>
+               <small className="mt-1 text-blue-500">default credentials for testing: email-rahul.22742@knit.ac.in password-22222222</small>
               <Components.Input
                 type="email"
                 placeholder="Email(KNIT)"
