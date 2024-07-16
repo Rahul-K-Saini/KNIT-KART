@@ -46,10 +46,10 @@ const Landing = () => {
                 </video>
 
                 {/* Our team */}
-                <div className='relative'>
+{/*                 <div className='relative'>
 
                     <OurTeam />
-                </div>
+                </div> */}
             </div>
 
 
